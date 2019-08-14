@@ -1,11 +1,13 @@
 import React from "react";
+import Navbar from "./common/Navbar";
+import "../styles/mains.scss";
 
 function App() {
-  return (
-    <div>
-      <h1>Lobos Wolves</h1>
-    </div>
-  );
+    return (
+        <>
+            <Navbar />
+        </>
+    );
 }
 
 export default App;
