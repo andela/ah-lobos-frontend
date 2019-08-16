@@ -6,7 +6,11 @@ install:
 cache:
   directories:
     - "node_modules"
+  paths:
+    - cache/Cypress
 script:
-  - npm test
+    - 'export CYPRESS_CACHE_FOLDER=../../cache/Cypress'
+    - 'export CYPRESS_CACHE_FOLDER=cache/Cypress'
+    - npm test
 notifications:
   email: false  

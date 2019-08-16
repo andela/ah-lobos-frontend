@@ -5,3 +5,9 @@ dist/
 package-lock.json
 
 .editorconfig
+
+cypress/fixtures/
+
+cypress/plugins/
+cypress/support/
+cypress/videos/

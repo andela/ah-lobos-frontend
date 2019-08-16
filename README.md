@@ -40,6 +40,14 @@ npm install
 ```
 npm start
 ```
+> run test for end-to-end
+```
+npm run cypress
+```
+> run test for unit test
+```
+npm run test
+```
 
 ## Contribute
 
