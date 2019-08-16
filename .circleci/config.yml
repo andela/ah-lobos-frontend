@@ -1,11 +1,27 @@
-version: 2.1
+version: 2
 jobs:
   build:
+    environment:
+      CC_TEST_REPORTER_ID: 54210b60f354d1fcd02e9bf334196b3eaab6a9709cd86172953a08552bc368b0
     docker:
-      - image: alpine:3.7
+      - image: circleci/node:7.10
     steps:
+      - checkout
+      - run: npm install
+      - run: npm test
       - run:
-          name: The First Step
+          name: Setup Code Climate test-reporter
           command: |
-            echo 'Hello World!'
-            echo 'This is the delivery pipeline'
+            curl -L https://codeclimate.com/downloads/test-reporter/test-reporter-latest-linux-amd64 > ./cc-test-reporter
+            chmod +x ./cc-test-reporter
+
+      - run:
+          name: Run tests
+          command: |
+            ./cc-test-reporter before-build
+             # upload test report to Code Climate using `after-build`.
+            ./cc-test-reporter after-build
+
+      - store_artifacts:
+          path: coverage
+          destination: coverage

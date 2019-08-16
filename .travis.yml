@@ -12,5 +12,7 @@ script:
     - 'export CYPRESS_CACHE_FOLDER=../../cache/Cypress'
     - 'export CYPRESS_CACHE_FOLDER=cache/Cypress'
     - npm test
+after_success:
+  - 
 notifications:
-  email: false  
+  email: false

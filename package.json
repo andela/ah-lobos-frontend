@@ -4,9 +4,9 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "jest",
     "cypress": "cypress open",
     "cypress:all": "cypress run",
+    "test": "jest --coverage",
     "start": "webpack-dev-server --mode development --open --hot",
     "build": "webpack --mode production"
   },
