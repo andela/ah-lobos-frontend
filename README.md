@@ -1,4 +1,4 @@
-## ah-lobos-frontend
+## ah-lobos-frontend [![Build Status](https://travis-ci.com/andela/ah-lobos-frontend.svg?branch=develop)](https://travis-ci.com/andela/ah-lobos-frontend)
 
 A Social platform for the creative at heart.
 
