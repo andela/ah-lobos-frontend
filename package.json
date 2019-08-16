@@ -21,6 +21,7 @@
   "homepage": "https://github.com/andela/ah-lobos-frontend#readme",
   "devDependencies": {
     "@babel/core": "^7.5.5",
+    "@babel/plugin-proposal-class-properties": "^7.5.5",
     "@babel/preset-env": "^7.5.5",
     "@babel/preset-react": "^7.0.0",
     "airbnb": "0.0.2",
@@ -48,9 +49,13 @@
     "webpack-dev-server": "^3.8.0"
   },
   "dependencies": {
+    "prop-types": "^15.7.2",
     "react": "^16.9.0",
     "react-dom": "^16.9.0",
+    "react-redux": "^7.1.0",
     "react-router-dom": "^5.0.1",
+    "redux": "^4.0.4",
+    "redux-thunk": "^2.3.0",
     "semantic-ui-react": "^0.87.3"
   }
 }

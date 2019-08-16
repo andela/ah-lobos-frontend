@@ -17,6 +17,10 @@ Linting with the Airbnb option has also been configured.
 > npm
 > react
 > react-dom
+> redux
+> react-redux
+> redux-thunk
+> semantic-ui-react
 
 ### Getting Started
 
@@ -39,8 +43,7 @@ npm start
 
 ## Contribute
 
-```
 Follow the Getting started section of this file and create a branch off develop.
 
 Use the [engineering playbook](https://github.com/andela/engineering-playbook/tree/c74e0b42578fcf45d76b91e43b85d5159821b7ea/5.%20Developing/Conventions#repo-readme) as a guide while you develop your feature.
-```
+
