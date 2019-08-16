@@ -1,11 +1,15 @@
 import React from "react";
-import { Menu } from "semantic-ui-react";
-import "../../styles/mains.scss";
+import { Menu, Button } from "semantic-ui-react";
+import { Link } from "react-router-dom";
 
 const Navbar = () => (
+  <>
     <Menu fixed="top" inverted className="line">
-        <h2 className="nav-brand">authorsHaven</h2>
+      <Link to="/login">
+        <Button className="nav-brand">Login</Button>
+      </Link>
     </Menu>
+  </>
 );
 
 export default Navbar;

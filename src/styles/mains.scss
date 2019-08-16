@@ -4,10 +4,78 @@
 }
 
 .nav-brand {
-    color: #0D9BC6;
-    margin-left: 15px;
+    color: rgb(252, 252, 252);
+    font-size: 13pt;
+    border: none;
+    margin-right: 50px;
+    float: right;
+    background: transparent;
+}
+
+.nav-brand:hover{
+  color: rgba(6, 178, 201, 0.918);
+  cursor: pointer;
+  background: white;
+  border-radius: 12px;
+  padding: 7px;
 }
 
 .line {
     border-bottom: 1px solid silver;
+}
+
+.main-content{
+  background: linear-gradient(rgba(6, 178, 201, 0.918), rgb(255, 255, 255));
+  width: 100%;
+  height: 100vh;
+  margin-top: -100px;
+  padding-bottom: 30%;
+
+}
+
+.brand-header{
+  text-align: center;
+  color: white;
+  padding-top: 20%;
+  font-size: 35pt;
+  font-family: Arial, Helvetica, sans-serif;
+}
+.txt-info{
+  text-align: center;
+  color: white;
+  font-size: 15pt;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+.side-left{
+  width: 50%;
+}
+.side-right{
+  width: 50%;
+  float: right;
+}
+
+.login{
+  width: 40%;
+  position: absolute;
+  top: 40%;
+  left: 60%;
+}
+
+.input-text{
+  width: 70%;
+  height: 25px;
+  outline: none;
+  border: none;
+  border-bottom: 0.3px solid rgba(6, 178, 201, 0.548);
+  margin-right: 5%;
+  padding: 4px;
+}
+
+.btn-action{
+  font-size: 13pt;
+  color: rgba(6, 178, 201, 0.918);
+  margin-top: 10px;
+  padding: 5px;
+  margin-left: 40%;
 }
