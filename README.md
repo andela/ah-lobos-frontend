@@ -1,4 +1,4 @@
-## ah-lobos-frontend [![Build Status](https://travis-ci.com/andela/ah-lobos-frontend.svg?branch=develop)](https://travis-ci.com/andela/ah-lobos-frontend)
+## ah-lobos-frontend [![Build Status](https://travis-ci.com/andela/ah-lobos-frontend.svg?branch=develop)](https://travis-ci.com/andela/ah-lobos-frontend) [![Maintainability](https://api.codeclimate.com/v1/badges/2be87cd7dd91c6183243/maintainability)](https://codeclimate.com/github/andela/ah-lobos-frontend/maintainability) [![Test Coverage](https://api.codeclimate.com/v1/badges/2be87cd7dd91c6183243/test_coverage)](https://codeclimate.com/github/andela/ah-lobos-frontend/test_coverage)
 
 A Social platform for the creative at heart.
 
