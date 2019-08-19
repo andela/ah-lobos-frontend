@@ -10,7 +10,7 @@ const ButtonForm = ({ name, send, enabled, submitted }) =>
     </>
   ) : (
     <>
-      <button type="submit" className="btn-signup" disabled>
+      <button type="submit" className="btn-signup-disable" disabled>
         {name}
       </button>
     </>

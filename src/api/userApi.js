@@ -1,9 +1,8 @@
 import { handleResponse, handleError } from "./apiUtils";
 
-const baseUrl = `${process.env.BASE_URL}/api/users/login`;
-
+const baseUrl = `https://ah-lobos-backend-swagger.herokuapp.com`;
 export function loginUser(user) {
-  return fetch(`${baseUrl}`, {
+  return fetch(`${baseUrl}/api/users/login`, {
     method: "POST",
     headers: { "content-type": "application/json" },
     body: JSON.stringify(user)

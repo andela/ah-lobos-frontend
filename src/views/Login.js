@@ -55,7 +55,9 @@ class Login extends Component {
 
   redirectOnsuccess = () => {
     const { isloggedin } = this.props;
-    return isloggedin ? this.props.history.push("/") : null;
+    if (isloggedin) {
+      window.location = "/";
+    }
   };
 
   render() {
@@ -82,8 +84,7 @@ class Login extends Component {
 }
 Login.propTypes = {
   loginUser: PropTypes.func,
-  isloggedin: PropTypes.bool,
-  history: PropTypes.instanceOf(Object).isRequired
+  isloggedin: PropTypes.bool
 };
 
 function mapStateToProps(state) {
