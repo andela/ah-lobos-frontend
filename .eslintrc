@@ -45,10 +45,8 @@
             }
         ],
         "prettier/prettier": "error",
-        "max-len": [
-            "error",
-            80
-        ]
+        "max-len": ["error", {"code": 80, "ignoreUrls": true}],
+        "no-tabs": ["error", {"allowIndentationTabs": true}]
     },
     "settings": {
         "react": {
@@ -58,5 +56,5 @@
     "root": true,
     "globals": {
         "cy": true
-    },
+    }
 }

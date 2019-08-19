@@ -7,8 +7,11 @@
     "cypress": "cypress open",
     "cypress:all": "cypress run",
     "test": "jest --coverage",
-    "start": "webpack-dev-server --mode development --open --hot",
-    "build": "webpack --mode production"
+    "dev": "webpack-dev-server --mode development --open --hot",
+    "build": "webpack --mode production",
+    "start": "serve -s ./build",
+    "heroku-postbuild": "npm run build",
+    "format": "prettier --write '**/*.{js,jsx}'"
   },
   "repository": {
     "type": "git",
@@ -22,14 +25,6 @@
   },
   "homepage": "https://github.com/andela/ah-lobos-frontend#readme",
   "devDependencies": {
-    "@babel/core": "^7.5.5",
-    "@babel/plugin-proposal-class-properties": "^7.5.5",
-    "@babel/preset-env": "^7.5.5",
-    "@babel/preset-react": "^7.0.0",
-    "airbnb": "0.0.2",
-    "babel-eslint": "^10.0.2",
-    "babel-loader": "^8.0.6",
-    "css-loader": "^3.2.0",
     "cypress": "^3.4.1",
     "enzyme": "^3.10.0",
     "enzyme-adapter-react-16": "^1.14.0",
@@ -38,32 +33,54 @@
     "eslint-config-airbnb": "^18.0.0",
     "eslint-config-prettier": "^6.0.0",
     "eslint-import-resolver-webpack": "^0.11.1",
-    "eslint-loader": "^2.2.1",
     "eslint-plugin-import": "^2.18.2",
     "eslint-plugin-jsx-a11y": "^6.2.3",
     "eslint-plugin-prettier": "^3.1.0",
     "eslint-plugin-react": "^7.14.3",
+    "jest": "^24.9.0"
+  },
+  "dependencies": {
+    "@babel/core": "^7.5.5",
+    "@babel/plugin-proposal-class-properties": "^7.5.5",
+    "@babel/polyfill": "^7.4.4",
+    "@babel/preset-env": "^7.5.5",
+    "@babel/preset-react": "^7.0.0",
+    "airbnb": "0.0.2",
+    "babel-eslint": "^10.0.2",
+    "babel-loader": "^8.0.6",
+    "css-loader": "^3.2.0",
+    "dotenv": "^8.1.0",
+    "dotenv-webpack": "^1.7.0",
+    "error-overlay-webpack-plugin": "^0.4.0",
+    "eslint-loader": "^2.2.1",
+    "file-loader": "^4.2.0",
+    "history": "^4.9.0",
     "html-webpack-plugin": "^3.2.0",
-    "jest": "^24.9.0",
     "identity-obj-proxy": "^3.0.0",
+    "joi-browser": "^13.4.0",
+    "jsonwebtoken": "^8.5.1",
     "mini-css-extract-plugin": "^0.8.0",
     "node-sass": "^4.12.0",
     "prettier": "^1.18.2",
-    "sass-loader": "^7.2.0",
-    "style-loader": "^1.0.0",
-    "webpack": "^4.39.1",
-    "webpack-cli": "^3.3.6",
-    "webpack-dev-server": "^3.8.0"
-  },
-  "dependencies": {
     "prop-types": "^15.7.2",
     "react": "^16.9.0",
     "react-dom": "^16.9.0",
     "react-redux": "^7.1.0",
     "react-router-dom": "^5.0.1",
+    "react-toastify": "^5.3.2",
     "redux": "^4.0.4",
+    "redux-immutable-state-invariant": "^2.1.0",
+    "redux-mock-store": "^1.5.3",
+    "redux-promise-middleware": "^6.1.1",
     "redux-thunk": "^2.3.0",
-    "semantic-ui-react": "^0.87.3"
+    "sass-loader": "^7.2.0",
+    "semantic-ui-css": "^2.4.1",
+    "semantic-ui-react": "^0.87.3",
+    "serve": "^11.1.0",
+    "style-loader": "^1.0.0",
+    "webpack": "^4.39.1",
+    "webpack-cli": "^3.3.6",
+    "webpack-dev-server": "^3.8.0"
   },
   "jest": {
     "setupFilesAfterEnv": [
@@ -74,7 +91,8 @@
       "./cypress/"
     ],
     "moduleNameMapper": {
-      "^.+\\.(css|scss)$": "identity-obj-proxy"
+      "^.+\\.(css|scss)$": "identity-obj-proxy",
+      "\\.(jpg|ico|jpeg|png|gif|eot|otf|webp|svg|ttf|woff|woff2|mp4|webm|wav|mp3|m4a|aac|oga)$": "identity-obj-proxy"
     }
   }
 }
