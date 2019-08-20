@@ -53,13 +53,16 @@
     "dotenv-webpack": "^1.7.0",
     "error-overlay-webpack-plugin": "^0.4.0",
     "eslint-loader": "^2.2.1",
+    "fetch-mock": "^7.3.9",
     "file-loader": "^4.2.0",
     "history": "^4.9.0",
     "html-webpack-plugin": "^3.2.0",
     "identity-obj-proxy": "^3.0.0",
+    "jest": "^24.9.0",
     "joi-browser": "^13.4.0",
     "jsonwebtoken": "^8.5.1",
     "mini-css-extract-plugin": "^0.8.0",
+    "node-fetch": "^2.6.0",
     "node-sass": "^4.12.0",
     "prettier": "^1.18.2",
     "prop-types": "^15.7.2",
@@ -73,6 +76,7 @@
     "redux-mock-store": "^1.5.3",
     "redux-promise-middleware": "^6.1.1",
     "redux-thunk": "^2.3.0",
+    "regenerator-runtime": "^0.13.3",
     "sass-loader": "^7.2.0",
     "semantic-ui-css": "^2.4.1",
     "semantic-ui-react": "^0.87.3",
@@ -91,8 +95,8 @@
       "./cypress/"
     ],
     "moduleNameMapper": {
-      "^.+\\.(css|scss)$": "identity-obj-proxy",
-      "\\.(jpg|ico|jpeg|png|gif|eot|otf|webp|svg|ttf|woff|woff2|mp4|webm|wav|mp3|m4a|aac|oga)$": "identity-obj-proxy"
+      "^.+\\.(css|scss)$": "<rootDir>/tools/styleMock.js",
+      "\\.(jpg|ico|jpeg|png|gif|eot|otf|webp|svg|ttf|woff|woff2|mp4|webm|wav|mp3|m4a|aac|oga)$": "<rootDir>/tools/fileMock.js"
     }
   }
 }

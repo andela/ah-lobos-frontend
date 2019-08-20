@@ -32,9 +32,14 @@
         "react/prop-types": "warn",
         "react/forbid-prop-types": 0,
         "import/prefer-default-export": "off",
+        "react/prefer-stateless-function": "off",
         "react/destructuring-assignment": "off",
         "react/no-access-state-in-setstate": "off",
         "react/state-in-constructor": "off",
+        "react/button-has-type": "off",
+        "react/jsx-props-no-spreading": "off",
+        "func-names": "off",
+        "react/require-default-props": "off",
         "react/jsx-filename-extension": [
             1,
             {
