@@ -52,7 +52,7 @@ const SocialLogin = ({ redirect, path }) => {
 
 SocialLogin.propTypes = {
   redirect: PropTypes.string.isRequired,
-  path: PropTypes.string.isRequired
+  path: PropTypes.string
 };
 
 export default SocialLogin;

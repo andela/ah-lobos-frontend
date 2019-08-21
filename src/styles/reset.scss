@@ -4,6 +4,7 @@
   background: #ceebf3;
   align-self: center;
 }
+
 .reset h1 {
   font-weight: 100;
   color: #707070;
@@ -34,6 +35,16 @@
 .mother {
   display: grid;
   justify-items: center;
+}
+
+.mother form{
+  display: grid;
+  grid-auto-columns: 100%;
+  grid-gap: 15px;
+  justify-items: center;
+  margin-bottom: 0px;
+  padding-bottom: 0px;
+  align-self: end;
 }
 .resetButton{
   margin-bottom: 40px;
@@ -112,3 +123,4 @@ a:hover{
 .confirm p {
   margin-left: 95px;
 }
+

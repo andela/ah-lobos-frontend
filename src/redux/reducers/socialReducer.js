@@ -1,9 +1,5 @@
 import * as types from "../actions/actionTypes";
-
-const initialState = {
-  token: localStorage.token || null,
-  email: ""
-};
+import { initialState } from "./initialState";
 
 export default function socialReducer(state = initialState, { type, payload }) {
   switch (type) {

@@ -1,6 +1,6 @@
 import { handleResponse, handleError } from "./utils";
 
-const baseUrl = `https://ah-lobos-backend-swagger.herokuapp.com`;
+const baseUrl = "https://ah-lobos-backend-swagger.herokuapp.com";
 
 export function createAccount(user) {
   return fetch(`${baseUrl}/api/users`, {

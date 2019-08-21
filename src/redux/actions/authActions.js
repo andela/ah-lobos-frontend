@@ -1,4 +1,5 @@
 import { toast } from "react-toastify";
+import jwt from "jsonwebtoken";
 import * as types from "./actionTypes";
 import * as userApi from "../../api/users";
 
@@ -24,7 +25,8 @@ export const register = user => dispatch => {
         toast.error(response.error, { autoClose: false });
       } else {
         sessionStorage.setItem("token", response.user.token);
-        localStorage.user = JSON.stringify(response.data);
+        const userPayload = jwt.decode(response.user.token);
+        sessionStorage.setItem("username", userPayload.username);
         toast.success(response.message, { autoClose: false });
         dispatch(success());
         window.location.href = "/";

@@ -1,9 +1,5 @@
 import { RESET_PASSWORD, SET_NEW_PASSWORD } from "../actions/actionTypes";
-
-const initialState = {
-  email: {},
-  passwords: {}
-};
+import { initialState } from "./initialState";
 
 export default function(state = initialState, action) {
   switch (action.type) {

@@ -7,8 +7,9 @@ import Login from "./views/Login";
 import SignupPage from "./views/SignupPage";
 import NewPassword from "./views/NewPassword";
 import ResetPassword from "./views/ResetPassword";
+import EditProfile from "./views/EditProfile";
 
-function App() {
+const App = () => {
   return (
     <>
       <Router>
@@ -19,10 +20,10 @@ function App() {
           <Route path="/signup" component={SignupPage} />
           <Route exact path="/resetpassword" component={ResetPassword} />
           <Route exact path="/newpassword/:token" component={NewPassword} />
+          <Route exact path="/edit" component={EditProfile} />
         </Switch>
       </Router>
     </>
   );
-}
-
+};
 export default App;
