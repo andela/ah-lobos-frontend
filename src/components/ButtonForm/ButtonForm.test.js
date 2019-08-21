@@ -7,7 +7,8 @@ const renderButtonForm = args => {
   const defaultProps = {
     name: "",
     enabled: false,
-    submitted: false
+    submitted: false,
+    send: ""
   };
 
   const props = { ...defaultProps, ...args };

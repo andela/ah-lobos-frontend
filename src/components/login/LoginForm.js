@@ -56,6 +56,9 @@ const LoginForm = ({
             submitted={submitted}
           />
         </form>
+        <a href="/resetpassword" className="forgotLink">
+          Forgot Password?
+        </a>
         <SocialLogin path="/signup" redirect="Sign-up" />
       </div>
     </div>

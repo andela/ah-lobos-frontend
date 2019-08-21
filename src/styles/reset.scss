@@ -1,0 +1,114 @@
+
+.reset {
+  font-family: Helvetica;
+  background: #ceebf3;
+  align-self: center;
+}
+.reset h1 {
+  font-weight: 100;
+  color: #707070;
+  margin-bottom: 10px;
+}
+.errorMessage {
+  color: #dd2e44;
+  font-size: 20px;
+}
+ .reset input {
+  border: 0px;
+  border-radius: 20px;
+  width: 20rem;
+  height: 40px;
+  box-shadow: 0 5px 5px -8px;
+  font-size: 20px;
+  font-weight: 200;
+  padding-left: 20px;
+}
+.reset p {
+  font-weight: 100;
+  color: #707070;
+  margin-bottom: 10px;
+}
+.input-password{
+  align-items: center;
+}
+.mother {
+  display: grid;
+  justify-items: center;
+}
+.resetButton{
+  margin-bottom: 40px;
+  padding-left: 20px;
+  padding-right: 20px;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  outline: none;
+  cursor: pointer;
+  border-radius: 50px;
+}
+button[disabled] {
+  padding-left: 20px;
+  padding-right: 20px;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  outline: none;
+  cursor: no-drop;
+  border-radius: 50px;
+  opacity: 0.5;
+}
+.password-container {
+  margin-top:10%;
+  display: block;
+  padding: 30px;
+  background: #ceebf3;
+  width:  40%;
+  box-shadow: 0 19px 38px rgba(0,0,0,.1), 0 15px 12px rgba(0,0,0,.2);
+}
+.alert-danger {
+    background: #f8d7da;
+    color: #721c24;
+    border-radius: 18px;
+    width: 300px;
+    padding: 0px 15px;
+    line-height: 20px;
+}
+.field-icon {
+  float: right;
+  margin-left: -25px;
+  margin-top: -25px;
+  position: relative;
+  z-index: 2;
+}
+.showPassword input{
+  display: inline-block;
+  margin-right: 15px;
+  width: 2px;
+}
+.forgotLink {
+  color: rgba(6, 178, 201, 0.918);
+  text-decoration: none;
+}
+.forgotLink a:hover{
+  color: rgba(6, 178, 201, 0.918);
+}
+a {
+ text-decoration: none;
+}
+a:hover{
+  text-decoration: underline;
+ }
+#eyePassword{
+  position: absolute;
+  margin-left: 285px;
+  margin-top: 9px;
+}
+#eyeConfirmPassword{
+  position: relative;
+  margin-left: 285px;
+  top: 26px;
+}
+.confirm {
+  margin-left: 120px;
+}
+.confirm p {
+  margin-left: 95px;
+}

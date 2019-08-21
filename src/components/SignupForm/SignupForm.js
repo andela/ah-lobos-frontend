@@ -47,6 +47,7 @@ const SignupForm = ({
           submitted={submitted}
         />
       </form>
+      <p>or</p>
       <SocialLogin path="/login" redirect="Login" />
     </div>
   );

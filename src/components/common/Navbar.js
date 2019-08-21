@@ -40,8 +40,8 @@ const Navbar = ({ token, decodeToken }) => (
 );
 
 Navbar.propTypes = {
-  token: PropTypes.string.isRequired,
-  decodeToken: PropTypes.object.isRequired
+  token: PropTypes.string,
+  decodeToken: PropTypes.object
 };
 
 export default Navbar;
