@@ -13,3 +13,11 @@ cypress/support/
 cypress/videos/
 
 coverage/
+
+.env
+
+.DS_Store
+
+src/styles/_mixins.scss
+src/styles/styles.scss
+src/styles/_variables.scss
