@@ -12,7 +12,10 @@ const renderSignupForm = args => {
     enabled: false,
     submitted: false,
     toggleShow: () => {},
-    hidden: true
+    hidden: true,
+    value: "string",
+    send: "Creating account...",
+    to: ""
   };
 
   const props = { ...defaultProps, ...args };

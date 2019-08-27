@@ -5,7 +5,7 @@ import facebook from "../../assets/images/facebook.png";
 import twitter from "../../assets/images/twitter.png";
 import google from "../../assets/images/gmail.png";
 
-const SocialLogin = ({ redirect }) => (
+const SocialLogin = ({ redirect, path }) => (
   <>
     <p>or</p>
     <div className="social-icons">
@@ -15,7 +15,7 @@ const SocialLogin = ({ redirect }) => (
     </div>
     <div className="sign-up-redirect">
       Already have an account ?{" "}
-      <Link to="/login" className="redirect-login">
+      <Link to={path} className="redirect-login">
         {redirect}
       </Link>
     </div>

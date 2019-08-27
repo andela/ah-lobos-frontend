@@ -124,15 +124,17 @@ body {
   }
 
   button {
-    // width: 8rem;
-    // height: 35px;
     border: 0px;
-    // border-radius: 20px;
     background-color: #0D9BC6;
     color: #fff;
     font-size: 22px;
     font-weight: 200;
   }
+
+  button[disabled] {
+  background-color: rgba(13, 155, 198, 0.39);
+  cursor: no-drop;
+}
 
   .social-icons {
     display: grid;
@@ -165,7 +167,12 @@ body {
     color: #0D9BC6;
   }
 
-  .btn-signup {
+  .sign-up-redirect > a {
+  color: #0D9BC6;
+  text-decoration: none;
+}
+
+  .btn-signup, .login-btn {
     padding-left: 20px;
     padding-right: 20px;
     padding-top: 10px;
@@ -182,6 +189,11 @@ body {
 
   .eye-toggle {
     height: 20px;
+  }
+
+  .eye-toggle-login {
+    height: 20px;
+    margin-top: 140px;
   }
 
   a.show-toggle {

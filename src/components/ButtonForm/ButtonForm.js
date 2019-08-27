@@ -1,11 +1,11 @@
 import React from "react";
 import PropTypes from "prop-types";
 
-const ButtonForm = ({ name, enabled, submitted }) =>
+const ButtonForm = ({ name, send, enabled, submitted }) =>
   enabled ? (
     <>
       <button type="submit" className="btn-signup">
-        {submitted ? "Creating account...." : name}
+        {submitted ? send : name}
       </button>
     </>
   ) : (
@@ -19,7 +19,8 @@ const ButtonForm = ({ name, enabled, submitted }) =>
 ButtonForm.propTypes = {
   name: PropTypes.string.isRequired,
   enabled: PropTypes.bool.isRequired,
-  submitted: PropTypes.bool.isRequired
+  submitted: PropTypes.bool.isRequired,
+  send: PropTypes.string.isRequired
 };
 
 export default ButtonForm;

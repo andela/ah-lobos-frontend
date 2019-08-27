@@ -1,8 +1,7 @@
 import React from "react";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
-import { ToastContainer } from "react-toastify";
-import Login from "./views/Login";
 import LandingPage from "./views/LandingPage";
+import Login from "./views/Login";
 // eslint-disable-next-line import/no-named-as-default
 import SignupPage from "./views/SignupPage";
 
@@ -16,7 +15,6 @@ function App() {
           <Route path="/signup" component={SignupPage} />
         </Switch>
       </Router>
-      <ToastContainer />
     </>
   );
 }

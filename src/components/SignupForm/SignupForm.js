@@ -41,12 +41,13 @@ const SignupForm = ({
         />
         <ButtonForm
           name="Create account"
+          send="Creating account..."
           registering={registering}
           enabled={enabled}
           submitted={submitted}
         />
       </form>
-      <SocialLogin redirect="Login" />
+      <SocialLogin path="/login" redirect="Login" />
     </div>
   );
 };
