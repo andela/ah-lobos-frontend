@@ -12,6 +12,18 @@ const DropDown = ({ signOut }) => (
         <img className="profile-menu-iconh" src={profile} alt="profile" />
         <p className="icon-text">Profile</p>
       </Link>
+      <Link to="/article/new" className="profile-menu">
+        <img className="profile-menu-icon" src={profile} alt="profile" />
+        <p className="icon-text">New article</p>
+      </Link>
+      <Link to="/article/user" className="profile-menu">
+        <img className="profile-menu-icon" src={profile} alt="profile" />
+        <p className="icon-text">My articles</p>
+      </Link>
+      <Link to="/article/user/draft" className="profile-menu">
+        <img className="profile-menu-icon" src={profile} alt="profile" />
+        <p className="icon-text">My Draft</p>
+      </Link>
       <Link to="/" className="bookmarks-menu">
         <img className="bookmarks-menu-icon" src={bookmarks} alt="profile" />
         <p className="icon-text">Bookmarks</p>

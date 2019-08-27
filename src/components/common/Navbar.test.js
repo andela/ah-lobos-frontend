@@ -20,7 +20,7 @@ it("it should contain 0 links", () => {
     <MemoryRouter>
       <Navbar {...props} />
     </MemoryRouter>
-  ).find("a").length;
+  ).find("Link").length;
 
-  expect(numAnchors).toEqual(4);
+  expect(numAnchors).toEqual(7);
 });

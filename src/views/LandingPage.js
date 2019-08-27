@@ -1,11 +1,10 @@
-/* eslint-disable no-shadow */
+/* eslint-disable max-len */
 /* eslint-disable camelcase */
-import React, { useState, useEffect } from "react";
+import React, { Component } from "react";
 import { connect } from "react-redux";
 import propTypes from "prop-types";
 import jwt from "jsonwebtoken";
 import Navbar from "../components/common/Navbar";
-import Pagination from "../components/Pagination/Pagination";
 import Categories from "../components/common/Categories/Categories";
 import {
   getUserProfile,
@@ -14,76 +13,108 @@ import {
   logOutUser
 } from "../redux/actions/userActions";
 import { getArticles } from "../redux/actions/articlesAction";
+import { getItemDataFromDatabase } from "../helpers/ItemFromEditor/getItemFromEditor";
 import Articles from "../components/articles/Articles";
+import Pagination from "../components/Pagination/Pagination";
 
 const token = sessionStorage.getItem("token") || null;
 const userPayload = jwt.decode(token) || "";
 sessionStorage.setItem("username", userPayload.username);
 const username = sessionStorage.getItem("username") || "";
 
-export function HomePage({
-  getUserProfile,
-  getArticles,
-  logOutUser,
-  profile,
-  articles
-}) {
-  const [allArticles, setallArticles] = useState([]);
-  const [currentPage, setcurrentPage] = useState(1);
-  const [articlePerPage] = useState(3);
+export class HomePage extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      allArticles: [],
+      currentPage: 1,
+      articlePerPage: 8
+    };
+  }
 
-  useEffect(() => {
-    async function getResources() {
-      await getUserProfile(username);
-      await getArticles();
+  async componentDidMount() {
+    await this.props.getUserProfile(username);
+    await this.props.getArticles();
+  }
+
+  componentWillReceiveProps(newProps) {
+    if (newProps.articles.articles) {
+      this.setState({ allArticles: newProps.articles.articles });
     }
-    getResources();
-    if (articles.articles !== undefined) setallArticles(articles.articles);
-  }, [articles.articles]);
-
-  async function signOut() {
-    await logOutUser(token);
   }
 
-  const indexOfLastArticle = currentPage * articlePerPage;
-  const indexOfFirstArticle = indexOfLastArticle - articlePerPage;
-  const currentArticles = allArticles.slice(
-    indexOfFirstArticle,
-    indexOfLastArticle
-  );
+  signOut = async () => {
+    await this.props.logOutUser(token);
+  };
 
-  function next() {
-    setcurrentPage(currentPage + 1);
+  next = () => {
+    this.setState({ currentPage: this.state.currentPage + 1 });
+  };
+
+  previous = () => {
+    this.setState({ currentPage: this.state.currentPage - 1 });
+  };
+
+  paginate = pageNumber => {
+    this.setState({ currentPage: pageNumber });
+  };
+
+  render() {
+    const { allArticles, currentPage, articlePerPage } = this.state;
+    const indexOfLastArticle = currentPage * articlePerPage;
+    const indexOfFirstArticle = indexOfLastArticle - articlePerPage;
+    const currentArticles = allArticles.slice(
+      indexOfFirstArticle,
+      indexOfLastArticle
+    );
+    if (currentArticles) {
+      return (
+        <>
+          <Navbar
+            profile={this.props.profile}
+            token={token}
+            signOut={this.signOut}
+          />
+          <Categories />
+          <div className="short-summary">
+            <p>
+              Join a community of like minded authors to foster inspiration and
+              innovation by leveraging the modern web.
+            </p>
+          </div>
+          <div className="article-container">
+            {currentArticles.map(article => {
+              if (!article.draft) {
+                return (
+                  <Articles
+                    key={article.id}
+                    article={getItemDataFromDatabase(article)}
+                    data={article}
+                  />
+                );
+              }
+              return null;
+            })}
+          </div>
+          <Pagination
+            articlesPerPage={this.state.articlePerPage}
+            totalArticles={this.state.allArticles.length}
+            paginate={this.paginate}
+            next={this.next}
+            previous={this.previous}
+            currentPage={this.state.currentPage}
+          />
+        </>
+      );
+    }
+    return <>Loading...</>;
   }
-
-  function previous() {
-    setcurrentPage(currentPage - 1);
-  }
-
-  const paginate = pageNumber => setcurrentPage(pageNumber);
-
-  return (
-    <>
-      <Navbar profile={profile} token={token} signOut={signOut} />
-      <Categories />
-      <Articles list={currentArticles} />
-      <Pagination
-        articlesPerPage={articlePerPage}
-        totalArticles={allArticles.length}
-        paginate={paginate}
-        next={next}
-        previous={previous}
-        currentPage={currentPage}
-      />
-    </>
-  );
 }
 HomePage.propTypes = {
   getUserProfile: propTypes.func.isRequired,
   profile: propTypes.object.isRequired,
   logOutUser: propTypes.func,
-  getArticles: propTypes.func.isRequired,
-  articles: propTypes.object
+  getArticles: propTypes.func.isRequired
 };
 const mapStateToProps = state => ({
   profile: state.profile,

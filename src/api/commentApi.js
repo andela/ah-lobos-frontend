@@ -6,7 +6,7 @@ import {
   updatedCommentResponse
 } from "./apiUtils";
 
-const baseUrl = `https://ah-lobos-backend-swagger.herokuapp.com`;
+const baseUrl = process.env.BASE_URL;
 const token = sessionStorage.getItem("token");
 
 export function commentArticle(data) {

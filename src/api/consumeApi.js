@@ -1,6 +1,6 @@
 /* eslint-disable prettier/prettier */
 const token = sessionStorage.getItem("token");
-const baseUrl = "https://ah-lobos-backend-swagger.herokuapp.com";
+const baseUrl = process.env.BASE_URL;
 
 /**
  *

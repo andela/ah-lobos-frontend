@@ -1,6 +1,6 @@
 import { handleResponse, handleReaction } from "./readArticleUtils";
 
-const baseUrl = `https://ah-lobos-backend-swagger.herokuapp.com`;
+const baseUrl = process.env.BASE_URL;
 
 export function fetchReactions(slug) {
   return fetch(`${baseUrl}/api/articles/likedislike/${slug}`, {
