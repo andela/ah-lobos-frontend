@@ -14,7 +14,6 @@ const SocialLogin = ({ redirect, path }) => {
   };
   return (
     <>
-      <p>or</p>
       <div className="social-icons">
         <img
           src={facebook}

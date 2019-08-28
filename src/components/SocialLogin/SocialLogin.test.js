@@ -7,7 +7,9 @@ import * as types from "../../redux/actions/actionTypes";
 
 const renderSocialLogin = args => {
   const defaultProps = {
-    redirect: ""
+    redirect: "",
+    to: "",
+    path: ""
   };
   const props = { ...defaultProps, ...args };
   return shallow(<SocialLogin {...props} />);

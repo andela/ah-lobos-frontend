@@ -11,7 +11,7 @@ it("it should render the navbar", () => {
 it("it should contain 3 links", () => {
   const numAnchors = mount(
     <MemoryRouter>
-      <Navbar token="string" decodeToken="string" />
+      <Navbar token="string" decodeToken="" />
     </MemoryRouter>
   ).find("a").length;
 
