@@ -9,6 +9,7 @@ import NewPassword from "./views/NewPassword";
 import ResetPassword from "./views/ResetPassword";
 import EditProfile from "./views/EditProfile";
 import ReadArticle from "./views/ReadArticle/ReadArticle";
+import CommentArticle from "./views/comment";
 
 const App = () => {
   return (
@@ -23,6 +24,7 @@ const App = () => {
           <Route exact path="/newpassword/:token" component={NewPassword} />
           <Route exact path="/edit" component={EditProfile} />
           <Route exact path="/article/:slug" component={ReadArticle} />
+          <Route exact path="/articles/:slug" component={CommentArticle} />
         </Switch>
       </Router>
     </>
