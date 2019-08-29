@@ -1,7 +1,0 @@
-// Jest Snapshot v1, https://goo.gl/fbAQLP
-
-exports[`<HomePage /> renders without errors 1`] = `ShallowWrapper {}`;
-
-exports[`<HomePage /> renders without errors 2`] = `ShallowWrapper {}`;
-
-exports[`<HomePage /> renders without errors 3`] = `ShallowWrapper {}`;

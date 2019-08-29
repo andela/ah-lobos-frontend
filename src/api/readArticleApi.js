@@ -1,6 +1,7 @@
 import { handleResponse, handleReaction } from "./readArticleUtils";
 
 const baseUrl = `https://ah-lobos-backend-swagger.herokuapp.com`;
+
 const token = sessionStorage.getItem("token");
 
 export function fetchReactions(slug) {

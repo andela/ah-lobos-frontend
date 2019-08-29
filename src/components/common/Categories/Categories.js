@@ -5,11 +5,11 @@ const Categories = () => (
   <>
     <div className="categories">
       <Link to="/">HOME</Link>
-      <Link to="tech">TECHNOLOGY</Link>
-      <Link to="design">DESIGN</Link>
-      <Link to="entertainment">ENTERTNAIMENT</Link>
-      <Link to="culture">CULTURE</Link>
-      <Link to="more">MORE</Link>
+      <Link to="/">TECHNOLOGY</Link>
+      <Link to="/">DESIGN</Link>
+      <Link to="/">ENTERTNAIMENT</Link>
+      <Link to="/">CULTURE</Link>
+      <Link to="/">MORE</Link>
     </div>
   </>
 );

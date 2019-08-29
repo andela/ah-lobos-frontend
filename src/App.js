@@ -22,7 +22,7 @@ const App = () => {
           <Route exact path="/resetpassword" component={ResetPassword} />
           <Route exact path="/newpassword/:token" component={NewPassword} />
           <Route exact path="/edit" component={EditProfile} />
-          <Route path="/article/:slug" component={ReadArticle} />
+          <Route exact path="/article/:slug" component={ReadArticle} />
         </Switch>
       </Router>
     </>

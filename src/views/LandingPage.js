@@ -5,13 +5,14 @@ import propTypes from "prop-types";
 import jwt from "jsonwebtoken";
 import Navbar from "../components/common/Navbar";
 import Categories from "../components/common/Categories/Categories";
-import ArticleCard from "../components/common/ArticleCard/ArticleCard";
 import {
   getUserProfile,
   editUserProfile,
   editUserProfilePicture,
   logOutUser
 } from "../redux/actions/userActions";
+import { getArticles } from "../redux/actions/articlesAction";
+import Articles from "../components/articles/Articles";
 
 const token = sessionStorage.getItem("token") || null;
 const userPayload = jwt.decode(token) || "";
@@ -21,6 +22,7 @@ const username = sessionStorage.getItem("username") || "";
 export class HomePage extends Component {
   async componentDidMount() {
     await this.props.getUserProfile(username);
+    await this.props.getArticles();
   }
 
   signOut = async () => {
@@ -36,7 +38,7 @@ export class HomePage extends Component {
           signOut={this.signOut}
         />
         <Categories />
-        <ArticleCard />
+        <Articles list={this.props.articles.articles} />
       </>
     );
   }
@@ -44,12 +46,21 @@ export class HomePage extends Component {
 HomePage.propTypes = {
   getUserProfile: propTypes.func.isRequired,
   profile: propTypes.object.isRequired,
-  logOutUser: propTypes.func
+  logOutUser: propTypes.func,
+  getArticles: propTypes.func.isRequired,
+  articles: propTypes.object
 };
 const mapStateToProps = state => ({
-  profile: state.profile
+  profile: state.profile,
+  articles: state.articles
 });
 export default connect(
   mapStateToProps,
-  { getUserProfile, editUserProfile, editUserProfilePicture, logOutUser }
+  {
+    getUserProfile,
+    editUserProfile,
+    editUserProfilePicture,
+    getArticles,
+    logOutUser
+  }
 )(HomePage);

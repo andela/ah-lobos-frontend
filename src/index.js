@@ -5,6 +5,7 @@ import { Provider } from "react-redux";
 import App from "./App";
 import "./styles/mains.scss";
 import "./styles/reset.scss";
+import "./styles/rate-article.scss";
 import "react-toastify/dist/ReactToastify.css";
 import configureStore from "./redux/configureStore";
 
