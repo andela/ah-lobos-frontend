@@ -1,24 +1,24 @@
+### Directories
 node_modules/
-
 dist/
-
-package-lock.json
-
-.editorconfig
-
 cypress/fixtures/
-
 cypress/plugins/
 cypress/support/
 cypress/videos/
-
 coverage/
 
-.env
-
-.DS_Store
-
+### Files
+package-lock.json
 src/styles/_mixins.scss
 src/styles/styles.scss
 src/styles/_variables.scss
 test/_snapshots_
+
+### Hidden files
+.editorconfig
+.DS_Store
+src/.DS_Store
+.env
+.DS_Store
+
+

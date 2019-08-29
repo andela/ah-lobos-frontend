@@ -3,7 +3,6 @@ import React from "react";
 import { shallow } from "enzyme";
 import SocialLogin from "./SocialLogin";
 import socialLoginAction from "../../redux/actions/socialLoginAction";
-import * as types from "../../redux/actions/actionTypes";
 
 const renderSocialLogin = args => {
   const defaultProps = {

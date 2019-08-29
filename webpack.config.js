@@ -12,7 +12,9 @@ module.exports = {
     port: 8000,
     contentBase: "./build"
   },
-  entry: path.join(__dirname, "src", "index.js"),
+  entry: {
+    main: ["@babel/polyfill", "./src/index.js"]
+  },
   output: {
     path: path.join(__dirname, "build"),
     filename: "bundle.js",
