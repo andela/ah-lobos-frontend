@@ -8,6 +8,10 @@ import readArticleReducer from "./readArticleReducer";
 import rating from "./ratingArticle";
 import articleReducer from "./articleReducer";
 import commentReducer from "./commentReducer";
+import getFollowers from "./getFollowers";
+import followAuser from "./followAuser";
+import unFollow from "./unFollowAuser";
+import getFollowee from "./getFollowee";
 
 const rootReducer = combineReducers({
   auth: authReducer,
@@ -18,6 +22,10 @@ const rootReducer = combineReducers({
   readArticleReducer,
   articles: articleReducer,
   rating,
-  comments: commentReducer
+  comments: commentReducer,
+  follower: getFollowers,
+  followAuser,
+  unFollow,
+  getFollowee
 });
 export default rootReducer;

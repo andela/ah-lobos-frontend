@@ -14,5 +14,9 @@ export const initialState = {
   story: "",
   Rating: {},
   body: {},
-  comments: []
+  comments: [],
+  followers: [],
+  followees: [],
+  follow: {},
+  unFollow: {}
 };

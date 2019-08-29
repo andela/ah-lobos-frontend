@@ -1,6 +1,7 @@
 import React from "react";
 import { Button, Input } from "semantic-ui-react";
 import PropTypes from "prop-types";
+import { Link } from "react-router-dom";
 import Avatar from "../../assets/images/user.png";
 
 const handleEditUserProfile = () => {
@@ -18,9 +19,12 @@ const Profife = props => {
           <span>
             <i className="far fa-users" /> 22200 Followers
           </span>
-          <span>
-            <i className="fas fa-user-friends" /> {profile.following} Following
-          </span>
+          <Link to="/follow">
+            <span>
+              <i className="fas fa-user-friends" /> {profile.following}{" "}
+              Following
+            </span>
+          </Link>
         </div>
         <div className="profile-details">
           <Input

@@ -8,8 +8,8 @@ import signout from "../../../assets/images/sign-out.svg";
 const DropDown = ({ signOut }) => (
   <>
     <div id="drop-id" className="drop-down">
-      <Link to="/" className="profile-menu">
-        <img className="profile-menu-icon" src={profile} alt="profile" />
+      <Link to="/follow" className="profile-menu">
+        <img className="profile-menu-iconh" src={profile} alt="profile" />
         <p className="icon-text">Profile</p>
       </Link>
       <Link to="/" className="bookmarks-menu">

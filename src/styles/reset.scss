@@ -10,10 +10,6 @@
   color: #707070;
   margin-bottom: 10px;
 }
-.errorMessage {
-  color: #dd2e44;
-  font-size: 20px;
-}
  .reset input {
   border: 0px;
   border-radius: 20px;
@@ -117,5 +113,138 @@ button[disabled] {
 }
 .confirm p {
   margin-left: 95px;
+}
+// follow and unfollow
+
+.getFollow{
+  display: grid;
+  grid-template-columns: 1fr 4fr 2fr;
+  grid-gap: 20px 3px;
+}
+.firstDiv{
+  border-right: 1px solid rgb(220,220,220);
+  height: 100vh;
+}
+.ProfileDiv {
+  border-left: 1px solid rgb(220,220,220);
+}
+.chooseFollow {
+  grid-template-columns: 1fr 1fr;
+  height: 80px;
+  grid-column-gap: 6px
+}
+.chooseFollow p{
+  display: inline-block;
+  height: 20px;
+  color: #707070;
+  font-family: Helvetica;
+  font-size: 20px;
+  margin-top: 4%;
+  margin-left: 10%;
+  padding-left: 15%;
+}
+// .followingParagraph {
+//   align-items: center;
+// }
+.followers{
+  background: #F2F2F2;
+  border-radius: 77px;
+  height: 100.37px;
+  width: 80%;
+  margin-top: 15px;
+  margin-left: 9.5%;
+  display: inline-block;
+}
+// .followers img{
+//   height: 85%;
+//   border-radius: 50%;
+//   margin-top: 1%;
+//   margin-left: 2%;
+//   margin-bottom: 1%;
+//   display: inline-block;
+// }
+.followers h3{
+  height: 2px;
+}
+.followers p{
+  height: 2px;
+  float: right;
+  padding-right: 20%;
+  margin-top: 5%;
+}
+#nameFollow {
+  color: #0d9bc6;
+  // font-size: 30px;
+   font-family: Helvetica;
+   float: left;
+   margin-left: 2%;
+   margin-top: 3.3%;
+  //  display: inline-block;
+}
+#nameFollow span{
+  display: block;
+}
+.emailShowing{
+  color: #032733;
+  font-size: 13px;
+}
+#namesSize {
+  font-size: 20px;
+  font-weight: 400;
+  margin-top: 1%;
+}
+.followOrNot{
+  color: 	#0dc68d;
+  float: right;
+  margin-top: 0px;
+}
+// .followOrNot{
+//   color: 	#0dc68d;
+//   float: right;
+//   margin-top: 0px;
+// }
+.followingHr{
+  float: left;
+}
+#lineFollowers {
+  width: 50%;
+  float: right;
+}
+#lineFollowees {
+  width: 50%;
+  float: left;
+}
+img.FollowerImage{
+  // border-radius: 50%;
+  // position: auto;
+  // display: inline-block;
+  // margin: 2%;
+  // height: 70%;
+  // width: 10%;
+  // background-size: cover
+  width: 70px;
+  height: 70px;
+  -moz-border-radius: 35px;
+  -webkit-border-radius: 35px;
+  float: left;
+  margin-left: 2%;
+  margin-top: 2%;
+}
+// .circletag{
+//   display: block;
+//     width: 50px;
+//     height: 50px;
+//     background: #E6E7ED;
+//     -moz-border-radius: 50px;
+//     -webkit-border-radius: 50px;
+// }
+
+.popup-user-profile a{
+  text-decoration: none;
+  color: #0d9bc6;
+}
+
+.popup-user-profile a:hover{
+  color: #0d9bc693;
 }
 
