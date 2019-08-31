@@ -2,21 +2,32 @@ import userReducer from "./userReducer";
 import * as actions from "../actions/userActions";
 import "regenerator-runtime/runtime";
 
-it("should login a user when passed in LOGIN_USER", async () => {
-  const initialState = [
-    {
-      isloggedin: false
-    }
-  ];
+it("should login a user when passed in LOGIN_USER", () => {
+  const initialState = {
+    isloggedin: false
+  };
   const user = {
-    email: "adafia.samuel@gmail.com",
-    password: "Dagger5533"
+    isloggedin: true
   };
 
-  const action = await actions.loginUser(user);
+  const action = actions.loginUserSuccess(user);
 
   const newState = userReducer(initialState, action);
 
-  expect(newState.length).toEqual(1);
-  expect(newState[0].isloggedin).toEqual(false);
+  expect(newState.isloggedin).toEqual(true);
+});
+
+it("should be logged out when LOGOUT_USER is passed", () => {
+  const initialState = {
+    isloggedout: false
+  };
+  const user = {
+    isloggedout: true
+  };
+
+  const action = actions.logOutUserSuccess(user);
+
+  const newState = userReducer(initialState, action);
+
+  expect(newState.isloggedout).toEqual(true);
 });

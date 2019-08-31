@@ -8,6 +8,11 @@ export default function userReducer(state = initialState, action) {
         ...state,
         isloggedin: true
       };
+    case types.LOGOUT_USER:
+      return {
+        ...state,
+        isloggedout: true
+      };
     /**
      * returns the initial state
      */

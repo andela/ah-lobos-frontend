@@ -33,3 +33,13 @@ export function handleError(error) {
   console.error(`API call failed. ${error}`);
   throw error;
 }
+
+export async function handleLoggout(response) {
+  if (response.ok) {
+    window.sessionStorage.clear();
+    const data = await response.json();
+    window.location = "/";
+    return data;
+  }
+  throw new Error("Network response was not ok.");
+}

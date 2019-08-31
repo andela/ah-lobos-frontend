@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 import PropTypes from "prop-types";
 import { toast } from "react-toastify";
+import queryString from "query-string";
 import { loginUser } from "../redux/actions/userActions";
 import LoginForm from "../components/login/LoginForm";
 
@@ -54,9 +55,10 @@ class Login extends Component {
   };
 
   redirectOnsuccess = () => {
-    const { isloggedin } = this.props;
+    const { isloggedin, location } = this.props;
+    const { redirect } = queryString.parse(location.search);
     if (isloggedin) {
-      window.location = "/";
+      window.location = redirect || "/";
     }
   };
 
@@ -84,7 +86,8 @@ class Login extends Component {
 }
 Login.propTypes = {
   loginUser: PropTypes.func,
-  isloggedin: PropTypes.bool
+  isloggedin: PropTypes.bool,
+  location: PropTypes.object
 };
 
 function mapStateToProps(state) {

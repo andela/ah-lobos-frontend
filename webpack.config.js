@@ -6,6 +6,7 @@ const ErrorOverlayPlugin = require("error-overlay-webpack-plugin");
 
 module.exports = {
   devServer: {
+    stats: "minimal",
     historyApiFallback: {
       disableDotRule: true
     },

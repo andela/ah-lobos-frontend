@@ -8,12 +8,11 @@ const props = {
     username: "User",
     image: {}
   },
-  token: "",
-  decodeToken: {}
+  token: ""
 };
 it("it should render the navbar", () => {
   const numLinks = shallow(<Navbar {...props} />).find("Link").length;
-  expect(numLinks).toEqual(0);
+  expect(numLinks).toEqual(1);
 });
 
 it("it should contain 0 links", () => {
@@ -23,5 +22,5 @@ it("it should contain 0 links", () => {
     </MemoryRouter>
   ).find("a").length;
 
-  expect(numAnchors).toEqual(0);
+  expect(numAnchors).toEqual(4);
 });

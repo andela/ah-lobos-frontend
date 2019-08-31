@@ -4,16 +4,18 @@ import PropTypes from "prop-types";
 import { Popup } from "semantic-ui-react";
 import Avatar from "../../assets/images/user.png";
 import UserProfile from "../profile/UserProfile";
+import DropDown from "./DropDown/DropDown";
 
-const Navbar = ({ token, profile }) => {
+const Navbar = ({ token, profile, signOut }) => {
   const { username, image } = profile;
+
   return (
     <>
       <div className="navbar">
         <div className="logo">
-          <p>
+          <Link to="/">
             authors<b>Haven</b>
-          </p>
+          </Link>
         </div>
         <div className="links">
           {token !== null ? (
@@ -34,9 +36,9 @@ const Navbar = ({ token, profile }) => {
                 </Popup.Content>
               </Popup>
 
-              <span id="menu-toggle">
-                <i className="fas fa-bars" />
-              </span>
+              <div id="menu-toggle" className="icon">
+                <div className="humburger"></div>
+              </div>
             </div>
           ) : (
             <>
@@ -50,13 +52,15 @@ const Navbar = ({ token, profile }) => {
           )}
         </div>
       </div>
+      <DropDown signOut={signOut} />
     </>
   );
 };
 
 Navbar.propTypes = {
   token: PropTypes.string,
-  profile: PropTypes.object.isRequired
+  profile: PropTypes.object.isRequired,
+  signOut: PropTypes.func
 };
 
 export default Navbar;

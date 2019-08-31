@@ -18,6 +18,21 @@ export function loginUser(user) {
   };
 }
 
+export function logOutUserSuccess() {
+  return { type: types.LOGOUT_USER };
+}
+
+export function logOutUser(token) {
+  return async function(dispatch) {
+    try {
+      await userApi.signOutUser(token);
+      return dispatch(logOutUserSuccess());
+    } catch (error) {
+      return error;
+    }
+  };
+}
+
 /**
  *
  * @param {Object} username
