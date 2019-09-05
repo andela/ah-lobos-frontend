@@ -9,6 +9,15 @@
     <title>ah-lobos-frontend</title>
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.10.1/css/all.css">
     <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+    <script type="text/javascript">
+      $(document).ready(function(){
+        $(".icon").click(function(){
+          $(".icon").toggleClass("active");
+          $(".drop-down").toggleClass("grid");
+        })
+      })
+    </script>
 </head>
 
 <body>

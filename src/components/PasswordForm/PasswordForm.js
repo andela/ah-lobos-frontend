@@ -33,7 +33,7 @@ const PasswordForm = ({
 
 PasswordForm.propTypes = {
   placeholder: PropTypes.string.isRequired,
-  value: PropTypes.string.isRequired,
+  value: PropTypes.string,
   onChange: PropTypes.func.isRequired,
   name: PropTypes.string.isRequired,
   hidden: PropTypes.bool.isRequired,

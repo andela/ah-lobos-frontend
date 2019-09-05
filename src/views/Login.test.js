@@ -14,7 +14,8 @@ function render(args) {
     handleChange: jest.fn(),
     handleSubmit: jest.fn(),
     email: "adafia.samuel@gmail.com",
-    password: "Dagger5533"
+    password: "Dagger5533",
+    location: {}
   };
 
   const props = { ...defaultProps, ...args };

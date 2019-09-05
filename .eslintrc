@@ -40,6 +40,7 @@
         "react/jsx-props-no-spreading": "off",
         "func-names": "off",
         "react/require-default-props": "off",
+        "react/self-closing-comp": "off",
         "react/jsx-filename-extension": [
             1,
             {
