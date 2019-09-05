@@ -1,4 +1,5 @@
 export const initialState = {
+  articles: [],
   profile: {},
   isloggedin: false,
   isloggedout: false,
@@ -9,5 +10,7 @@ export const initialState = {
   hasliked: false,
   hasdisliked: false,
   likeNum: 0,
-  dislikeNum: 0
+  dislikeNum: 0,
+  story: "",
+  Rating: {}
 };

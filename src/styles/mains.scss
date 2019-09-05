@@ -25,12 +25,13 @@ body {
   display: grid;
   justify-content: start;
   align-content: center;
-  font-size: 20px;
   padding: 4px;
 }
 
 .logo > a {
   color: #0D9BC6;
+  text-decoration: none;
+  font-size: 28px;
 }
 
 .links {
@@ -362,12 +363,13 @@ a.show-toggle {
 }
 
 .popup-user-profile{
-  z-index: 1;
   width: 300px;
   height: 40vh;
   background: #F2F2F2;
   border-radius: 12px;
   border: 0.1 solid;
+  position: relative;
+  z-index: -2;
 }
 
 .profile-details{
@@ -375,25 +377,6 @@ a.show-toggle {
   border-radius: 15px;
   height: 30vh;
   padding-top: 20px;
-}
-
-.profile-avatar{
-  width: 100%;
-  padding-top: 10px;
-}
-.profile-avatar-edit{
-  width: 70%;
-  margin-left: 15%;
-  border-radius: 50%;
-  display: inline-block;
-  padding-top: 0px !important;
-  height: 30%;
-}
-
-.profile-avatar img{
-  width: 150px;
-  border-radius: 50%;
-  margin-left: 25%;;
 }
 
 #btn-change-pic {
@@ -583,6 +566,7 @@ text-decoration: underline;
     flex: 1;
   }
 }
+
 body {
   margin: 0px;
   padding: 0px;
@@ -729,6 +713,7 @@ button {
   color: #fff;
   font-size: 22px;
   font-weight: 200;
+  cursor: pointer;
 }
 
 button[disabled] {
@@ -880,7 +865,6 @@ a.show-toggle {
   font-weight: 100 !important;
   display: inline-block;
   margin-top: 7px;
-
 }
 
 #menu-toggle{
@@ -910,7 +894,6 @@ a.show-toggle {
 }
 
 .popup-user-profile{
-  z-index: 1;
   width: 300px;
   height: 40vh;
   background: #F2F2F2;
@@ -926,9 +909,23 @@ a.show-toggle {
 }
 
 .profile-avatar{
-  width: 100%;
-  padding-top: 10px;
+  width: 70%;
+  height: 70%;
+  margin-left: 15%;
+  border-radius: 50%;
+  display: inline-block;
+  padding-top: 0px !important;
+
 }
+
+.profile-avatar img{
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  margin-top: 10px !important;
+
+}
+
 .profile-avatar-edit{
   width: 70%;
   margin-left: 15%;
@@ -936,12 +933,6 @@ a.show-toggle {
   display: inline-block;
   padding-top: 0px !important;
   height: 30%;
-}
-
-.profile-avatar img{
-  width: 150px;
-  border-radius: 50%;
-  margin-left: 25%;;
 }
 
 #btn-change-pic {
@@ -1124,14 +1115,162 @@ text-decoration: underline;
   }
 }
 
-@media screen and (max-width: 1024px){
-  .brand{
-    flex: 1;
-  }
 
-  .top-menu{
-    flex: 1;
-  }
+
+// Read article page styling starts here
+
+.article-wrapper {
+  display: grid;
+  grid-template-columns: 20% 60% 20%;
+}
+
+.article-content {
+  margin-top: 80px;
+  display: grid;
+  grid-gap: 15px;
+}
+
+.content-title {
+  font-size: 35px;
+  font-weight: 200;
+  margin-top: -70px;
+}
+
+.content-blurb, .read-time {
+  font-weight: 100;
+  color: #707070;
+}
+
+.above-content {
+  display: grid;
+  grid-template-columns: 30% 50% 20%;
+}
+
+.author-name {
+  font-weight: 200;
+}
+
+.author-info {
+  display: grid;
+  grid-template-columns: 25% 65%;
+}
+
+
+.author-avi > img {
+  width: 60px;
+  border-radius: 50%;
+}
+
+.name-time {
+  justify-self: center;
+  align-self: center;
+}
+
+.follow, .bookmark {
+  background: #fff;
+  color: #0DC68D;
+  font-size: 18px;
+}
+
+.follow > img {
+  height: 25px;
+}
+
+.bookmark > img {
+  height: 20px;
+}
+
+.follow {
+  justify-self: start;
+}
+.bookmark {
+  justify-self: end;
+}
+
+.article-banner {
+  display: grid;
+  justify-items: center;
+}
+.article-banner > img {
+  width: 100%;
+  height: 400px;
+  object-fit: cover
+}
+
+.content-body{
+  font-weight: 100;
+  color: #707070;
+  padding: 30px 0;
+  line-height: 1.6;
+}
+
+.like-button > img, .dislike-button > img {
+  height: 30px;
+}
+
+.no-reaction > img {
+  opacity: 0.2
+}
+
+.like-button, .dislike-button {
+  background: #fff;
+  color: black;
+  font-size: 15px;
+}
+
+.content-actions {
+  display: grid;
+  grid-template-columns: 80% 18% 2%;
+  padding-bottom: 20px;
+}
+
+.share-icons {
+  display: grid;
+  grid-gap: 20px;
+  grid-auto-flow: column;
+  justify-self: end;
+  align-items: center;
+}
+
+.share-icons > img {
+  height: 30px;
+}
+
+.report > img {
+  height: 25px;
+}
+
+.side {
+  color: #F2F2F2;
+  opacity: 0.2
+}
+
+.rating {
+  margin-top: 10px;
+}
+
+.rating > img {
+  height: 20px;
+}
+
+.hidden-message a{
+  text-decoration: none;
+  color: #0D9BC6;
+}
+.reveal {
+  display: block;
+}
+
+.login-to-react > a {
+  text-decoration: none;
+  color: #0D9BC6;
+  font-size: 15px;
+}
+
+.author-avi > img {
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
 }
 
 
@@ -1244,45 +1383,9 @@ text-decoration: underline;
   line-height: 1.6;
 }
 
-.like-button > img, .dislike-button > img {
-  height: 30px;
-}
-
-.no-reaction > img {
-  opacity: 0.2
-}
-
-.like-button, .dislike-button {
-  background: #fff;
-  color: black;
-  font-size: 15px;
-}
-
-.content-actions {
-  display: grid;
-  grid-template-columns: 80% 18% 2%;
-  padding-bottom: 20px;
-}
-
-.share-icons {
-  display: grid;
-  grid-gap: 20px;
-  grid-auto-flow: column;
-  justify-self: end;
-  align-items: center;
-}
-
-.share-icons > img {
-  height: 30px;
-}
-
 .report {
   justify-self: end;
   align-self: center;
-}
-
-.report > img {
-  height: 25px;
 }
 
 .side {
@@ -1322,7 +1425,8 @@ text-decoration: underline;
 //  dropdown menu styling
 
 .drop-down {
-  position: absolute;
+  position: fixed;
+  z-index: 100;
   margin-left: 81vw;
   display: none;
   grid-auto-flow: rows;
@@ -1331,6 +1435,7 @@ text-decoration: underline;
   box-shadow: 0px 0px 7px -5px rgb(126, 125, 125);
   align-content: center;
   transition: .5s;
+  background: white;
 }
 
 .grid {

@@ -2,7 +2,6 @@
 const token = sessionStorage.getItem("token");
 const baseUrl = "https://ah-lobos-backend-swagger.herokuapp.com";
 
-
 /**
  *
  * @param {string} url
@@ -28,6 +27,31 @@ const putData = async (url, data) => {
   }
 };
 
+
+/**
+ *
+ * @param {string} url
+ * @param {object} data
+ * @returns {object} server response
+ */
+const postData = async (url, data) => {
+  const request = new Request(baseUrl + url, {
+    method: "post",
+    mode: "cors",
+    cache: "reload",
+    body: JSON.stringify(data),
+    headers: {
+      "Content-Type": "application/json; charset=utf-8",
+      token
+    }
+  });
+  try {
+    const response = await fetch(request);
+    return response;
+  } catch (error) {
+    return error;
+  }
+};
 /**
  *
  * @param {string} url
@@ -41,7 +65,7 @@ const getData = async url => {
     cache: "reload",
     headers: {
       "Content-Type": "application/json; charset=utf-8",
-      token
+      token: token || ""
     }
   });
   try {
@@ -77,4 +101,4 @@ const imageUpload = async (url, data) => {
   }
 };
 
-export { getData, putData, imageUpload };
+export { getData, putData, postData, imageUpload };

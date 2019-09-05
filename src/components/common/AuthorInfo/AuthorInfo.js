@@ -1,18 +1,25 @@
 import React from "react";
-import sam from "../../../assets/images/sam.jpg";
+import propTypes from "prop-types";
 
-const AuthorInfo = () => (
-  <>
-    <div className="author-info">
-      <div className="author-avi">
-        <img src={sam} alt="sam" />
+const AuthorInfo = ({ article }) => {
+  return (
+    <>
+      <div className="author-info">
+        <div className="author-avi">
+          <img src={article.author.image} alt="sam" />
+        </div>
+
+        <div className="name-time">
+          <div className="author-name">{article.author.firstName}</div>
+          <div className="read-time">{article.readtime}</div>
+        </div>
       </div>
-      <div className="name-time">
-        <div className="author-name">Dominic Swain</div>
-        <div className="read-time">10 min read</div>
-      </div>
-    </div>
-  </>
-);
+    </>
+  );
+};
+
+AuthorInfo.propTypes = {
+  article: propTypes.object
+};
 
 export default AuthorInfo;
