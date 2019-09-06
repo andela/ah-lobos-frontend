@@ -16,7 +16,6 @@ export function createArticle(article) {
 }
 
 export function updateArticle(article, slug) {
-  console.log("article slug...", article);
   return fetch(`${baseUrl}/api/articles/${slug}`, {
     method: "PUT",
     headers: {

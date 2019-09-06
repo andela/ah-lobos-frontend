@@ -21,5 +21,6 @@ export const initialState = {
   unFollow: {},
   currentArticles: {},
   uploadedImage: {},
-  myArticles: {}
+  myArticles: {},
+  isFollowing: false
 };

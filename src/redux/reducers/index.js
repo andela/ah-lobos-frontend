@@ -9,7 +9,7 @@ import rating from "./ratingArticle";
 import commentReducer from "./commentReducer";
 import getFollowers from "./getFollowers";
 import followAuser from "./followAuser";
-import unFollow from "./unFollowAuser";
+import unFollowAuser from "./unFollowAuser";
 import getFollowee from "./getFollowee";
 import articles from "./articleReducer";
 import articleBookmarks from "./articleBookmark";
@@ -26,8 +26,8 @@ const rootReducer = combineReducers({
   comments: commentReducer,
   follower: getFollowers,
   followAuser,
-  unFollow,
   getFollowee,
-  bookmarks: articleBookmarks
+  bookmarks: articleBookmarks,
+  unFollowAuser
 });
 export default rootReducer;

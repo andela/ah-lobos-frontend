@@ -3,7 +3,7 @@ import propTypes from "prop-types";
 import NoImg from "../../assets/images/article.png";
 
 const handleOnClick = slug => {
-  window.location.href = `/article/${slug}`;
+  window.location.href = `/articles/${slug}`;
 };
 const Bookmark = ({ bookmarks, unBookmark }) => {
   return (

@@ -1,3 +1,4 @@
+/* eslint-disable no-restricted-globals */
 /* eslint-disable camelcase */
 import React, { Component } from "react";
 import { connect } from "react-redux";
@@ -35,7 +36,6 @@ export class ProfileEdit extends Component {
   async componentDidMount() {
     await this.props.getUserProfile(username);
     if (!token) {
-      // eslint-disable-next-line no-restricted-globals
       location.href = "/";
     }
   }

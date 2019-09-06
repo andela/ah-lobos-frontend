@@ -6,15 +6,16 @@ import DisplayContent from "Dante2";
 import Navbar from "../components/common/Navbar";
 import Spinner from "../components/common/Spinner";
 import LikeDislike from "../components/LikeDislikeButton/LikeDislike";
-import FollowButton from "../components/common/Follow/FollowButton";
+import { FollowButton } from "../components/common/Follow/FollowButton";
 import Bookmark from "../components/common/Bookmark/Bookmark";
 import AuthorInfo from "../components/common/AuthorInfo/AuthorInfo";
-import ShareArticle from "../components/common/ShareArticle/ShareArticle";
+import { ShareArticle } from "../components/common/ShareArticle/ShareArticle";
 import ReportArticle from "../components/common/ReportArticle/ReportArticle";
 import CommentArticle from "./comment";
 import { getUserProfile } from "../redux/actions/userActions";
 import { getArticle } from "../redux/actions/articleActions";
 import StarRate from "../components/articles/StarRating";
+import { followUser, unFollowUser } from "../redux/actions/followAction";
 import {
   rateArticle,
   getArticleRating
@@ -197,7 +198,7 @@ class ReadArticlePage extends Component {
                     slug={this.props.match.params.slug}
                   />
                 </div>
-                <ShareArticle />
+                <ShareArticle slug={Article.article.slug} />
                 <ReportArticle />
                 {rating !== undefined &&
                 sessionStorage.getItem("token") !== null ? (
@@ -260,7 +261,10 @@ const mapStateToProps = state => {
     Article: state.articles.article,
     readArticleReducer: state.readArticleReducer,
     rating: state.rating.rating,
-    bookmarks: state.bookmarks.bookmarks
+    bookmarks: state.bookmarks.bookmarks,
+    follow: state.followAuser,
+    unfollow: state.unfollowAuser,
+    followees: state.getFollowee.followees
   };
 };
 
@@ -273,7 +277,9 @@ const mapDispatchToProps = {
   rateArticle,
   getArticleRating,
   getBookmarkedArticles,
-  bookmarkArticle
+  bookmarkArticle,
+  unFollowUser,
+  followUser
 };
 
 export default connect(

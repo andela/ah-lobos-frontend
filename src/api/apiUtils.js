@@ -30,7 +30,6 @@ export async function handleResponse(response) {
 }
 
 export function handleError(error) {
-  console.error(`API call failed. ${error}`);
   return error;
 }
 
@@ -47,7 +46,6 @@ export async function handleLoggout(response) {
 export async function commentResponse(response) {
   if (response.ok) {
     const data = await response.json();
-    console.log(data);
     toast.success(data.message);
     return data;
   }
@@ -84,7 +82,6 @@ export async function getAllComments(response) {
 export async function deleteCommentResponse(response) {
   if (response.ok) {
     const data = await response.json();
-    console.log(data);
     toast.success(data.message);
     return data;
   }
