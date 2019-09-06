@@ -1631,3 +1631,40 @@ input:checked[type="checkbox"]::before {
   color: red;
 }
 // End of Comment style
+// Pagination styling starts here
+
+.pagination-wrapper {
+  display: grid;
+  justify-items: center;
+  padding: 40px;
+}
+
+.pagination {
+  display: grid;
+  grid-auto-flow: column;
+  grid-gap: 10px;
+  box-shadow: 0px 0px 7px -5px rgb(126, 125, 125);
+  padding: 10px;
+  border-radius: 5%;
+
+}
+
+.pagination > a {
+  display: grid;
+  justify-items: center;
+  align-items: center;
+  text-decoration: none;
+  color: #0D9BC6;
+  background: #fff;
+  height: 30px;
+  width: 30px;
+  font-size: 20px;
+  border-radius: 50%;
+  box-shadow: 0px 0px 7px -5px rgb(126, 125, 125);
+}
+
+.pagination > a:focus {
+  text-decoration: none;
+  color: #fff;
+  background: #0D9BC6;
+}
