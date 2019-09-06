@@ -43,3 +43,89 @@ export async function handleLoggout(response) {
   }
   throw new Error("Network response was not ok.");
 }
+
+export async function commentResponse(response) {
+  if (response.ok) {
+    const data = await response.json();
+    console.log(data);
+    toast.success(data.message);
+    return data;
+  }
+  if (response.status === 400) {
+    const error = await response.text();
+    throw new Error(error);
+  }
+  if (response.status === 401) {
+    const error = await response.json();
+    toast.error(error.message);
+    throw new Error(error);
+  }
+  if (response.status === 404) {
+    const error = await response.text();
+    toast.info("Article not found");
+    throw new Error(error);
+  }
+  if (response.status === 500) {
+    const error = await response.text();
+    toast.info("Oops something went wrong");
+    throw new Error(error);
+  }
+  throw new Error("Network response was not ok.");
+}
+
+export async function getAllComments(response) {
+  if (response) {
+    const data = await response.json();
+    return data;
+  }
+  throw new Error("No comment");
+}
+
+export async function deleteCommentResponse(response) {
+  if (response.ok) {
+    const data = await response.json();
+    console.log(data);
+    toast.success(data.message);
+    return data;
+  }
+  if (response.status === 403) {
+    const error = await response.text();
+    toast.info("You are not allowed to delete this comment");
+    throw new Error(error);
+  }
+  if (response.status === 404) {
+    const error = await response.text();
+    toast.info("Comment not found");
+    throw new Error(error);
+  }
+  if (response.status === 500) {
+    const error = await response.text();
+    toast.info("Oops something went wrong");
+    throw new Error(error);
+  }
+  throw new Error("Network response was not ok.");
+}
+
+export async function updatedCommentResponse(response) {
+  if (response.ok) {
+    const data = await response.json();
+    toast.success("Comment updated successfully");
+    return data;
+  }
+  if (response.status === 403) {
+    const error = await response.text();
+    toast.info("You are not allowed to delete this comment");
+    throw new Error(error);
+  }
+  if (response.status === 404) {
+    const error = await response.text();
+    toast.info("Comment not found");
+    throw new Error(error);
+  }
+  if (response.status === 500) {
+    const error = await response.text();
+    toast.info("Oops something went wrong");
+    throw new Error(error);
+  }
+  throw new Error("Network response was not ok.");
+}

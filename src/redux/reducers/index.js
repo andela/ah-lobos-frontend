@@ -7,6 +7,7 @@ import profileReducer from "./profileReducer";
 import readArticleReducer from "./readArticleReducer";
 import rating from "./ratingArticle";
 import articleReducer from "./articleReducer";
+import commentReducer from "./commentReducer";
 
 const rootReducer = combineReducers({
   auth: authReducer,
@@ -16,6 +17,7 @@ const rootReducer = combineReducers({
   profile: profileReducer,
   readArticleReducer,
   articles: articleReducer,
-  rating
+  rating,
+  comments: commentReducer
 });
 export default rootReducer;

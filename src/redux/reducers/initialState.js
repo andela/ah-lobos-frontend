@@ -12,5 +12,7 @@ export const initialState = {
   likeNum: 0,
   dislikeNum: 0,
   story: "",
-  Rating: {}
+  Rating: {},
+  body: {},
+  comments: []
 };

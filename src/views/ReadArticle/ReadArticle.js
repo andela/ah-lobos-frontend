@@ -21,6 +21,7 @@ import {
 } from "../../redux/actions/articleRatingAction";
 import StarRate from "../../components/articles/StarRating";
 import { readArticle } from "../../redux/actions/articlesAction";
+import CommentArticle from "../comment";
 
 class ReadArticle extends React.Component {
   constructor(props) {
@@ -91,10 +92,9 @@ class ReadArticle extends React.Component {
     return (
       <>
         <Navbar profile={this.props.profile} token={this.state.token} />
-
-        <div className="article-wrapper">
-          {story !== undefined ? (
-            <>
+        {story !== undefined ? (
+          <>
+            <div className="article-wrapper">
               <div className="side">Side</div>
               <div className="article-content">
                 <div className="content-title">
@@ -155,9 +155,12 @@ class ReadArticle extends React.Component {
                 </div>
               </div>
               <div className="side">side</div>
-            </>
-          ) : null}
-        </div>
+            </div>
+            <div className="comment-section">
+              <CommentArticle slug={story.article.slug} />
+            </div>
+          </>
+        ) : null}
       </>
     );
   }
