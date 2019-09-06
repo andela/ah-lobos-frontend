@@ -18,6 +18,7 @@ import AuthorArticlesPage from "./views/AuthorArticlesPage";
 import EditArticlePage from "./views/EditArticlePage";
 import AuthorDraftPage from "./views/AuthorDraftPage";
 import Bookmarks from "./views/BookmarkedArticle";
+import AllArticleByTag from "./views/AllArticlesByTag";
 
 const App = () => {
   return (
@@ -44,6 +45,11 @@ const App = () => {
           <Route exact path="/article/user" component={AuthorArticlesPage} />
           <Route exact path="/article/:slug/edit" component={EditArticlePage} />
           <Route exact path="/article/user/draft" component={AuthorDraftPage} />
+          <Route
+            exact
+            path="/articles/searchtag/:tag"
+            component={AllArticleByTag}
+          />
         </Switch>
       </Router>
     </>

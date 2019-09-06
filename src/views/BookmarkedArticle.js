@@ -1,3 +1,4 @@
+/* eslint-disable no-restricted-globals */
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import propTypes from "prop-types";
