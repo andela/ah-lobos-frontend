@@ -50,17 +50,11 @@ export const getUserProfile = username => async dispatch => {
         type: types.FETCH_USER_PROFILE,
         payload: userProfile.profile
       });
-    } else if (userAuthentication.status === 404) {
-      dispatch({
-        type: types.FETCH_USER_PROFILE_FAILURE,
-        payload: userProfile.message
-      });
-    } else if (userAuthentication.status === 401) {
-      dispatch({
-        type: types.FETCH_USER_PROFILE_FAILURE,
-        payload: userProfile.message
-      });
     }
+    dispatch({
+      type: types.FETCH_USER_PROFILE_FAILURE,
+      payload: userProfile.message
+    });
   } catch (error) {
     dispatch({ type: types.FETCH_USER_PROFILE, payload: "server error" });
   }
@@ -88,17 +82,11 @@ export const editUserProfile = userInfo => async dispatch => {
         type: types.UPDATE_USER_PROFILE,
         payload: updatedProfile.user
       });
-    } else if (editUser.status === 401) {
-      dispatch({
-        type: types.UPDATE_USER_PROFILE_FAILURE,
-        payload: updatedProfile.message
-      });
-    } else if (editUser.status === 403) {
-      dispatch({
-        type: types.UPDATE_USER_PROFILE_FAILURE,
-        payload: updatedProfile.message
-      });
     }
+    dispatch({
+      type: types.UPDATE_USER_PROFILE_FAILURE,
+      payload: updatedProfile.message
+    });
   } catch (error) {
     dispatch({
       type: types.UPDATE_USER_PROFILE_FAILURE,
@@ -128,15 +116,9 @@ export const editUserProfilePicture = userInfo => async dispatch => {
       type: types.UPDATE_USER_PROFILE_SUCCESS,
       payload: "profile updated successfully"
     });
-  } else if (editUser.status === 401) {
-    dispatch({
-      type: types.UPDATE_USER_PROFILE_FAILURE,
-      payload: updatedProfile.message
-    });
-  } else if (editUser.status === 403) {
-    dispatch({
-      type: types.UPDATE_USER_PROFILE_FAILURE,
-      payload: updatedProfile.message
-    });
   }
+  dispatch({
+    type: types.UPDATE_USER_PROFILE_FAILURE,
+    payload: updatedProfile.message
+  });
 };

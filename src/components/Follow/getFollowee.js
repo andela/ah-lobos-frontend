@@ -68,7 +68,7 @@ export class getFollower extends Component {
   }
 }
 
-const mapStateToProps = state => {
+export const mapStateToProps = state => {
   return {
     followees: state.getFollowee.followees,
     profile: state.profile

@@ -7,7 +7,6 @@ const AuthorInfo = ({ image, readtime, name, created }) => {
   const day = thisDate.getDate();
   const month = thisDate.toLocaleString("default", { month: "short" });
   const year = thisDate.getFullYear();
-  console.log(thisDate.getFullYear());
   const publishDate = `${month} ${day}, ${year} -`;
   return (
     <>

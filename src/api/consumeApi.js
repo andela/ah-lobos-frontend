@@ -52,6 +52,7 @@ const postData = async (url, data) => {
     return error;
   }
 };
+
 /**
  *
  * @param {string} url
@@ -101,4 +102,29 @@ const imageUpload = async (url, data) => {
   }
 };
 
-export { getData, putData, postData, imageUpload };
+/**
+ *
+ * @param {string} url
+ * @param {object} data
+ * @returns {object} server response
+ */
+const deleteData = async url => {
+  const request = new Request(baseUrl + url, {
+    method: "delete",
+    mode: "cors",
+    cache: "reload",
+    headers: {
+      "Content-Type": "application/json; charset=utf-8",
+      token: token || ""
+    }
+  });
+  try {
+    const response = await fetch(request);
+    return response;
+  } catch (error) {
+    return error;
+  }
+};
+
+
+export { getData, putData, postData, imageUpload, deleteData };

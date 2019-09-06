@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import PropTypes from "prop-types";
+import { Link } from "react-router-dom";
 import DisplayContent from "Dante2";
 import Navbar from "../components/common/Navbar";
 import Spinner from "../components/common/Spinner";
@@ -10,7 +11,6 @@ import Bookmark from "../components/common/Bookmark/Bookmark";
 import AuthorInfo from "../components/common/AuthorInfo/AuthorInfo";
 import ShareArticle from "../components/common/ShareArticle/ShareArticle";
 import ReportArticle from "../components/common/ReportArticle/ReportArticle";
-import RateArticle from "../components/common/RateArticle/RateArticle";
 import CommentArticle from "./comment";
 import { getUserProfile } from "../redux/actions/userActions";
 import { getArticle } from "../redux/actions/articleActions";
@@ -24,6 +24,10 @@ import {
   likeAction,
   dislikeAction
 } from "../redux/actions/readArticleActions";
+import {
+  bookmarkArticle,
+  getBookmarkedArticles
+} from "../redux/actions/articleBookmark";
 
 class ReadArticlePage extends Component {
   constructor(props) {
@@ -39,25 +43,26 @@ class ReadArticlePage extends Component {
   async componentWillMount() {
     const { slug } = this.props.match.params;
     this.props.getArticle(slug);
-    await this.props.getArticleRating(this.props.match.params.slug);
   }
 
   async componentDidMount() {
+    await this.props.getBookmarkedArticles();
+    await this.props.getArticleRating(this.props.match.params.slug);
     const username = sessionStorage.getItem("username") || "";
     await this.props.getUserProfile(username);
     const token = sessionStorage.getItem("token");
     this.setState({ token });
-  }
-
-  componentWillReceiveProps(newProps) {
-    if (newProps.Article) {
-      this.setState({ Article: newProps.Article });
-    }
     if (
       this.props.readArticleReducer.hasdisliked ||
       this.props.readArticleReducer.hasliked
     ) {
       this.styleButtons();
+    }
+  }
+
+  componentWillReceiveProps(newProps) {
+    if (newProps.Article) {
+      this.setState({ Article: newProps.Article });
     }
   }
 
@@ -102,6 +107,16 @@ class ReadArticlePage extends Component {
     await this.props.getArticleRating(this.props.match.params.slug);
   }
 
+  async handleBookmark(slug) {
+    const token = sessionStorage.getItem("token");
+    const msg = document.getElementById("bookmark-article");
+    if (!token) {
+      msg.classList.add("show");
+    }
+    await this.props.bookmarkArticle(slug);
+    await this.props.getBookmarkedArticles();
+  }
+
   render() {
     const { Article } = this.state;
     const { rating } = this.props;
@@ -117,7 +132,6 @@ class ReadArticlePage extends Component {
             <div className="article-content">
               <div className="content-title">{Article.article.title}</div>
               <div className="above-content">
-                {console.log(Article.article)}
                 <AuthorInfo
                   image={Article.article.author.image}
                   readtime={Article.article.readtime}
@@ -125,7 +139,33 @@ class ReadArticlePage extends Component {
                   created={Article.article.createdAt}
                 />
                 <FollowButton author={Article.article.author.username} />
-                <Bookmark />
+                {this.props.bookmarks !== undefined &&
+                this.props.bookmarks.length >= 0 &&
+                this.props.bookmarks.filter(
+                  bookmarked => bookmarked.slug === Article.article.slug
+                ).length !== 0 ? (
+                  <Bookmark
+                    isBookmarked
+                    bookmark={() => {
+                      this.handleBookmark(Article.article.slug);
+                    }}
+                  />
+                ) : (
+                  <Bookmark
+                    isBookmarked={false}
+                    bookmark={() => {
+                      this.handleBookmark(Article.article.slug);
+                    }}
+                  />
+                )}
+              </div>
+              <div id="bookmark-article" className="login-to-bookmark">
+                Please{" "}
+                <Link to={`/login?redirect=/articles/${Article.article.slug}`}>
+                  {" "}
+                  login
+                </Link>{" "}
+                to bookmark
               </div>
               <div className="content-body">
                 <DisplayContent
@@ -155,8 +195,8 @@ class ReadArticlePage extends Component {
                 ) : (
                   <StarRate
                     value={
-                      this.props.rating.rating !== undefined
-                        ? this.props.rating.rating.average
+                      this.props.rating !== undefined
+                        ? this.props.rating.average
                         : 0
                     }
                     onClick={value => this.handleRating(value)}
@@ -193,16 +233,20 @@ ReadArticlePage.propTypes = {
   dislikeAction: PropTypes.func,
   readArticleReducer: PropTypes.object,
   rateArticle: PropTypes.func,
-  getArticleRating: PropTypes.func
+  getArticleRating: PropTypes.func,
+  rating: PropTypes.object,
+  bookmarkArticle: PropTypes.object,
+  getBookmarkedArticles: PropTypes.func,
+  bookmarks: PropTypes.object
 };
 
 const mapStateToProps = state => {
-  console.log(state.rating);
   return {
     profile: state.profile,
     Article: state.articles.article,
     readArticleReducer: state.readArticleReducer,
-    rating: state.rating
+    rating: state.rating.rating,
+    bookmarks: state.bookmarks.bookmarks
   };
 };
 
@@ -213,7 +257,9 @@ const mapDispatchToProps = {
   dislikeAction,
   getUserProfile,
   rateArticle,
-  getArticleRating
+  getArticleRating,
+  getBookmarkedArticles,
+  bookmarkArticle
 };
 
 export default connect(

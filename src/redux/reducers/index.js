@@ -12,6 +12,7 @@ import followAuser from "./followAuser";
 import unFollow from "./unFollowAuser";
 import getFollowee from "./getFollowee";
 import articles from "./articleReducer";
+import articleBookmarks from "./articleBookmark";
 
 const rootReducer = combineReducers({
   auth: authReducer,
@@ -26,6 +27,7 @@ const rootReducer = combineReducers({
   follower: getFollowers,
   followAuser,
   unFollow,
-  getFollowee
+  getFollowee,
+  bookmarks: articleBookmarks
 });
 export default rootReducer;

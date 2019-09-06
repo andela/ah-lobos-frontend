@@ -27,10 +27,14 @@ export const rateArticle = data => async dispatch => {
 };
 
 export const getArticleRating = slug => async dispatch => {
-  const articleRates = await API.getData(`/api/articles/ratings/${slug}`);
-  const rates = await articleRates.json();
-  dispatch({
-    type: types.FETCH_ARTICLE_RATES,
-    payload: rates
-  });
+  try {
+    const articleRates = await API.getData(`/api/articles/ratings/${slug}`);
+    const rates = await articleRates.json();
+    dispatch({
+      type: types.FETCH_ARTICLE_RATES,
+      payload: rates
+    });
+  } catch (error) {
+    toast.error(error);
+  }
 };

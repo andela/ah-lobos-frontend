@@ -62,7 +62,8 @@ const mapStateToProps = state => ({
 
 FollowButton.propTypes = {
   followUser: propTypes.func.isRequired,
-  unFollowUser: propTypes.func.isRequired
+  unFollowUser: propTypes.func.isRequired,
+  author: propTypes.object
 };
 export default connect(
   mapStateToProps,

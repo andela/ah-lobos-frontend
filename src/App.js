@@ -17,6 +17,7 @@ import ReadArticlePage from "./views/ReadArticlePage";
 import AuthorArticlesPage from "./views/AuthorArticlesPage";
 import EditArticlePage from "./views/EditArticlePage";
 import AuthorDraftPage from "./views/AuthorDraftPage";
+import Bookmarks from "./views/BookmarkedArticle";
 
 const App = () => {
   return (
@@ -32,6 +33,7 @@ const App = () => {
           <Route exact path="/edit" component={EditProfile} />
           <Route exact path="/follow" component={Follow} />
           <Route exact path="/followee" component={Followee} />
+          <Route exact path="/article/bookmark" component={Bookmarks} />
           <Route
             exact
             path="/articles/publish"

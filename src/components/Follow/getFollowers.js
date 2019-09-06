@@ -90,7 +90,7 @@ export class getFollower extends Component {
   }
 }
 
-const mapStateToProps = state => ({
+export const mapStateToProps = state => ({
   follower: state.follower.followers,
   follow: state.follow,
   unfollow: state.unfollow,

@@ -24,7 +24,7 @@ const DropDown = ({ signOut }) => (
         <img className="profile-menu-icon" src={profile} alt="profile" />
         <p className="icon-text">My Draft</p>
       </Link>
-      <Link to="/" className="bookmarks-menu">
+      <Link to="/article/bookmark" className="bookmarks-menu">
         <img className="bookmarks-menu-icon" src={bookmarks} alt="profile" />
         <p className="icon-text">Bookmarks</p>
       </Link>
