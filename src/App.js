@@ -10,6 +10,8 @@ import ResetPassword from "./views/ResetPassword";
 import EditProfile from "./views/EditProfile";
 import ReadArticle from "./views/ReadArticle/ReadArticle";
 import CommentArticle from "./views/comment";
+import Follow from "./views/Follow";
+import Followee from "./views/getFollowee";
 
 const App = () => {
   return (
@@ -25,6 +27,9 @@ const App = () => {
           <Route exact path="/edit" component={EditProfile} />
           <Route exact path="/article/:slug" component={ReadArticle} />
           <Route exact path="/articles/:slug" component={CommentArticle} />
+          <Route path="/article/:slug" component={ReadArticle} />
+          <Route exact path="/follow" component={Follow} />
+          <Route exact path="/followee" component={Followee} />
         </Switch>
       </Router>
     </>

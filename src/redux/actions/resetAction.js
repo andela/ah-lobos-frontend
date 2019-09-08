@@ -27,10 +27,11 @@ export const setNewPassword = (token, data) => dispatch => {
     body: JSON.stringify(data)
   })
     .then(res => res.json())
-    .then(passwords =>
+    .then(passwords => {
       dispatch({
         type: SET_NEW_PASSWORD,
         payload: passwords
-      })
-    );
+      });
+      window.location = "/login";
+    });
 };

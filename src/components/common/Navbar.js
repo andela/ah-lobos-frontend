@@ -1,9 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import PropTypes from "prop-types";
-import { Popup } from "semantic-ui-react";
 import Avatar from "../../assets/images/user.png";
-import UserProfile from "../profile/UserProfile";
 import DropDown from "./DropDown/DropDown";
 
 const Navbar = ({ token, profile, signOut }) => {
@@ -21,21 +19,10 @@ const Navbar = ({ token, profile, signOut }) => {
           {token !== null ? (
             <div className="top-menu">
               <i id="btn-notification" className="fas fa-bell" />
-              <Popup
-                trigger={
-                  <div id="top-menu-avatar">
-                    <img className="user-avatar" src={image || Avatar} alt="" />
-                    <div className="user-name">{username}</div>
-                  </div>
-                }
-                position="bottom center"
-                on="click"
-              >
-                <Popup.Content>
-                  <UserProfile profile={profile} />
-                </Popup.Content>
-              </Popup>
-
+              <div id="top-menu-avatar">
+                <img className="user-avatar" src={image || Avatar} alt="" />
+                <div className="user-name">{username}</div>
+              </div>
               <div id="menu-toggle" className="icon">
                 <div className="humburger"></div>
               </div>

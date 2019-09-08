@@ -355,13 +355,14 @@ a.show-toggle {
 }
 
 .popup-user-profile {
-  width: 300px;
-  height: 40vh;
+  width: 320px;
+  height: 45vh;
   background: #f2f2f2;
   border-radius: 12px;
   border: 0.1 solid;
   position: relative;
-  z-index: -2;
+  margin: 10px auto;
+  // z-index: -2;
 }
 
 .profile-details {
@@ -889,13 +890,13 @@ a.show-toggle {
   margin-left: 10px;
 }
 
-.popup-user-profile {
-  width: 300px;
-  height: 40vh;
-  background: #f2f2f2;
-  border-radius: 12px;
-  border: 0.1 solid;
-}
+// .popup-user-profile {
+//   width: 300px;
+//   height: 40vh;
+//   background: #f2f2f2;
+//   border-radius: 12px;
+//   border: 0.1 solid;
+// }
 
 .profile-details {
   background: #0d9bc6 !important;

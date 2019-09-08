@@ -105,7 +105,7 @@ class ReadArticle extends React.Component {
                 </div>
                 <div className="above-content">
                   <AuthorInfo article={story.article} />
-                  <FollowButton />
+                  <FollowButton author={story.article.author.username} />
                   <Bookmark />
                 </div>
                 <div className="article-banner">

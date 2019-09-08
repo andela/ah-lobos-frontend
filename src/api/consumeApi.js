@@ -58,7 +58,7 @@ const postData = async (url, data) => {
  * @param {object} data
  * @returns {object} server response
  */
-const getData = async url => {
+const getData = async (url) => {
   const request = new Request(baseUrl + url, {
     method: "get",
     mode: "cors",
