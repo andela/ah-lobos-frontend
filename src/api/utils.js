@@ -7,10 +7,10 @@ export async function handleResponse(response) {
     const error = response.json();
     return error;
   }
-  throw new Error("Network response was not ok.");
+  return "Network response was not ok.";
 }
 
 export function handleError(error) {
   console.error(`API call failed. ${error}`);
-  throw error;
+  return error;
 }

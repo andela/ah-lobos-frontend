@@ -5,12 +5,12 @@ export async function handleResponse(response) {
     const { reactions } = await response.json();
     return reactions;
   }
-  throw new Error("Network response was not ok.");
+  return "Network response was not ok.";
 }
 
 export async function hasReacted(reactions) {
   const token = sessionStorage.getItem("token");
-  const decodeToken = jwt.decode(token);
+  const decodeToken = await jwt.decode(token);
   const likes = [];
   const dislikes = [];
   const reactionData = {};
@@ -35,5 +35,5 @@ export async function handleReaction(response) {
     const data = await response.json();
     return data;
   }
-  throw new Error("Network response was not ok.");
+  return "Network response was not ok.";
 }

@@ -108,9 +108,7 @@
     ],
     "testPathIgnorePatterns": [
       "./__tests__/setup/",
-      "./cypress/",
-      "./src/api/",
-      "./src/components/common/ArticleCard/"
+      "./cypress/"
     ],
     "moduleNameMapper": {
       "^.+\\.(css|scss)$": "<rootDir>/tools/styleMock.js",

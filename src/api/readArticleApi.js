@@ -2,8 +2,6 @@ import { handleResponse, handleReaction } from "./readArticleUtils";
 
 const baseUrl = `https://ah-lobos-backend-swagger.herokuapp.com`;
 
-const token = sessionStorage.getItem("token");
-
 export function fetchReactions(slug) {
   return fetch(`${baseUrl}/api/articles/likedislike/${slug}`, {
     method: "GET",
@@ -14,8 +12,9 @@ export function fetchReactions(slug) {
 }
 
 export function likeArticle(slug) {
+  const token = sessionStorage.getItem("token");
   const warn = document.getElementById("warn");
-  if (token == null) {
+  if (!token) {
     warn.classList.add("reveal");
     return null;
   }
@@ -31,8 +30,9 @@ export function likeArticle(slug) {
 }
 
 export function dislikeArticle(slug) {
+  const token = sessionStorage.getItem("token");
   const warn = document.getElementById("warn");
-  if (token == null) {
+  if (!token) {
     warn.classList.add("reveal");
     return null;
   }
