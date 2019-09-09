@@ -24,12 +24,14 @@ const SignupForm = ({
           value={user.email}
           onChange={onChange}
           placeholder="Email..."
+          classname="form-control"
         />
         <InputForm
           name="username"
           value={user.username}
           onChange={onChange}
           placeholder="Username..."
+          classname="form-control"
         />
         <PasswordForm
           name="password"

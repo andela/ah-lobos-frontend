@@ -1,17 +1,24 @@
 import React from "react";
-import propTypes from "prop-types";
+import PropTypes from "prop-types";
+import user from "../../../assets/images/user.png";
 
-const AuthorInfo = ({ article }) => {
+const AuthorInfo = ({ image, readtime, name, created }) => {
+  const thisDate = new Date(created);
+  const day = thisDate.getDate();
+  const month = thisDate.toLocaleString("default", { month: "short" });
+  const year = thisDate.getFullYear();
+  console.log(thisDate.getFullYear());
+  const publishDate = `${month} ${day}, ${year} -`;
   return (
     <>
       <div className="author-info">
         <div className="author-avi">
-          <img src={article.author.image} alt="sam" />
+          <img src={image || user} alt="sam" />
         </div>
 
         <div className="name-time">
-          <div className="author-name">{article.author.firstName}</div>
-          <div className="read-time">{article.readtime}</div>
+          <div className="author-name">{name}</div>
+          <div className="read-time">{`${publishDate} ${readtime}`} read</div>
         </div>
       </div>
     </>
@@ -19,7 +26,10 @@ const AuthorInfo = ({ article }) => {
 };
 
 AuthorInfo.propTypes = {
-  article: propTypes.object
+  image: PropTypes.string.isRequired,
+  name: PropTypes.string.isRequired,
+  readtime: PropTypes.string.isRequired,
+  created: PropTypes.string.isRequired
 };
 
 export default AuthorInfo;

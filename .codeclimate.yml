@@ -1,7 +1,9 @@
+version: "2"
 exclude_patterns:
-- "src/api/"
-- "**.test.js"
-- "**.scss"
+  - "node_modules"
+  - "src/api/"
+  - "*.test.js"
+  - "**.scss"
 checks:
   argument-count:
     enabled: true

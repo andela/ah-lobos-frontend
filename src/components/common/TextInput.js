@@ -10,6 +10,7 @@ const TextInput = ({ name, onChange, placeholder, value, type }) => {
         placeholder={placeholder}
         value={value}
         onChange={onChange}
+        className="form-control"
       />
     </div>
   );

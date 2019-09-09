@@ -18,5 +18,8 @@ export const initialState = {
   followers: [],
   followees: [],
   follow: {},
-  unFollow: {}
+  unFollow: {},
+  currentArticles: {},
+  uploadedImage: {},
+  myArticles: {}
 };

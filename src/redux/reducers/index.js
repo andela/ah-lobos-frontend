@@ -6,12 +6,12 @@ import reset from "./passwordReducer";
 import profileReducer from "./profileReducer";
 import readArticleReducer from "./readArticleReducer";
 import rating from "./ratingArticle";
-import articleReducer from "./articleReducer";
 import commentReducer from "./commentReducer";
 import getFollowers from "./getFollowers";
 import followAuser from "./followAuser";
 import unFollow from "./unFollowAuser";
 import getFollowee from "./getFollowee";
+import articles from "./articleReducer";
 
 const rootReducer = combineReducers({
   auth: authReducer,
@@ -19,8 +19,8 @@ const rootReducer = combineReducers({
   socialUser,
   emailData: reset,
   profile: profileReducer,
+  articles,
   readArticleReducer,
-  articles: articleReducer,
   rating,
   comments: commentReducer,
   follower: getFollowers,
