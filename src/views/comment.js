@@ -23,6 +23,7 @@ class CommentArticle extends Component {
     this.setState({
       allComments: nextProps.comments
     });
+    this.props.getArticleComments(this.props.slug);
   }
 
   render() {
@@ -40,10 +41,13 @@ CommentArticle.propTypes = {
   comments: propTypes.array,
   slug: propTypes.string
 };
-const mapStateToProps = state => ({
-  data: state.comment,
-  comments: state.comments.comments
-});
+
+const mapStateToProps = state => {
+  return {
+    data: state.comment,
+    comments: state.comments.comments
+  };
+};
 export default connect(
   mapStateToProps,
   { getArticleComments, deleteArticleComment }

@@ -5,9 +5,29 @@ import {
   DELETE_COMMENT_ARTICLE_FAILURE,
   DELETE_COMMENT_ARTICLE_SUCCESS,
   UPDATE_COMMENT_ARTICLE_FAILURE,
-  UPDATE_COMMENT_ARTICLE_SUCCESS
+  UPDATE_COMMENT_ARTICLE_SUCCESS,
+  LIKE_MESSAGE_REQUEST,
+  LIKE_MESSAGE_FAILURE,
+  DISLIKE_MESSAGE_REQUEST,
+  DISLIKE_MESSAGE_FAILURE
 } from "./actionTypes";
 import * as API from "../../api/commentApi";
+
+export const likeRequest = message => {
+  return { type: LIKE_MESSAGE_REQUEST, message };
+};
+
+export const likeFailure = () => {
+  return { type: LIKE_MESSAGE_FAILURE };
+};
+
+export const dislikeRequest = message => {
+  return { type: DISLIKE_MESSAGE_REQUEST, message };
+};
+
+export const dislikeFailure = () => {
+  return { type: DISLIKE_MESSAGE_FAILURE };
+};
 
 export const commentArticle = data => async dispatch => {
   await API.commentArticle(data)
@@ -78,4 +98,26 @@ export const updateArticleComment = (data, id) => async dispatch => {
         payload: error
       });
     });
+};
+
+export const likeComment = id => async dispatch => {
+  await API.likeComment(id)
+    .then(response => {
+      if (response.error) {
+        dispatch(likeFailure());
+      }
+      dispatch(likeRequest(response.message));
+    })
+    .catch(dispatch(likeFailure()));
+};
+
+export const dislikeComment = id => async dispatch => {
+  await API.dislikeComment(id)
+    .then(response => {
+      if (response.error) {
+        dispatch(dislikeFailure());
+      }
+      dispatch(dislikeRequest(response.message));
+    })
+    .catch(dispatch(dislikeFailure()));
 };

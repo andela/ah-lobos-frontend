@@ -5,7 +5,6 @@ import { connect } from "react-redux";
 import propTypes from "prop-types";
 import jwt from "jsonwebtoken";
 import Navbar from "../components/common/Navbar";
-import Categories from "../components/common/Categories/Categories";
 import {
   getUserProfile,
   editUserProfile,
