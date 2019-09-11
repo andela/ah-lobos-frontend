@@ -150,10 +150,26 @@ export async function readArticleStats(response) {
   return "Network response was not ok.";
 }
 
+export async function handleGetConfig(res) {
+  if (res.ok) {
+    const response = await res.json();
+    return response;
+  }
+  return "Network response was not ok.";
+}
+
 export async function getUserStats(response) {
-  if (response) {
+  if (response.ok) {
     const data = await response.json();
     return data;
   }
   return "You have no stats";
+}
+
+export async function handleUpdateConfig(res) {
+  if (res.ok) {
+    const response = await res.json();
+    return response;
+  }
+  return "Network response was not ok.";
 }

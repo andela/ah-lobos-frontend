@@ -6,7 +6,7 @@ const dispatch = jest.fn(action => action);
 describe("user action", () => {
   it("should logout a user", () => {
     const result = loginUserSuccess(token);
-    const userLogout = logOutUser(token)(dispatch);
+    logOutUser(token)(dispatch);
     expect(result).toHaveProperty("type");
   });
 });

@@ -14,6 +14,7 @@ const Pagination = ({
   for (let i = 1; i <= Math.ceil(totalArticles / articlesPerPage); i += 1) {
     pageNums.push(i);
   }
+
   return (
     <>
       <div className="pagination-wrapper">

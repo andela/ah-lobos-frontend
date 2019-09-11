@@ -23,6 +23,7 @@ export class BookmarkedArticle extends Component {
     await this.props.getUserProfile(username);
     await this.props.getBookmarkedArticles();
     if (!token) {
+      // eslint-disable-next-line no-restricted-globals
       location.href = "/";
     }
   }

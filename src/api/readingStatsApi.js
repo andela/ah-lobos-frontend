@@ -4,7 +4,6 @@ const baseUrl = process.env.BASE_URL;
 const token = sessionStorage.getItem("token");
 
 export function createStats(slug) {
-  console.log(slug);
   return fetch(`${baseUrl}/api/articles/stats/${slug}/save-reading`, {
     method: "POST",
     mode: "cors",
