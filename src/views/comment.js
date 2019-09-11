@@ -25,11 +25,6 @@ class CommentArticle extends Component {
     });
   }
 
-  componentDidUpdate(prevProps, prevState) {
-    if (prevProps !== prevState) {
-    }
-  }
-
   render() {
     const { allComments } = this.state;
     return (

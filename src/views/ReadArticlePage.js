@@ -172,6 +172,20 @@ class ReadArticlePage extends Component {
                   content={{ blocks: contentSide, entityMap: {} }}
                   read_only
                 />
+                <div className="all-tags">
+                  {Article.article.tagList.map(tag => {
+                    return (
+                      <>
+                        <Link
+                          to={`/articles/searchtag/${tag}`}
+                          className="tag-list"
+                        >
+                          {tag}
+                        </Link>
+                      </>
+                    );
+                  })}
+                </div>
               </div>
               <div className="content-actions">
                 <div className="like-dislike">

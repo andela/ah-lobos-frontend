@@ -18,6 +18,7 @@ const SocialLogin = ({ redirect, path }) => {
         <img
           src={facebook}
           alt="facebook"
+          className="facebook"
           onClick={() => {
             socialLoginHandle("facebook");
           }}
@@ -26,6 +27,7 @@ const SocialLogin = ({ redirect, path }) => {
         <img
           src={twitter}
           alt="twitter"
+          className="twitter"
           onClick={() => {
             socialLoginHandle("twitter");
           }}
@@ -34,6 +36,7 @@ const SocialLogin = ({ redirect, path }) => {
         <img
           src={google}
           alt="google"
+          className="google"
           onClick={() => {
             socialLoginHandle("google");
           }}
