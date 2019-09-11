@@ -6,7 +6,6 @@ import DisplayContent from "Dante2";
 import Navbar from "../components/common/Navbar";
 import Spinner from "../components/common/Spinner";
 import LikeDislike from "../components/LikeDislikeButton/LikeDislike";
-import { FollowButton } from "../components/common/Follow/FollowButton";
 import Bookmark from "../components/common/Bookmark/Bookmark";
 import AuthorInfo from "../components/common/AuthorInfo/AuthorInfo";
 import { ShareArticle } from "../components/common/ShareArticle/ShareArticle";
@@ -35,7 +34,8 @@ class ReadArticlePage extends Component {
     super(props);
     this.state = {
       Article: {},
-      token: ""
+      token: "",
+      showReport: false
     };
     const { slug } = props.match.params;
     props.fetchReaction(slug);
@@ -94,6 +94,11 @@ class ReadArticlePage extends Component {
     this.props.dislikeAction(slug);
   };
 
+  showMenu = () => {
+    // e.preventDefault();
+    this.setState({ showReport: true });
+  };
+
   async handleRating(rating) {
     const token = sessionStorage.getItem("token");
     const msg = document.getElementById("warn");
@@ -139,7 +144,7 @@ class ReadArticlePage extends Component {
                   name={Article.article.author.username}
                   created={Article.article.createdAt}
                 />
-                <FollowButton author={Article.article.author.username} />
+                <div></div>
                 {this.props.bookmarks !== undefined &&
                 this.props.bookmarks.length >= 0 &&
                 this.props.bookmarks.filter(
@@ -199,7 +204,11 @@ class ReadArticlePage extends Component {
                   />
                 </div>
                 <ShareArticle slug={Article.article.slug} />
-                <ReportArticle />
+                <ReportArticle
+                  showReport={this.state.showReport}
+                  onReport={() => this.showMenu}
+                  slug={Article.article.slug}
+                />
                 {rating !== undefined &&
                 sessionStorage.getItem("token") !== null ? (
                   <StarRate

@@ -48,13 +48,6 @@ describe("Test profile reducer", () => {
   });
 
   it("it should test specific type", () => {
-    console.log(
-      "tests >>>>>",
-      profileReducer(
-        {},
-        { type: types.UPDATE_USER_PROFILE_SUCCESS, payload: {} }
-      )
-    );
     expect(
       profileReducer(
         {},

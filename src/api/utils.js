@@ -3,9 +3,10 @@ export async function handleResponse(response) {
     return response.json();
   }
   if (response.status === 400) {
-    const error = await response.text();
-    throw Error(error);
-  } else if (response.status === 409) {
+    const error = response.json();
+    return error;
+  }
+  if (response.status === 409) {
     const error = response.json();
     return error;
   }

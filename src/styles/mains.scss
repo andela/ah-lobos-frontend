@@ -1839,16 +1839,20 @@ input:checked[type="checkbox"]::before {
   margin-left: 20%;
 }
 .tag-list {
-  background-color: #0d9bc6;
-  padding: 5px;
+  background-color: #dfe4e6;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  padding-left: 20px;
+  padding-right: 20px;
+  border-radius: 5px;
   margin-left: 10px;
   text-decoration: none;
-  color: white;
+  color: rgb(43, 40, 40);
   font-size: 18px;
 }
 .tag-list:hover,
 .tag-list:focus {
-  background-color: #5bccef;
+  background-color: #18a9d4;
 }
 .tags-container {
   margin-left: 50px;
@@ -1945,4 +1949,396 @@ p {
 
 .not-like {
   opacity: 0.2;
+}
+.report-button-image {
+  background-color: white;
+  margin-top: 10px;
+}
+
+.report-dropdown {
+  margin-top: 10px;
+  border: 1px solid grey;
+  padding: 5px 10px 5px 10px;
+  box-shadow: 0 5px 10px -10px;
+  font-size: 16px;
+  font-weight: 200;
+}
+
+.report-link {
+  cursor: pointer;
+}
+
+.container-radio {
+  display: block;
+  position: relative;
+  padding-left: 45px;
+  margin-bottom: 20px;
+  cursor: pointer;
+  font-size: 22px;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+.container-radio input {
+  position: absolute;
+  opacity: 0;
+  cursor: pointer;
+}
+
+.checkmark {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 25px;
+  width: 25px;
+  background-color: #eee;
+  border-radius: 50%;
+}
+
+.container-radio:hover input ~ .checkmark {
+  background-color: #ccc;
+}
+
+.container-radio input:checked ~ .checkmark {
+  background-color: #2196F3;
+}
+
+.checkmark:after {
+  content: "";
+  position: absolute;
+  display: none;
+}
+
+.container-radio input:checked ~ .checkmark:after {
+  display: block;
+}
+
+.container-radio .checkmark:after {
+ 	top: 9px;
+	left: 9px;
+	width: 8px;
+	height: 8px;
+	border-radius: 50%;
+	background: white;
+}
+
+.report-form {
+  margin-top: 30px;
+  width: 300px;
+  margin-left: 100px;
+  margin-bottom: 30px;
+}
+
+.report-title > span {
+  font-size: 25px;
+  color: #2BA6CC;
+  margin-bottom: 50px;
+  font-weight: bold;
+}
+
+.radio-contain {
+  margin-top: 50px;
+}
+
+.report-button-send {
+  margin-right: 20px;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  padding-left: 15px;
+  padding-right: 15px;
+  border-radius: 50px;
+}
+
+.report-button-cancel {
+  padding-top: 5px;
+  padding-bottom: 5px;
+  padding-left: 15px;
+  padding-right: 15px;
+  border-radius: 50px;
+  background-color: white;
+  color: grey;
+  border: 1px solid grey;
+}
+
+.report-text {
+  height: 30px;
+  width: 200px;
+  margin-bottom: 20px;
+  border-radius: 50px;
+  padding-left: 20px;
+  border: 1px solid silver;
+  box-shadow: 0 4px 10px -10px;
+}
+
+.report-button-image {
+  background-color: white;
+  margin-top: 10px;
+}
+
+.report-dropdown {
+  margin-top: 10px;
+  border: 1px solid grey;
+  padding: 5px 10px 5px 10px;
+  box-shadow: 0 5px 10px -10px;
+  font-size: 16px;
+  font-weight: 200;
+}
+
+.report-link {
+  cursor: pointer;
+}
+
+.container-radio {
+  display: block;
+  position: relative;
+  padding-left: 45px;
+  margin-bottom: 20px;
+  cursor: pointer;
+  font-size: 22px;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+.container-radio input {
+  position: absolute;
+  opacity: 0;
+  cursor: pointer;
+}
+
+.checkmark {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 25px;
+  width: 25px;
+  background-color: #eee;
+  border-radius: 50%;
+}
+
+.container-radio:hover input ~ .checkmark {
+  background-color: #ccc;
+}
+
+.container-radio input:checked ~ .checkmark {
+  background-color: #2196F3;
+}
+
+.checkmark:after {
+  content: "";
+  position: absolute;
+  display: none;
+}
+
+.container-radio input:checked ~ .checkmark:after {
+  display: block;
+}
+
+.container-radio .checkmark:after {
+ 	top: 9px;
+	left: 9px;
+	width: 8px;
+	height: 8px;
+	border-radius: 50%;
+	background: white;
+}
+
+.report-form {
+  margin-top: 30px;
+  width: 300px;
+  margin-left: 100px;
+  margin-bottom: 30px;
+}
+
+.report-title > span {
+  font-size: 25px;
+  color: #2BA6CC;
+  margin-bottom: 50px;
+  font-weight: bold;
+}
+
+.radio-contain {
+  margin-top: 50px;
+}
+
+.report-button-send {
+  margin-right: 20px;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  padding-left: 15px;
+  padding-right: 15px;
+  border-radius: 50px;
+}
+
+.report-button-cancel {
+  padding-top: 5px;
+  padding-bottom: 5px;
+  padding-left: 15px;
+  padding-right: 15px;
+  border-radius: 50px;
+  background-color: white;
+  color: grey;
+  border: 1px solid grey;
+}
+
+.report-text {
+  height: 30px;
+  width: 200px;
+  margin-bottom: 20px;
+  border-radius: 50px;
+  padding-left: 20px;
+  border: 1px solid silver;
+  box-shadow: 0 4px 10px -10px;
+}
+
+.admin-page {
+  display: grid;
+  grid-template-columns: 20% 80%;
+}
+
+.admin-side {
+  display: grid;
+  grid-row: 1 / -1;
+  background-color: #0D9BC6;
+  grid-template-rows: 20% 80%;
+  height: 849px;
+}
+
+.admin-profile-side {
+  display: grid; 
+  justify-items: center;
+  border-bottom: 1px solid white;
+}
+
+.admin-profile {
+  display: grid;
+  width: 80px;
+  margin-top: 20px;
+  border-radius: 50px;
+}
+
+.admin-name {
+  color: white;
+}
+
+.admin-links {
+  display: grid;
+  grid-template-columns: 50% 50%;
+  color: white;
+  text-decoration: none;
+  font-weight: 200;
+}
+
+.admin-links-side {
+  justify-items: center;
+  margin-left: -40px;
+}
+
+.admin-link {
+  display: grid;
+  justify-items: center;
+  border-bottom: 1px solid white;
+  padding-top: 15px;
+  padding-bottom: 15px;
+}
+
+.admin-card {
+  display: grid;
+  grid-template-rows: 30% 50% 20%;
+  margin: 30px;
+  display: grid;
+  border-radius: 5px;
+  box-shadow: 2px 5px 10px -10px;
+  color: white;
+}
+
+.admin-main {
+  display: grid;
+  grid-template-columns: 25% 25% 25% 25%;
+  grid-template-rows: 25% 15% 60%;
+}
+
+.card-top {
+  text-align: left;
+  padding-left: 20px;
+}
+
+.card-middle {
+  display: grid;
+  justify-items: center;
+  font-size: 40px;
+  font-weight: bold;
+}
+
+.card-bottom {
+  padding-left: 20px;
+}
+
+.admin-table {
+  display: grid;
+  grid-column: 1 / -1;
+  margin: 20px;
+  text-align: center;
+}
+
+thead > tr {
+  text-align: center;
+  height: 50px;
+  background-color: #f2f2f2;
+}
+
+tbody > tr {
+  height: 50px;
+}
+
+.admin-report {
+  display: grid;
+  align-items: center;
+  margin: 50px;
+}
+
+.table-title {
+  justify-self: start;
+  margin-left: 2px;
+}
+
+.icon-left {
+  margin-left: -10px;
+}
+
+.side-icon {
+  grid-row: 1 / -1;
+}
+
+.footer-side {
+  display: grid;
+  grid-template-columns: 40% auto 35%;
+  background-color: #0d9bc6;
+  height: 70px;
+  align-items: center;
+}
+
+.year {
+  color: white;
+  padding-right: 10px;
+  margin-top: 5px;
+  float: left;
+}
+
+.lobos-logo-footer {
+  margin-top: -30px;
+  margin-left: 80px;
+  color: white;
+  font-weight: bold;
+}
+
+.admin-side-footer {
+  margin-left: 20px;
+}
+
+.all-right {
+  font-weight: 200
 }

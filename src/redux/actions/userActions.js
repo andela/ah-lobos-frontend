@@ -1,3 +1,4 @@
+/* eslint-disable no-restricted-globals */
 import * as types from "./actionTypes";
 import * as userApi from "../../api/userApi";
 import * as API from "../../api/consumeApi";

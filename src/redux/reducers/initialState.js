@@ -24,5 +24,9 @@ export const initialState = {
   myArticles: {},
   isFollowing: false,
   messageLiked: "",
-  messageDisliked: ""
+  messageDisliked: "",
+  reportMessage: "",
+  allUsers: {},
+  allReport: [],
+  userDeleted: ""
 };

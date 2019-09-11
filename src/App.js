@@ -19,6 +19,8 @@ import EditArticlePage from "./views/EditArticlePage";
 import AuthorDraftPage from "./views/AuthorDraftPage";
 import Bookmarks from "./views/BookmarkedArticle";
 import AllArticleByTag from "./views/AllArticlesByTag";
+import AdminPage from "./views/AdminPage";
+import ReportedPage from "./views/ReportedPage";
 
 const App = () => {
   return (
@@ -50,6 +52,8 @@ const App = () => {
             path="/articles/searchtag/:tag"
             component={AllArticleByTag}
           />
+          <Route exact path="/admin" component={AdminPage} />
+          <Route exact path="/reported" component={ReportedPage} />
         </Switch>
       </Router>
     </>

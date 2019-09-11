@@ -8,12 +8,24 @@ const handleOnClick = slug => {
   window.location.href = `/articles/${slug}`;
 };
 
+let imageCheck = [];
+
 const Articles = ({ article, data }) => {
+  if (article.image !== null) {
+    imageCheck = article.image.split(".");
+  }
   return (
     <>
       <div className="article-space" key={article.slug}>
         <div className="article-image">
-          <img src={article.image || ArticlePlaceHolder} alt="" />
+          <img
+            src={
+              imageCheck.includes("jpg") && article.image !== null
+                ? article.image
+                : ArticlePlaceHolder
+            }
+            alt=""
+          />
         </div>
         <div className="article-title">{data.title}</div>
         <div className="article-body">
