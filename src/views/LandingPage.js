@@ -1,5 +1,4 @@
 /* eslint-disable max-len */
-/* eslint-disable camelcase */
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import propTypes from "prop-types";
@@ -17,7 +16,6 @@ const userPayload = jwt.decode(token) || "";
 sessionStorage.setItem("username", userPayload.username);
 sessionStorage.setItem("role", userPayload.role);
 const isAdmin = sessionStorage.getItem("role");
-console.log(isAdmin);
 export class HomePage extends Component {
   constructor(props) {
     super(props);
@@ -61,7 +59,7 @@ export class HomePage extends Component {
     if (currentArticles) {
       return (
         <>
-          <Navbar />
+          <Navbar all={this.props} />
           <Categories />
           <div className="short-summary">
             <p id="cta">

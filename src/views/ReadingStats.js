@@ -131,7 +131,7 @@ UserStats.propTypes = {
   profile: propTypes.object.isRequired,
   logOutUser: propTypes.func,
   getStats: propTypes.func,
-  userStats: propTypes.object
+  userStats: propTypes.any
 };
 const mapStateToProps = state => ({
   profile: state.profile,

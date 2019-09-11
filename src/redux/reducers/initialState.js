@@ -33,5 +33,6 @@ export const initialState = {
   notifConfig: {
     inApp: false,
     email: false
-  }
+  },
+  searchData: {}
 };

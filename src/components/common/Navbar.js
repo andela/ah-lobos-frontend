@@ -5,6 +5,7 @@ import jwt from "jsonwebtoken";
 import PropTypes from "prop-types";
 import Avatar from "../../assets/images/user.png";
 import DropDown from "./DropDown/DropDown";
+import { SearchItems } from "./Search/Search";
 import {
   getUserProfile,
   editUserProfile,
@@ -15,6 +16,12 @@ import {
   getNotifConfig,
   updateNotifConfig
 } from "../../redux/actions/notifConfigActions";
+import Bell from "../notification/Bell";
+import {
+  getUserNotification,
+  readNotification
+} from "../../redux/actions/userNotificationActions";
+import { searchMethod } from "../../redux/actions/SearchAction";
 
 const token = sessionStorage.getItem("token") || null;
 const userPayload = jwt.decode(token) || "";
@@ -26,11 +33,13 @@ class Navbar extends Component {
     super(props);
     this.state = {
       inApp: false,
-      email: false
+      email: false,
+      notification: ""
     };
   }
 
   async componentDidMount() {
+    await this.props.getUserNotification();
     await this.props.getUserProfile(username);
     if (token) {
       await this.props.getNotifConfig(token);
@@ -38,6 +47,18 @@ class Navbar extends Component {
         inApp: this.props.notifConfig.inApp,
         email: this.props.notifConfig.email
       });
+    }
+  }
+
+  componentWillReceiveProps() {
+    if (
+      this.props.notification !== undefined &&
+      this.props.notification.length > 0
+    ) {
+      const msg = this.props.notification.filter(
+        type => type.status === "unseen"
+      );
+      this.setState({ notification: msg });
     }
   }
 
@@ -69,6 +90,11 @@ class Navbar extends Component {
     }
   };
 
+  readUserNotification = async id => {
+    await this.props.readNotification(id);
+    await this.props.getUserNotification();
+  };
+
   render() {
     return (
       <>
@@ -78,10 +104,22 @@ class Navbar extends Component {
               authors<b>Haven</b>
             </Link>
           </div>
+          <SearchItems
+            all={this.props.all}
+            searchMethod={this.props.searchMethod}
+          />
           <div className="links">
             {token !== null ? (
               <div className="top-menu">
-                <i id="btn-notification" className="fas fa-bell" />
+                {this.state.notification !== undefined ? (
+                  <Bell
+                    totalNotification={this.state.notification.length}
+                    notification={this.state.notification}
+                    readUserNotification={this.readUserNotification}
+                  />
+                ) : (
+                  <Bell />
+                )}
                 <div id="top-menu-avatar">
                   <img
                     className="user-avatar"
@@ -129,13 +167,20 @@ Navbar.propTypes = {
   notifConfig: PropTypes.object,
   updateNotifConfig: PropTypes.func,
   inApp: PropTypes.bool,
-  email: PropTypes.bool
+  email: PropTypes.bool,
+  readNotification: PropTypes.func,
+  getUserNotification: PropTypes.func,
+  notification: PropTypes.any,
+  all: PropTypes.any,
+  searchMethod: PropTypes.func
 };
 
 const mapStateToProps = state => ({
   profile: state.profile,
-  notifConfig: state.notifConfig.notifConfig
+  notifConfig: state.notifConfig.notifConfig,
+  notification: state.notifications.notification
 });
+
 export default connect(
   mapStateToProps,
   {
@@ -144,6 +189,9 @@ export default connect(
     editUserProfilePicture,
     logOutUser,
     getNotifConfig,
-    updateNotifConfig
+    updateNotifConfig,
+    getUserNotification,
+    readNotification,
+    searchMethod
   }
 )(Navbar);

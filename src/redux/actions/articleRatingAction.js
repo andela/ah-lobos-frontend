@@ -16,10 +16,15 @@ export const rateArticle = data => async dispatch => {
     });
     return;
   }
-  if (articleRating.status === 401) {
+  if (articleRating.status === 200) {
+    toast.success(rates.message);
     return;
   }
-  toast.warn(rates.error);
+  if (articleRating.status === 401) {
+    toast.success(rates.error || rates.message);
+    return;
+  }
+  toast.warn(rates.error || rates.message);
   dispatch({
     type: types.RATE_ARTICLES_FAILURE,
     payload: rates.error || rates.message

@@ -16,7 +16,6 @@ export const reportArticle = (slug, report) => dispatch => {
     .then(response => {
       if (response.error) {
         toast.warn(response.error);
-        console.log(response.error);
         dispatch(reportFailure(response.error));
       }
       toast.success(response.message);

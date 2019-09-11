@@ -28,11 +28,7 @@ export class Follow extends Component {
   render() {
     return (
       <>
-        <Navbar
-          profile={this.props.profile}
-          token={token}
-          signOut={this.signOut}
-        />
+        <Navbar />
         <GetFollowers />
       </>
     );
@@ -40,7 +36,6 @@ export class Follow extends Component {
 }
 Follow.propTypes = {
   getUserProfile: propTypes.func.isRequired,
-  profile: propTypes.object.isRequired,
   logOutUser: propTypes.func
 };
 const mapStateToProps = state => ({

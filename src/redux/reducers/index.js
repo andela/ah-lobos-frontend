@@ -17,6 +17,8 @@ import report from "./reportReducer";
 import adminReducer from "./adminReducer";
 import userStats from "./readingStatsReducer";
 import notifConfig from "./notificationConfigReducer";
+import notificationReducer from "./userNotificationReducer";
+import searchReducer from "./searchReducer";
 
 const rootReducer = combineReducers({
   auth: authReducer,
@@ -36,6 +38,8 @@ const rootReducer = combineReducers({
   report,
   admin: adminReducer,
   userStats,
-  notifConfig
+  notifConfig,
+  notifications: notificationReducer,
+  searchData: searchReducer
 });
 export default rootReducer;

@@ -55,7 +55,7 @@ const Articles = ({ article, data }) => {
 };
 
 Articles.propTypes = {
-  article: propTypes.array.isRequired,
+  article: propTypes.object.isRequired,
   data: propTypes.object.isRequired
 };
 

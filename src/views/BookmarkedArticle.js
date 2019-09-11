@@ -48,7 +48,7 @@ export class BookmarkedArticle extends Component {
 BookmarkedArticle.propTypes = {
   getUserProfile: propTypes.func.isRequired,
   profile: propTypes.object.isRequired,
-  getBookmarkedArticles: propTypes.object,
+  getBookmarkedArticles: propTypes.any,
   bookmarks: propTypes.object,
   unBookmarkArticle: propTypes.func
 };

@@ -29,6 +29,10 @@ import {
   getBookmarkedArticles
 } from "../redux/actions/articleBookmark";
 import { createStats } from "../redux/actions/readingStatsAction";
+import {
+  getUserNotification,
+  readNotification
+} from "../redux/actions/userNotificationActions";
 
 class ReadArticlePage extends Component {
   constructor(props) {
@@ -49,6 +53,7 @@ class ReadArticlePage extends Component {
       await this.props.createStats(slug);
     }
     this.props.getArticle(slug);
+    await this.props.getUserNotification();
   }
 
   async componentDidMount() {
@@ -64,6 +69,7 @@ class ReadArticlePage extends Component {
     ) {
       this.styleButtons();
     }
+    await this.props.getUserNotification();
   }
 
   componentWillReceiveProps(newProps) {
@@ -100,7 +106,6 @@ class ReadArticlePage extends Component {
   };
 
   showMenu = () => {
-    // e.preventDefault();
     this.setState({ showReport: true });
   };
 
@@ -137,7 +142,12 @@ class ReadArticlePage extends Component {
       const contentSide = blocks.splice(1, blocks.length);
       return (
         <>
-          <Navbar profile={this.props.profile} token={this.state.token} />
+          <Navbar
+            profile={this.props.profile}
+            token={this.state.token}
+            notification={this.state.notification}
+            readUserNotification={this.readUserNotification}
+          />
           <div className="article-wrapper">
             <div className="side">Side</div>
             <div className="article-content">
@@ -254,7 +264,7 @@ class ReadArticlePage extends Component {
 ReadArticlePage.propTypes = {
   profile: PropTypes.object.isRequired,
   getArticle: PropTypes.func.isRequired,
-  slug: PropTypes.string.isRequired,
+  slug: PropTypes.string,
   match: PropTypes.object,
   getUserProfile: PropTypes.func,
   fetchReaction: PropTypes.func,
@@ -264,10 +274,11 @@ ReadArticlePage.propTypes = {
   rateArticle: PropTypes.func,
   getArticleRating: PropTypes.func,
   rating: PropTypes.object,
-  bookmarkArticle: PropTypes.object,
+  bookmarkArticle: PropTypes.func,
   getBookmarkedArticles: PropTypes.func,
   bookmarks: PropTypes.object,
-  createStats: PropTypes.func
+  createStats: PropTypes.func,
+  getUserNotification: PropTypes.func
 };
 
 const mapStateToProps = state => {
@@ -279,7 +290,8 @@ const mapStateToProps = state => {
     bookmarks: state.bookmarks.bookmarks,
     follow: state.followAuser,
     unfollow: state.unfollowAuser,
-    followees: state.getFollowee.followees
+    followees: state.getFollowee.followees,
+    notification: state.notifications.notification
   };
 };
 
@@ -295,7 +307,9 @@ const mapDispatchToProps = {
   bookmarkArticle,
   unFollowUser,
   followUser,
-  createStats
+  createStats,
+  getUserNotification,
+  readNotification
 };
 
 export default connect(
