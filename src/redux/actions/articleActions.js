@@ -55,7 +55,6 @@ export const createArticle = article => dispatch => {
       window.location.href = `/articles/${response.article.slug}`;
     })
     .catch(error => {
-      console.log(error);
       dispatch(failure());
     });
 };
@@ -66,14 +65,11 @@ export const updateArticle = (article, slug) => dispatch => {
     .updateArticle(article, slug)
     .then(response => {
       if (response.error) {
-        console.log(response.error);
         dispatch(failure());
       }
-      console.log("this is the response >>>>>>>>", response);
       dispatch(updateSuccess(response));
     })
     .catch(error => {
-      console.log(error);
       dispatch(failure());
     });
 };
@@ -88,7 +84,6 @@ export const uploadImage = image => async dispatch => {
   const data = await axios.post(baseUrl, formData, {
     headers: { "Content-Type": "application/x-www-form-urlencoded" }
   });
-  console.log(data);
   dispatch({
     type: types.UPLOAD_IMAGE,
     payload: data.data
@@ -106,7 +101,6 @@ export const getArticle = slug => dispatch => {
     })
     .catch(error => {
       dispatch(fetchOneFail());
-      console.log(error);
     });
 };
 
@@ -121,7 +115,6 @@ export const getAuthorArticles = () => dispatch => {
       dispatch(fetchAuthorSuccess(response));
     })
     .catch(error => {
-      console.log(error);
       dispatch(fetchAuthorError());
     });
 };

@@ -32,7 +32,7 @@ export const commentArticle = data => async dispatch => {
 
 export const getArticleComments = slug => async dispatch => {
   const comments = await API.getArticleComments(slug);
-  dispatch({
+  return dispatch({
     type: RETURN_ARTICLE_COMMENTS,
     payload: comments
   });

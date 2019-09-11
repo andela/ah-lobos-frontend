@@ -15,7 +15,7 @@ class CommentArticle extends Component {
     allComments: []
   };
 
-  componentDidMount() {
+  componentWillMount() {
     this.props.getArticleComments(this.props.slug);
   }
 
@@ -23,7 +23,11 @@ class CommentArticle extends Component {
     this.setState({
       allComments: nextProps.comments
     });
-    this.props.getArticleComments(this.props.slug);
+  }
+
+  componentDidUpdate(prevProps, prevState) {
+    if (prevProps !== prevState) {
+    }
   }
 
   render() {

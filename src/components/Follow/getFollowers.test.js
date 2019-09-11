@@ -2,18 +2,19 @@
 import React from "react";
 import { shallow } from "enzyme";
 import configureStore from "redux-mock-store";
-import { getFollower as View } from "./getFollowee";
-import { mapStateToProps } from "./getFollowee";
+import { getFollower as View } from "./getFollowers";
+import { mapStateToProps } from "./getFollowers";
 
 const mockStore = configureStore();
 const store = mockStore({});
 const initialState = {
-  getFollowee: { followees: [] },
-  profile: {}
+  getFollower: { followers: [] },
+  profile: {},
+  follower: {}
 };
 const newProps = {
-  getFollowee: jest.fn(),
-  followees: [
+  getFollowers: jest.fn(),
+  followers: [
     {
       username: "hdqdjwb",
       image: "mbjewgv"

@@ -9,7 +9,6 @@ const handleOnClick = slug => {
 };
 
 const Articles = ({ article, data }) => {
-  console.log(data);
   return (
     <>
       <div className="article-space" key={article.slug}>
@@ -42,7 +41,8 @@ const Articles = ({ article, data }) => {
 };
 
 Articles.propTypes = {
-  article: propTypes.array.isRequired
+  article: propTypes.array.isRequired,
+  data: propTypes.object
 };
 
 export default Articles;

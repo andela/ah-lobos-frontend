@@ -209,6 +209,30 @@
   }
   }
 
+.not-found{
+  font-family: Helvetica;
+  height: 40vh;
+  margin-top: -30px;
+  padding-top: 70px;
+  font-size: 20pt;
+  margin-left: auto;
+  position: relative;
+  z-index: 10;
+  background: rgb(255, 255, 255);
+}
+.not-found h1{
+  text-align: center;
+  color: #41494D;
+}
+.not-found-img img{
+  object-fit: cover;
+}
+.not-found-img{
+  margin: auto;
+  text-align: center;
+  height: initial;
+}
+
   .read-article{
     width: 60%;
     margin: auto;
@@ -217,3 +241,84 @@
     font-family: Helvetica;
     font-weight: 200;
   }
+
+  // Article bookmark
+  .bookmark-header{
+    width: 60rem;
+    margin: auto;
+    color: #384043;
+    margin-bottom: 20px;
+  }
+
+  .bookmark-wrapper {
+    display: grid;
+    justify-items: center;
+    grid-gap: 20px;
+  }
+  .bookmark-container{
+    margin-top: 20px;
+    display: grid;
+    grid-auto-flow: column;
+    width: 60rem;
+    height: 12rem; 
+    box-shadow: 0 5px 10px rgba(0,0,0,.1), 0 2px 2px rgba(0,0,0,.2);
+  }
+
+  .bookmarked-article-image > img{
+    width: 15rem;
+    height: 12rem; 
+    float: right;
+    object-fit: cover;
+  }
+
+.article-info-bookmark{
+  padding: 10px 0 0 40px;
+  font-family: Helvetica;
+}
+
+.article-info-bookmark h1{
+  color: #41494D;
+  overflow: hidden;
+  width: 40rem;
+  height: 2rem;
+  cursor: pointer;
+}
+
+.article-info-bookmark h1:hover{
+  color: #0d9bc6;
+}
+
+.article-info-bookmark p{
+  width: 40rem;
+  height: 3rem;
+  font-size: 14pt;
+  overflow: hidden;
+}
+
+.btn-remove{
+  background: transparent;
+  color: rgba(0, 0, 0, 0.24);
+  font-family: Helvetica;
+  font-weight: 300;
+  font-size: 25px;
+  margin-left: -10px;
+  padding-bottom: 20px;
+}
+
+.btn-remove:hover{
+  color: #0d9bc6;
+}
+
+.login-to-bookmark {
+  display: none;
+  margin-top: -30px;
+  margin-left: 71.5%;
+  padding: 10px;
+  width: 25%;
+  border: 1px solid #0d9bc6;
+  border-radius: 10px;
+}
+
+.show{
+  display: block;
+}

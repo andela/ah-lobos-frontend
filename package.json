@@ -124,7 +124,8 @@
     ],
     "testPathIgnorePatterns": [
       "./__tests__/setup/",
-      "./cypress/"
+      "./cypress/",
+      "./src/redux/actions/"
     ],
     "moduleNameMapper": {
       "^.+\\.(css|scss)$": "<rootDir>/tools/styleMock.js",
