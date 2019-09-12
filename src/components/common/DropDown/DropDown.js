@@ -28,6 +28,10 @@ const DropDown = ({ signOut }) => (
         <img className="bookmarks-menu-icon" src={bookmarks} alt="profile" />
         <p className="icon-text">Bookmarks</p>
       </Link>
+      <Link to="/users/readingstats" className="bookmarks-menu">
+        <i className="fas fa-chart-bar"></i>
+        <p className="icon-text">Stats</p>
+      </Link>
       <Link to="/" className="sign-out-drop-down" onClick={signOut}>
         <img className="sign-out-drop-down-icon" src={signout} alt="profile" />
         <p className="icon-text">Sign Out</p>

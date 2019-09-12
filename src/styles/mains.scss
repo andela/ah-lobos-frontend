@@ -864,14 +864,18 @@ a.show-toggle {
 }
 #twitter,
 #facebook,
-#google {
+#google,
+#whatsup,
+#gmail {
   cursor: pointer;
   opacity: 0.7;
 }
 
 #twitter:hover,
 #facebook:hover,
-#google:hover {
+#google:hover,
+#whatsup:hover,
+#gmail:hover {
   cursor: pointer;
   opacity: 1;
 }
@@ -1738,7 +1742,7 @@ input:checked[type="checkbox"]::before {
   font-size: 25;
   text-transform: capitalize;
   font-weight: 100;
-  color: #0D9BC6;
+  color: #0d9bc6;
 }
 
 .like-comment {
@@ -1849,6 +1853,7 @@ input:checked[type="checkbox"]::before {
   text-decoration: none;
   color: rgb(43, 40, 40);
   font-size: 18px;
+  border-radius: 10px;
 }
 .tag-list:hover,
 .tag-list:focus {
@@ -2342,3 +2347,54 @@ tbody > tr {
 .all-right {
   font-weight: 200
 }
+
+// Start of Reading stats
+.bookmarks-menu > .fa-chart-bar {
+  text-decoration: none;
+}
+.stats-container {
+  margin-left: 20%;
+  margin-right: 20%;
+  margin-bottom: 60px;
+}
+.reading-stats {
+  margin-left: 10%;
+}
+.stats-number,
+.stats-other {
+  display: inline-block;
+}
+.stats-number {
+  width: 15%;
+  border-right: 1px solid rgb(218, 218, 218);
+  margin-top: -18px;
+}
+.stats-other {
+  width: 70%;
+}
+.reading-article {
+  margin-left: 60px;
+}
+.stories-labels {
+  font-weight: bold;
+}
+.active-stories {
+  position: absolute;
+  height: 2px;
+  width:60px;
+  background-color:black;
+  margin-left: 10px;
+}
+.reading-stories {
+  width: 100%;
+  padding: 8px;
+  margin-top: 30px;
+  box-shadow: 0 8px 8px rgba(0, 0, 0, 0.1), 0 0px 1px rgba(0, 0, 0, 0.2);
+}
+.story-body {
+  padding: 2px;
+  height: 43px;
+  overflow: hidden;
+}
+// End of Reading stats
+

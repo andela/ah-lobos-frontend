@@ -28,5 +28,6 @@ export const initialState = {
   reportMessage: "",
   allUsers: {},
   allReport: [],
-  userDeleted: ""
+  userDeleted: "",
+  userStats: []
 };

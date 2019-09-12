@@ -21,6 +21,7 @@ import Bookmarks from "./views/BookmarkedArticle";
 import AllArticleByTag from "./views/AllArticlesByTag";
 import AdminPage from "./views/AdminPage";
 import ReportedPage from "./views/ReportedPage";
+import ReadingStats from "./views/ReadingStats";
 
 const App = () => {
   return (
@@ -54,6 +55,7 @@ const App = () => {
           />
           <Route exact path="/admin" component={AdminPage} />
           <Route exact path="/reported" component={ReportedPage} />
+          <Route exact path="/users/readingstats" component={ReadingStats} />
         </Switch>
       </Router>
     </>

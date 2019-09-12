@@ -76,7 +76,6 @@ export class HomePage extends Component {
             token={token}
             signOut={this.signOut}
           />
-          {/* <Categories /> */}
           <div className="tag-article-container">
             <br />
             <div className="tags-container">

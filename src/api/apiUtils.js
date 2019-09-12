@@ -126,3 +126,34 @@ export async function updatedCommentResponse(response) {
   }
   return "Network response was not ok.";
 }
+
+export async function readArticleStats(response) {
+  if (response.ok) {
+    const data = await response.json();
+    return data;
+  }
+  if (response.status === 401) {
+    const error = await response.text();
+    toast.info("Please signup or signin");
+    throw new Error(error);
+  }
+  if (response.status === 404) {
+    const error = await response.text();
+    toast.info("No article found");
+    throw new Error(error);
+  }
+  if (response.status === 500) {
+    const error = await response.text();
+    toast.info("Oops something went wrong");
+    throw new Error(error);
+  }
+  return "Network response was not ok.";
+}
+
+export async function getUserStats(response) {
+  if (response) {
+    const data = await response.json();
+    return data;
+  }
+  return "You have no stats";
+}
