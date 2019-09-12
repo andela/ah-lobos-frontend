@@ -5,6 +5,7 @@ import {
   deleteCommentResponse,
   updatedCommentResponse
 } from "./apiUtils";
+import { handleResponse } from "./utils";
 
 const baseUrl = process.env.BASE_URL;
 const token = sessionStorage.getItem("token");
@@ -61,3 +62,29 @@ export function updateArticleComments(data, id) {
     .then(updatedCommentResponse)
     .catch(handleError);
 }
+
+export const likeComment = id => {
+  return fetch(`${baseUrl}/api/comments/like/comment/${id}`, {
+    method: "POST",
+    mode: "cors",
+    headers: {
+      "Content-Type": "application/json; charset=utf-8",
+      token: sessionStorage.getItem("token")
+    }
+  })
+    .then(handleResponse)
+    .catch(handleError);
+};
+
+export const dislikeComment = id => {
+  return fetch(`${baseUrl}/api/comments/dislike/comment/${id}`, {
+    method: "POST",
+    mode: "cors",
+    headers: {
+      "Content-Type": "application/json; charset=utf-8",
+      token: sessionStorage.getItem("token")
+    }
+  })
+    .then(handleResponse)
+    .catch(handleError);
+};

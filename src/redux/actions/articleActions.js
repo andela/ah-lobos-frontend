@@ -54,9 +54,7 @@ export const createArticle = article => dispatch => {
       dispatch(success(article));
       window.location.href = `/articles/${response.article.slug}`;
     })
-    .catch(error => {
-      dispatch(failure());
-    });
+    .catch(dispatch(failure()));
 };
 
 export const updateArticle = (article, slug) => dispatch => {
@@ -69,9 +67,7 @@ export const updateArticle = (article, slug) => dispatch => {
       }
       dispatch(updateSuccess(response));
     })
-    .catch(error => {
-      dispatch(failure());
-    });
+    .catch(dispatch(failure()));
 };
 
 export const uploadImage = image => async dispatch => {
@@ -99,9 +95,7 @@ export const getArticle = slug => dispatch => {
       }
       dispatch(fetchOneRequest(response));
     })
-    .catch(error => {
-      dispatch(fetchOneFail());
-    });
+    .catch(dispatch(fetchOneFail()));
 };
 
 export const getAuthorArticles = () => dispatch => {
@@ -114,9 +108,7 @@ export const getAuthorArticles = () => dispatch => {
       }
       dispatch(fetchAuthorSuccess(response));
     })
-    .catch(error => {
-      dispatch(fetchAuthorError());
-    });
+    .catch(dispatch(fetchAuthorError()));
 };
 
 export const deleteArticle = slug => dispatch => {
@@ -124,12 +116,10 @@ export const deleteArticle = slug => dispatch => {
     .deleteArticle(slug)
     .then(response => {
       if (response.error) {
-        console.log(response.error);
+        toast.error(response.error);
       }
       toast.success("Article deleted successfully");
       dispatch(deleteArticleOptimistic(response.message));
     })
-    .catch(error => {
-      console.log(error);
-    });
+    .catch();
 };

@@ -1705,6 +1705,8 @@ input:checked[type="checkbox"]::before {
   margin-left: 52.002%;
 }
 .commentPanel {
+  display: grid;
+  grid-template-columns: 15% 85%;
   background-color: white;
   width: 60%;
   padding: 20px;
@@ -1713,30 +1715,41 @@ input:checked[type="checkbox"]::before {
   margin-top: 50px;
   box-shadow: 2px 2px 6px 1px #bdb2b2;
 }
-.commentLeft,
-.commentRight {
-  display: inline-block;
-}
-.commentLeft > img {
-  width: 90%;
-  height: 90%;
-  border-radius: 100%;
-}
+
 .commentLeft {
-  width: 10%;
-  margin-right: 2%;
+  grid-row: 1 / -1;
 }
-.commentRight {
-  width: 85%;
-  margin-top: -30px;
+
+.comment-user-image {
+  width: 80%;
+}
+
+.comment-third-side {
+  display: grid;
+  grid-template-rows: 50% 50%;
+}
+
+.time-ago {
+  font-size: 12px;
+  color: grey;
+}
+
+.comment-user {
+  font-size: 25;
+  text-transform: capitalize;
+  font-weight: 100;
+  color: #0D9BC6;
+}
+
+.like-comment {
+  display: grid;
+  grid-template-columns: 60% 40%;
 }
 .commentDate {
-  float: right;
-  font-weight: bold;
-  font-size: 12px;
+  align-self: end;
 }
 .commentFunc {
-  margin-left: 60%;
+  text-align: right;
 }
 .fa-edit,
 .fa-trash-o,
@@ -1928,4 +1941,8 @@ p {
 .tagName {
   text-transform: capitalize;
   color: #0d9bc6;
+}
+
+.not-like {
+  opacity: 0.2;
 }

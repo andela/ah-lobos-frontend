@@ -22,5 +22,7 @@ export const initialState = {
   currentArticles: {},
   uploadedImage: {},
   myArticles: {},
-  isFollowing: false
+  isFollowing: false,
+  messageLiked: "",
+  messageDisliked: ""
 };
