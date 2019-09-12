@@ -23,7 +23,8 @@ export class getFollower extends Component {
   }
 
   async componentDidMount() {
-    await this.props.getFollowers();
+    const token = sessionStorage.getItem("token");
+    await this.props.getFollowers(token);
   }
 
   async onClick(username) {

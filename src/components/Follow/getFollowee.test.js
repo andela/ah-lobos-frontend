@@ -2,7 +2,7 @@
 import React from "react";
 import { shallow } from "enzyme";
 import configureStore from "redux-mock-store";
-import { getFollower as View } from "./getFollowee";
+import getFollowee, { getFollower as View } from "./getFollowee";
 import { mapStateToProps } from "./getFollowee";
 
 const mockStore = configureStore();

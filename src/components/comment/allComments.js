@@ -56,7 +56,6 @@ class AllComments extends Component {
             ? comments.map(comment => (
                 <div className="commentPanel" key={comment.id}>
                   <div className="commentLeft">
-                    {console.log(comment.User.image)}
                     <img
                       src={
                         comment.User.image !== null ? comment.User.image : user

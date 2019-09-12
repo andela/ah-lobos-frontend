@@ -1,3 +1,4 @@
+/* eslint-disable no-restricted-globals */
 /* eslint-disable react/no-unused-state */
 /* eslint-disable max-len */
 import React, { Component } from "react";
@@ -34,17 +35,14 @@ export class CreateArticlePage extends Component {
   async componentDidMount() {
     await this.props.getUserProfile(username);
     if (this.props.profile.username === "") {
-      // eslint-disable-next-line no-restricted-globals
       location.href = "/";
     }
   }
 
   componentWillReceiveProps(newProps) {
-    console.log(newProps);
     const { NewUploadedImage, NewArticle } = newProps;
     const currentUploadImagePosition = ArticleTextEditor.getCurrentUploadImagePos();
     if (NewUploadedImage.secure_url) {
-      console.log(NewUploadedImage);
       const { images } = this.state;
       images.push({
         position: currentUploadImagePosition,
@@ -120,13 +118,7 @@ CreateArticlePage.propTypes = {
   getUserProfile: PropTypes.func.isRequired
 };
 
-// const mapStateToProps = state => ({
-//   // NewUploadedImage: state.uploadedImage,
-//   NewArticle: state.articles.currentArticles,
-//   profile: state.profile
-// });
 const mapStateToProps = state => {
-  // console.log(state.articles.uploadedImage);
   return {
     NewUploadedImage: state.articles.uploadedImage,
     NewArticle: state.articles.currentArticles,

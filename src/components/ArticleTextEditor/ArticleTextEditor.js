@@ -1,3 +1,4 @@
+/* eslint-disable no-shadow */
 /* eslint-disable max-len */
 /* eslint-disable react/no-unused-state */
 /* eslint-disable jsx-a11y/click-events-have-key-events */
@@ -104,14 +105,12 @@ class ArticleTextEditor extends Component {
       state.editorContent.blocks.length === 1 &&
       state.editorContent.blocks[0].text === ""
     ) {
-      // eslint-disable-next-line
       const { editorState } = this.state;
       data = {
         article: {
           body: JSON.stringify(editorState),
           title,
           description: title,
-          // eslint-disable-next-line
           tagList: this.state.tags
         }
       };
@@ -123,7 +122,6 @@ class ArticleTextEditor extends Component {
         body: JSON.stringify(state.editorContent),
         title,
         description: title,
-        // eslint-disable-next-line
         tagList: this.state.tags
       }
     };
@@ -192,7 +190,6 @@ class ArticleTextEditor extends Component {
   updateArtcileHandler = slug => {
     const { tags, article } = this.state;
     const { body, title } = this.props.getFromEditor(article);
-    console.log("article.... now", article);
     this.props.updateArticle(
       {
         title,

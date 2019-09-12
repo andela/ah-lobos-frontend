@@ -14,7 +14,8 @@ import UserProfile from "../profile/UserProfile";
 
 export class getFollower extends Component {
   async componentDidMount() {
-    await this.props.getFollowee();
+    const token = sessionStorage.getItem("token");
+    await this.props.getFollowee(token);
   }
 
   render() {
@@ -34,29 +35,28 @@ export class getFollower extends Component {
                 <hr color="#0D9BC6" id="lineFollowees" />
               </div>
               {this.props.followees !== undefined &&
-              typeof this.props.followees !== "string"
-                ? this.props.followees.map(follow => {
-                    return (
-                      <div className="followers" key={follow.username}>
-                        <img
-                          src={follow.image}
-                          alt=""
-                          className="FollowerImage"
-                        />
-                        <p id="nameFollow">
-                          <span id="namesSize">
-                            {follow.firstName} {follow.lastName}{" "}
-                          </span>
-                          <span className="emailShowing">{follow.email}</span>
-                        </p>
-                        <p className="followOrNot">
-                          <span>@{follow.username} </span>
-                          Following
-                        </p>
-                      </div>
-                    );
-                  })
-                : null}
+                typeof this.props.followees !== "string" &&
+                this.props.followees.map(follow => {
+                  return (
+                    <div className="followers" key={follow.username}>
+                      <img
+                        src={follow.image}
+                        alt=""
+                        className="FollowerImage"
+                      />
+                      <p id="nameFollow">
+                        <span id="namesSize">
+                          {follow.firstName} {follow.lastName}{" "}
+                        </span>
+                        <span className="emailShowing">{follow.email}</span>
+                      </p>
+                      <p className="followOrNot">
+                        <span>@{follow.username} </span>
+                        Following
+                      </p>
+                    </div>
+                  );
+                })}
             </div>
             <div className="ProfileDiv">
               <UserProfile profile={this.props.profile} />
@@ -68,12 +68,10 @@ export class getFollower extends Component {
   }
 }
 
-export const mapStateToProps = state => {
-  return {
-    followees: state.getFollowee.followees,
-    profile: state.profile
-  };
-};
+export const mapStateToProps = state => ({
+  followees: state.getFollowee.followees,
+  profile: state.profile
+});
 getFollower.propTypes = {
   getFollowee: propTypes.func.isRequired,
   followees: propTypes.array,

@@ -105,7 +105,8 @@ EditArticlePage.propTypes = {
   uploadImage: PropTypes.func.isRequired,
   profile: PropTypes.object.isRequired,
   createArticle: PropTypes.func.isRequired,
-  updateArticle: PropTypes.func.isRequired
+  updateArticle: PropTypes.func.isRequired,
+  match: PropTypes.object
 };
 
 const mapStateToProps = state => ({
