@@ -5,11 +5,7 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 import propTypes from "prop-types";
 import { Link } from "react-router-dom";
-import {
-  followUser,
-  unFollowUser,
-  getFollowee
-} from "../../redux/actions/followAction";
+import { getFollowee } from "../../redux/actions/followAction";
 import UserProfile from "../profile/UserProfile";
 
 export class getFollower extends Component {
@@ -56,7 +52,12 @@ export class getFollower extends Component {
                       </p>
                     </div>
                   );
-                })}
+                })}{" "}
+              {typeof this.props.followees === "string" ? (
+                <div className="zero-Followers">
+                  You do not follow anyone yet.
+                </div>
+              ) : null}
             </div>
             <div className="ProfileDiv">
               <UserProfile profile={this.props.profile} />
@@ -80,5 +81,5 @@ getFollower.propTypes = {
 
 export default connect(
   mapStateToProps,
-  { getFollowee, followUser, unFollowUser }
+  { getFollowee }
 )(getFollower);

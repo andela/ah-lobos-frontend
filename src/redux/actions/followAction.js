@@ -1,10 +1,5 @@
 import fetch from "node-fetch";
-import {
-  GET_FOLLOWERS,
-  FOLLOW_A_USER,
-  UN_FOLLOW_A_USER,
-  GET_FOLLOWEE
-} from "./actionTypes";
+import { GET_FOLLOWERS, GET_FOLLOWEE, FOLLOW_A_USER } from "./actionTypes";
 
 const baseUrl = "https://ah-lobos-backend-swagger.herokuapp.com/api";
 
@@ -40,39 +35,36 @@ export const getFollowee = token => dispatch => {
       });
     });
 };
-export const followUser = (username, token) => dispatch => {
+export const followUser = username => dispatch => {
   fetch(`${baseUrl}/followers/${username}/follow`, {
     method: "POST",
     headers: {
       "content-type": "application/json",
-      token
+      token: sessionStorage.getItem("token")
     }
-  }).then(async res => {
-    if (res.ok) {
-      const follow = await res.json();
+  })
+    .then(res => res.json())
+    .then(followResult => {
       dispatch({
         type: FOLLOW_A_USER,
-        payload: follow
+        payload: followResult
       });
-    }
-    return "Response is not okay";
-  });
+    });
 };
 export const unFollowUser = username => dispatch => {
+  console.log("bhjdsn");
   fetch(`${baseUrl}/followers/${username}/unfollow`, {
     method: "DELETE",
     headers: {
       "content-type": "application/json",
       token: sessionStorage.getItem("token")
     }
-  }).then(async res => {
-    if (res.ok) {
-      const unfollow = await res.json();
+  })
+    .then(res => res.json())
+    .then(unfollowResult => {
       dispatch({
-        type: UN_FOLLOW_A_USER,
-        payload: unfollow
+        type: FOLLOW_A_USER,
+        payload: unfollowResult
       });
-    }
-    return "Response is not okay";
-  });
+    });
 };

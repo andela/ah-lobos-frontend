@@ -15,19 +15,19 @@ export const initialState = {
   Rating: {},
   body: {},
   comments: [],
+  follow: {},
+  unfolloq: {},
   followers: [],
   followees: [],
-  follow: {},
-  unFollow: {},
   currentArticles: {},
   uploadedImage: {},
   myArticles: {},
-  isFollowing: false,
   messageLiked: "",
   messageDisliked: "",
   reportMessage: "",
   allUsers: {},
   allReport: [],
   userDeleted: "",
-  userStats: []
+  userStats: [],
+  searchData: {}
 };
