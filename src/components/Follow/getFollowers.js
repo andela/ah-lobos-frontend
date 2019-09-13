@@ -5,11 +5,7 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 import propTypes from "prop-types";
 import { Link } from "react-router-dom";
-import {
-  getFollowers,
-  followUser,
-  unFollowUser
-} from "../../redux/actions/followAction";
+import { getFollowers } from "../../redux/actions/followAction";
 import UserProfile from "../profile/UserProfile";
 
 export class getFollower extends Component {
@@ -57,29 +53,33 @@ export class getFollower extends Component {
                 <hr color="#0D9BC6" id="lineFollowers" />
               </div>
               {this.props.follower !== undefined &&
-              typeof this.props.follower !== "string"
-                ? this.props.follower.map(follow => {
-                    return (
-                      <div className="followers" key={follow.username}>
-                        <img
-                          src={follow.image}
-                          alt=""
-                          className="FollowerImage"
-                        />
-                        <p id="nameFollow">
-                          <span id="namesSize">
-                            {follow.firstName} {follow.lastName}{" "}
-                          </span>
-                          <span className="emailShowing">{follow.email}</span>
-                        </p>
-                        <p className="followOrNot">
-                          <span>@{follow.username} </span>
-                          Follower
-                        </p>
-                      </div>
-                    );
-                  })
-                : null}
+                typeof this.props.follower !== "string" &&
+                this.props.follower.map(follow => {
+                  return (
+                    <div className="followers" key={follow.username}>
+                      <img
+                        src={follow.image}
+                        alt=""
+                        className="FollowerImage"
+                      />
+                      <p id="nameFollow">
+                        <span id="namesSize">
+                          {follow.firstName} {follow.lastName}{" "}
+                        </span>
+                        <span className="emailShowing">{follow.email}</span>
+                      </p>
+                      <p className="followOrNot">
+                        <span>@{follow.username} </span>
+                        Follower
+                      </p>
+                    </div>
+                  );
+                })}{" "}
+              {typeof this.props.follower === "string" ? (
+                <div className="zero-Followers">
+                  Sorry, You do not have any follower yet.
+                </div>
+              ) : null}
             </div>
             <div className="ProfileDiv">
               <UserProfile profile={this.props.profile} />
@@ -107,5 +107,5 @@ getFollower.propTypes = {
 
 export default connect(
   mapStateToProps,
-  { getFollowers, followUser, unFollowUser }
+  { getFollowers }
 )(getFollower);

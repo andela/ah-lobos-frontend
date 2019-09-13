@@ -17,6 +17,7 @@ import { getItemDataFromDatabase } from "../helpers/ItemFromEditor/getItemFromEd
 import Articles from "../components/articles/Articles";
 import Pagination from "../components/Pagination/Pagination";
 import Footer from "../components/common/Footer/Footer";
+import { searchMethod } from "../redux/actions/searchAction";
 
 const token = sessionStorage.getItem("token") || null;
 const userPayload = jwt.decode(token) || "";
@@ -45,7 +46,7 @@ export class HomePage extends Component {
   }
 
   componentWillReceiveProps(newProps) {
-    if (newProps.articles.articles) {
+    if (newProps.articles.articles.length > 0) {
       this.setState({ allArticles: newProps.articles.articles });
     }
   }
@@ -81,6 +82,8 @@ export class HomePage extends Component {
             profile={this.props.profile}
             token={token}
             signOut={this.signOut}
+            search={this.props}
+            searchData={this.props.searchData}
           />
           <Categories />
           <div className="short-summary">
@@ -122,19 +125,23 @@ HomePage.propTypes = {
   getUserProfile: propTypes.func.isRequired,
   profile: propTypes.object.isRequired,
   logOutUser: propTypes.func,
-  getArticles: propTypes.func.isRequired
+  getArticles: propTypes.func.isRequired,
+  searchData: propTypes.array
 };
 const mapStateToProps = state => ({
   profile: state.profile,
-  articles: state.articles
+  articles: state.articles,
+  searchData: state.searchData
 });
+const mapDispatchToProps = {
+  getUserProfile,
+  editUserProfile,
+  editUserProfilePicture,
+  getArticles,
+  logOutUser,
+  searchMethod
+};
 export default connect(
   mapStateToProps,
-  {
-    getUserProfile,
-    editUserProfile,
-    editUserProfilePicture,
-    getArticles,
-    logOutUser
-  }
+  mapDispatchToProps
 )(HomePage);

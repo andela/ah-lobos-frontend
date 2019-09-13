@@ -195,6 +195,20 @@ button[disabled] {
   width: 50%;
   float: left;
 }
+.zero-Followers{
+ margin-top: 20px;
+ font-size: 20px;
+ font-family: helvetica;
+ color: #707070;
+ margin-left: 260px;
+}
+.searchNotFound{
+  margin-top: 20px;
+  font-size: 20px;
+  font-family: helvetica;
+  color: #707070;
+  margin-right: 20px;
+}
 img.FollowerImage{
   width: 70px;
   height: 70px;
@@ -213,7 +227,6 @@ img.FollowerImage{
 .popup-user-profile a:hover{
   color: #0d9bc693;
 }
-//follow button
 .login-to-follow {
   display: none;
   margin-top: 5px;
@@ -225,4 +238,62 @@ img.FollowerImage{
 }
 .show-it{
   display: block;
+}
+.searchDiv-container{
+  display: grid;
+  grid-template-columns: 230px 50px 25px;
+  margin-top: 7%;
+}
+
+.searchDiv-input{
+ margin-left: 98px;
+}
+.searchIn{
+  border: none;
+  border-radius: 3px 0 0 3px;
+  box-sizing: content-box;
+  box-shadow: 1px 0px 1px 1px rgba(0,0,0,0.4) inset;
+  font: 14px helvetica;
+  height: 27px;
+  padding: 5px 8px;
+  width: 300px;
+  margin-left: 0px;
+}
+.custom-select select{
+  border-radius: 3px 0 0 3px;
+  border: none;
+  box-sizing: content-box;
+  border-color: transparent;
+  box-shadow: 1px 0px 1px 1px rgba(0,0,0,0.4) inset;
+  font: 14px helvetica;
+  height: 37px;
+  margin-top: 0px;
+  padding: 3px 0 0 6px;
+  vertical-align: middle;
+    width: 93px;
+    margin-left: 190px;
+}
+.search-result {
+  height: 20%;
+  margin-bottom: 3%;
+}
+.search-result p{
+  color: #707070;
+  margin-top: 3%;
+  margin-left: 5%;
+  font-size: 25px;
+  font-weight: 100;
+}
+.button-search{
+  height: 35px;
+  width: 40px;
+  background: rgba(36, 196, 218, 0.918);
+  color: #ffffff;
+  border: none;
+  border-radius: 0px 3px 3px 0px;
+  margin-left: 240px;
+}
+.button-search:hover{
+  background: rgba(102, 211, 226, 0.918);
+  cursor: pointer;
 }

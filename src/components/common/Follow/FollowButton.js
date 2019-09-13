@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-expressions */
 /* eslint-disable consistent-return */
 /* eslint-disable jsx-a11y/no-noninteractive-element-interactions */
 /* eslint-disable jsx-a11y/click-events-have-key-events */
@@ -7,66 +8,61 @@ import propTypes from "prop-types";
 import { Link } from "react-router-dom";
 import followImage from "../../../assets/images/follow.svg";
 import unFollowImage from "../../../assets/images/unfollow.svg";
-import {
-  followUser,
-  unFollowUser,
-  getFollowee
-} from "../../../redux/actions/followAction";
+import { getFollowee, followUser } from "../../../redux/actions/followAction";
 
 export class FollowButton extends Component {
   constructor(props) {
     super(props);
-    this.state = {};
-    this.onClick = this.onClick.bind(this);
+    this.state = {
+      // isFollowing: false
+    };
   }
 
-  async onClick() {
-    const token = sessionStorage.getItem("token");
-    const msg = document.getElementById("warn-follow");
-    if (!token) {
-      msg.classList.add("show-it");
-    }
-    await this.props.followUser(token, this.props.author);
-  }
-
-  async unFollowonClick() {
-    const token = sessionStorage.getItem("token");
-    await this.props.unFollowUser(token, this.props.author);
-  }
+  // checkFollowing = username => {
+  //   const dataUsername = [];
+  //   this.props.followees &&
+  //     this.props.followees.map(user => dataUsername.push(user.username));
+  //   if (dataUsername.includes(username)) {
+  //     this.setState({ isFollowing: true });
+  //     return dataUsername.includes(username);
+  //   }
+  //   return false;
+  // };
 
   render() {
     return (
       <>
-        <button className="follow">
-          {this.props.isFollowing ? (
-            <img src={followImage} alt="" onClick={this.onClick} />
-          ) : (
-            <img src={unFollowImage} alt="" onClick={this.unFollowonClick} />
-          )}
-        </button>
-        <div id="warn-follow" className="login-to-follow">
+        {/* {console.log(this.props.checkFollowing)} */}
+        {this.props.checkFollowing ? (
+          <img
+            src={unFollowImage}
+            alt=""
+            onClick={() => this.props.unfollowAuser}
+          />
+        ) : (
+          <img
+            src={followImage}
+            alt=""
+            onClick={() => this.props.followAuser}
+          />
+        )}
+        {/* <div id="warn-follow" className="login-to-follow">
           Please{" "}
           <Link to={`/login?redirect=/article/${this.props.slug}`}> login</Link>
           to follow this user
-        </div>
+        </div> */}
       </>
     );
   }
 }
-const mapStateToProps = state => ({
-  follow: state.followAuser,
-  unfollow: state.unFollowAuser,
-  isFollowing: state.isFollowing
-});
 
 FollowButton.propTypes = {
-  followUser: propTypes.func.isRequired,
-  unFollowUser: propTypes.func.isRequired,
-  isFollowing: propTypes.bool.isRequired,
-  slug: propTypes.string,
-  author: propTypes.string
+  // followees: propTypes.object,
+  unfollowAuser: propTypes.func,
+  followAuser: propTypes.func
+  // author: propTypes.string
 };
 export default connect(
-  mapStateToProps,
-  { followUser, unFollowUser, getFollowee }
+  null,
+  { getFollowee, followUser }
 )(FollowButton);

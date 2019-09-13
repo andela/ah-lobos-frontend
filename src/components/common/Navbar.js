@@ -3,8 +3,9 @@ import { Link } from "react-router-dom";
 import PropTypes from "prop-types";
 import Avatar from "../../assets/images/user.png";
 import DropDown from "./DropDown/DropDown";
+import { SearchItems } from "./Search/Search";
 
-const Navbar = ({ token, profile, signOut }) => {
+const Navbar = ({ token, profile, signOut, search, searchData }) => {
   const { username, image } = profile;
   return (
     <>
@@ -14,6 +15,7 @@ const Navbar = ({ token, profile, signOut }) => {
             authors<b>Haven</b>
           </Link>
         </div>
+        <SearchItems all={search} searchData={searchData} />
         <div className="links">
           {token !== null ? (
             <div className="top-menu">
@@ -46,7 +48,9 @@ const Navbar = ({ token, profile, signOut }) => {
 Navbar.propTypes = {
   token: PropTypes.string,
   profile: PropTypes.object.isRequired,
-  signOut: PropTypes.func
+  signOut: PropTypes.func,
+  searchData: PropTypes.array,
+  search: PropTypes.func
 };
 
 export default Navbar;

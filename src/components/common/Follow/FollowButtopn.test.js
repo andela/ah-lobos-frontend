@@ -15,10 +15,4 @@ describe("get followees component", () => {
   it("renders without errors", () => {
     expect(component).toMatchSnapshot();
   });
-  it("use the method on click event ", () => {
-    component.instance().onClick();
-  });
-  it("use the method on click event ", () => {
-    component.instance().unFollowonClick();
-  });
 });

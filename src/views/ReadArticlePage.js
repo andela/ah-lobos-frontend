@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-expressions */
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import PropTypes from "prop-types";
@@ -14,7 +15,13 @@ import CommentArticle from "./comment";
 import { getUserProfile } from "../redux/actions/userActions";
 import { getArticle } from "../redux/actions/articleActions";
 import StarRate from "../components/articles/StarRating";
-import { followUser, unFollowUser } from "../redux/actions/followAction";
+import { FollowButton } from "../components/common/Follow/FollowButton";
+import {
+  getFollowers,
+  getFollowee,
+  followUser,
+  unFollowUser
+} from "../redux/actions/followAction";
 import {
   rateArticle,
   getArticleRating
@@ -29,6 +36,7 @@ import {
   getBookmarkedArticles
 } from "../redux/actions/articleBookmark";
 import { createStats } from "../redux/actions/readingStatsAction";
+import { searchMethod } from "../redux/actions/searchAction";
 
 class ReadArticlePage extends Component {
   constructor(props) {
@@ -37,6 +45,8 @@ class ReadArticlePage extends Component {
       Article: {},
       token: "",
       showReport: false
+      // isFollowing: false
+      // followees: []
     };
     const { slug } = props.match.params;
     props.fetchReaction(slug);
@@ -57,6 +67,8 @@ class ReadArticlePage extends Component {
     const username = sessionStorage.getItem("username") || "";
     await this.props.getUserProfile(username);
     const token = sessionStorage.getItem("token");
+    await this.props.getFollowers(token);
+    await this.props.getFollowee(token);
     this.setState({ token });
     if (
       this.props.readArticleReducer.hasdisliked ||
@@ -70,6 +82,23 @@ class ReadArticlePage extends Component {
     if (newProps.Article) {
       this.setState({ Article: newProps.Article });
     }
+
+    // if (newProps.followees && newProps.Article.article) {
+    //   const data = [];
+    //   newProps.followees.map(follow => data.push(follow.username));
+    //   if (data.includes(newProps.Article.article.author.username)) {
+    //     this.setState({ isFollowing: true });
+    //   }
+    //   this.setState({ isFollowing: false });
+    // }
+
+    // if (newProps.followAuser.isFollowing) {
+    //   this.setState({ isFollowing: newProps.followAuser.isFollowing });
+    // }
+
+    // if (newProps.unFollowAuser.unFollow) {
+    //   this.setState({ isFollowing: false });
+    // }
   }
 
   styleButtons = () => {
@@ -100,8 +129,22 @@ class ReadArticlePage extends Component {
   };
 
   showMenu = () => {
-    // e.preventDefault();
     this.setState({ showReport: true });
+  };
+
+  followNewUser = username => {
+    this.props.followUser(username);
+  };
+
+  unfollowNewUser = username => {
+    this.props.unFollowUser(username);
+  };
+
+  checkFollowing = username => {
+    const dataUsername = [];
+    this.props.followees &&
+      this.props.followees.map(user => dataUsername.push(user.username));
+    return dataUsername.includes(username);
   };
 
   async handleRating(rating) {
@@ -137,7 +180,12 @@ class ReadArticlePage extends Component {
       const contentSide = blocks.splice(1, blocks.length);
       return (
         <>
-          <Navbar profile={this.props.profile} token={this.state.token} />
+          <Navbar
+            profile={this.props.profile}
+            token={this.state.token}
+            search={this.props}
+            searchData={this.props.searchData}
+          />
           <div className="article-wrapper">
             <div className="side">Side</div>
             <div className="article-content">
@@ -149,7 +197,35 @@ class ReadArticlePage extends Component {
                   name={Article.article.author.username}
                   created={Article.article.createdAt}
                 />
-                <div></div>
+                {/* <div></div> */}
+                {/* {Article.article.author.username &&
+                this.checkFollowing(Article.article.author.username) ? (
+
+                ) : ( */}
+                <FollowButton
+                  author={Article.article.author.username}
+                  followers={this.props.follower}
+                  followees={this.props.followees}
+                  followAuser={this.followNewUser(
+                    Article.article.author.username
+                  )}
+                  unfollowAuser={this.unfollowNewUser(
+                    Article.article.author.username
+                  )}
+                  checkFollowing={Article.article.author.username}
+                />
+                {/* <FollowButton
+                  author={Article.article.author.username}
+                  followers={this.props.follower}
+                  followees={this.props.followees}
+                  followAuser={() =>
+                    this.followNewUser(Article.article.author.username)
+                  }
+                  unfollowAuser={() =>
+                    this.unfollowNewUser(Article.article.author.username)
+                  }
+                  checkFollowing={this.state.isFollowing}
+                /> */}
                 {this.props.bookmarks !== undefined &&
                 this.props.bookmarks.length >= 0 &&
                 this.props.bookmarks.filter(
@@ -267,7 +343,12 @@ ReadArticlePage.propTypes = {
   bookmarkArticle: PropTypes.object,
   getBookmarkedArticles: PropTypes.func,
   bookmarks: PropTypes.object,
-  createStats: PropTypes.func
+  createStats: PropTypes.func,
+  searchData: PropTypes.array,
+  getFollowee: PropTypes.func,
+  getFollowers: PropTypes.func,
+  followUser: PropTypes.func,
+  unFollowUser: PropTypes.func
 };
 
 const mapStateToProps = state => {
@@ -277,9 +358,11 @@ const mapStateToProps = state => {
     readArticleReducer: state.readArticleReducer,
     rating: state.rating.rating,
     bookmarks: state.bookmarks.bookmarks,
-    follow: state.followAuser,
-    unfollow: state.unfollowAuser,
-    followees: state.getFollowee.followees
+    followees: state.getFollowee.followees,
+    follower: state.follower.followers,
+    searchData: state.searchData,
+    followAuser: state.followAuser,
+    unFollowAuser: state.unFollowAuser
   };
 };
 
@@ -295,7 +378,10 @@ const mapDispatchToProps = {
   bookmarkArticle,
   unFollowUser,
   followUser,
-  createStats
+  createStats,
+  getFollowers,
+  getFollowee,
+  searchMethod
 };
 
 export default connect(

@@ -6,8 +6,8 @@ export default function unfollowUser(state = initialState, action) {
     case UN_FOLLOW_A_USER: {
       return {
         ...state,
-        unfollow: action.payload,
-        isFollowing: false
+        unfollowResult: action.payload,
+        unFollow: true
       };
     }
     default:

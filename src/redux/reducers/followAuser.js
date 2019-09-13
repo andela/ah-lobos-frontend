@@ -6,7 +6,7 @@ export default function followUser(state = initialState, action) {
     case FOLLOW_A_USER: {
       return {
         ...state,
-        follow: action.payload,
+        followResult: action.payload,
         isFollowing: true
       };
     }
