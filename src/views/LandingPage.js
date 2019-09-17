@@ -16,12 +16,15 @@ import { getArticles } from "../redux/actions/articlesAction";
 import { getItemDataFromDatabase } from "../helpers/ItemFromEditor/getItemFromEditor";
 import Articles from "../components/articles/Articles";
 import Pagination from "../components/Pagination/Pagination";
+import Footer from "../components/common/Footer/Footer";
 
 const token = sessionStorage.getItem("token") || null;
 const userPayload = jwt.decode(token) || "";
 sessionStorage.setItem("username", userPayload.username);
+sessionStorage.setItem("role", userPayload.role);
 const username = sessionStorage.getItem("username") || "";
-
+const isAdmin = sessionStorage.getItem("role");
+console.log(isAdmin);
 export class HomePage extends Component {
   constructor(props) {
     super(props);
@@ -29,12 +32,16 @@ export class HomePage extends Component {
       allArticles: [],
       currentPage: 1,
       articlePerPage: 8
+      // redirect: false
     };
   }
 
   async componentDidMount() {
     await this.props.getUserProfile(username);
     await this.props.getArticles();
+    if (isAdmin === "admin") {
+      // this.setState({ redirect: true });
+    }
   }
 
   componentWillReceiveProps(newProps) {
@@ -104,6 +111,7 @@ export class HomePage extends Component {
             previous={this.previous}
             currentPage={this.state.currentPage}
           />
+          <Footer admin={isAdmin} />
         </>
       );
     }

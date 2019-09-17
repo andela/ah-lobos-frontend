@@ -6,7 +6,6 @@ import DropDown from "./DropDown/DropDown";
 
 const Navbar = ({ token, profile, signOut }) => {
   const { username, image } = profile;
-
   return (
     <>
       <div className="navbar">
