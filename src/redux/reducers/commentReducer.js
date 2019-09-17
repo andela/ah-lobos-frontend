@@ -9,7 +9,10 @@ import {
   LIKE_MESSAGE_REQUEST,
   LIKE_MESSAGE_FAILURE,
   DISLIKE_MESSAGE_REQUEST,
-  DISLIKE_MESSAGE_FAILURE
+  DISLIKE_MESSAGE_FAILURE,
+  FETCH_EDIT_COMMENT_REQUEST,
+  FETCH_EDIT_COMMENT_SUCCESS,
+  FETCH_EDIT_COMMENT_FAILURE
 } from "../actions/actionTypes";
 import { initialState } from "./initialState";
 
@@ -61,6 +64,21 @@ export default function commentReducer(state = initialState, action) {
       return {
         ...state,
         messageDisliked: {}
+      };
+    case FETCH_EDIT_COMMENT_REQUEST:
+      return {
+        ...state,
+        allEditComments: {}
+      };
+    case FETCH_EDIT_COMMENT_SUCCESS:
+      return {
+        ...state,
+        allEditComments: action.commentEdits
+      };
+    case FETCH_EDIT_COMMENT_FAILURE:
+      return {
+        ...state,
+        allEditComments: {}
       };
     default:
       return state;

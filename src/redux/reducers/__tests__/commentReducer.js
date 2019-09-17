@@ -89,4 +89,31 @@ describe("Test comment reducer", () => {
       commentReducer({}, { type: types.DISLIKE_MESSAGE_FAILURE, payload: {} })
     ).toEqual({ messageDisliked: {} });
   });
+
+  it("should test create comment", () => {
+    expect(
+      commentReducer(
+        {},
+        { type: types.FETCH_EDIT_COMMENT_REQUEST, payload: {} }
+      )
+    ).toEqual({ allEditComments: {} });
+  });
+
+  it("should test create comment", () => {
+    expect(
+      commentReducer(
+        {},
+        { type: types.FETCH_EDIT_COMMENT_SUCCESS, payload: {} }
+      )
+    ).toEqual({ allEditComments: undefined });
+  });
+
+  it("should test create comment", () => {
+    expect(
+      commentReducer(
+        {},
+        { type: types.FETCH_EDIT_COMMENT_FAILURE, payload: {} }
+      )
+    ).toEqual({ allEditComments: {} });
+  });
 });

@@ -88,3 +88,16 @@ export const dislikeComment = id => {
     .then(handleResponse)
     .catch(handleError);
 };
+
+export const getEditComments = id => {
+  return fetch(`${baseUrl}/api/comments//articles/edit/${id}`, {
+    method: "GET",
+    mode: "cors",
+    headers: {
+      "Content-Type": "application/json; charset=utf-8",
+      token: sessionStorage.getItem("token")
+    }
+  })
+    .then(handleResponse)
+    .catch(handleError);
+};

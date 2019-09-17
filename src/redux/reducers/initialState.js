@@ -34,5 +34,6 @@ export const initialState = {
     inApp: false,
     email: false
   },
-  searchData: {}
+  searchData: {},
+  allEditComments: {}
 };

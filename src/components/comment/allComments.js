@@ -14,7 +14,8 @@ import {
   dislikeComment,
   deleteArticleComment,
   updateArticleComment,
-  getArticleComments
+  getArticleComments,
+  getEditComments
 } from "../../redux/actions/commentAction";
 
 const formatter = buildFormatter(englishStrings);
@@ -29,7 +30,8 @@ class AllComments extends Component {
     id: 0,
     like: false,
     disLike: false,
-    likeNum: 0
+    likeNum: 0,
+    openHistory: false
   };
 
   onDelete(id) {
@@ -58,6 +60,11 @@ class AllComments extends Component {
   onDisLike = () => {
     this.setState({ disLike: !this.state.disLike });
     this.setState({ likeNum: this.state.likeNum - 1 });
+  };
+
+  history = id => {
+    this.setState({ openHistory: true });
+    this.props.getEditComments(id);
   };
 
   render() {
@@ -155,15 +162,94 @@ class AllComments extends Component {
                               </button>
                             </form>
                           </Modal>
-
+                          <Modal
+                            open={this.state.openHistory}
+                            onClose={() =>
+                              this.setState({ openHistory: false })
+                            }
+                            center
+                            focusTrapped
+                          >
+                            <div>All history of comment</div>
+                            <div
+                              className="commentPanel"
+                              key={comment.id}
+                              style={{ width: "90%" }}
+                            >
+                              <div className="commentLeft">
+                                <img
+                                  src={
+                                    comment.User.image !== null
+                                      ? comment.User.image
+                                      : user
+                                  }
+                                  alt={comment.User.image}
+                                  className="comment-user-image"
+                                />
+                              </div>
+                              <div className="commentRight">
+                                <div>
+                                  <div>
+                                    <span className="comment-user">
+                                      <b>{comment.User.username}</b>{" "}
+                                    </span>
+                                    <span className="time-ago">
+                                      <TimeAgo
+                                        date={comment.createdAt}
+                                        formatter={formatter}
+                                      />
+                                    </span>
+                                  </div>
+                                  <p>{comment.body}</p>
+                                </div>
+                              </div>
+                            </div>
+                            <div>
+                              {this.props.allEditComments ? (
+                                <div>
+                                  {this.props.allEditComments.history !==
+                                  undefined
+                                    ? this.props.allEditComments.history.map(
+                                        edit => {
+                                          return (
+                                            <div
+                                              className="commentHistory"
+                                              key={edit.createdAt}
+                                              style={{ alignSelf: "end" }}
+                                            >
+                                              <div></div>
+                                              <div>{edit.newBody}</div>
+                                            </div>
+                                          );
+                                        }
+                                      )
+                                    : null}
+                                  <div
+                                    className="commentHistory"
+                                    style={{ alignSelf: "end" }}
+                                  >
+                                    <div></div>
+                                    <div>
+                                      {this.props.allEditComments.Orginal}
+                                    </div>
+                                  </div>
+                                </div>
+                              ) : null}
+                            </div>
+                          </Modal>
                           <button
                             onClick={() => this.onDelete(comment.id)}
                             style={{ background: "none" }}
                           >
                             <i className="fa fa-trash-o" />
                           </button>
-
-                          <i className="fa fa-ellipsis-v" />
+                          <button
+                            className="history-comment"
+                            onClick={() => this.history(comment.id)}
+                          >
+                            history
+                          </button>
+                          {/* <i className="fa fa-ellipsis-v" /> */}
                         </div>
                       ) : null}
                     </div>
@@ -182,13 +268,18 @@ AllComments.propTypes = {
   updateArticleComment: propTypes.func,
   slug: propTypes.string,
   likeComment: propTypes.func.isRequired,
-  dislikeComment: propTypes.func.isRequired
+  dislikeComment: propTypes.func.isRequired,
+  getEditComments: propTypes.func.isRequired,
+  allEditComments: propTypes.object.isRequired
 };
-const mapStateToProps = state => ({
-  deleteMessage: state.message,
-  messageLiked: state.comments.messageLiked,
-  messageDisliked: state.comments.messageDisliked
-});
+const mapStateToProps = state => {
+  return {
+    deleteMessage: state.message,
+    messageLiked: state.comments.messageLiked,
+    messageDisliked: state.comments.messageDisliked,
+    allEditComments: state.comments.allEditComments
+  };
+};
 
 export default connect(
   mapStateToProps,
@@ -197,6 +288,7 @@ export default connect(
     updateArticleComment,
     likeComment,
     dislikeComment,
-    getArticleComments
+    getArticleComments,
+    getEditComments
   }
 )(AllComments);

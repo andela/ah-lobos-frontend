@@ -1,3 +1,4 @@
+/* eslint-disable no-return-assign */
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import PropTypes from "prop-types";
@@ -136,6 +137,7 @@ class ReadArticlePage extends Component {
   render() {
     const { Article } = this.state;
     const { rating } = this.props;
+    let i = 0;
     if (Article.article) {
       const content = JSON.parse(Article.article.body);
       const { blocks } = content.article.body;
@@ -198,6 +200,7 @@ class ReadArticlePage extends Component {
                     return (
                       <>
                         <Link
+                          key={(i += 1)}
                           to={`/articles/searchtag/${tag}`}
                           className="tag-list"
                         >
