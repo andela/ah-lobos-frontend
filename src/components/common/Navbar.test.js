@@ -22,5 +22,5 @@ it("it should contain 0 links", () => {
     </MemoryRouter>
   ).find("Link").length;
 
-  expect(numAnchors).toEqual(7);
+  expect(numAnchors).toEqual(8);
 });

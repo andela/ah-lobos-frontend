@@ -28,6 +28,7 @@ import {
   bookmarkArticle,
   getBookmarkedArticles
 } from "../redux/actions/articleBookmark";
+import { createStats } from "../redux/actions/readingStatsAction";
 
 class ReadArticlePage extends Component {
   constructor(props) {
@@ -43,6 +44,10 @@ class ReadArticlePage extends Component {
 
   async componentWillMount() {
     const { slug } = this.props.match.params;
+    const token = sessionStorage.getItem("token");
+    if (token) {
+      await this.props.createStats(slug);
+    }
     this.props.getArticle(slug);
   }
 
@@ -261,7 +266,8 @@ ReadArticlePage.propTypes = {
   rating: PropTypes.object,
   bookmarkArticle: PropTypes.object,
   getBookmarkedArticles: PropTypes.func,
-  bookmarks: PropTypes.object
+  bookmarks: PropTypes.object,
+  createStats: PropTypes.func
 };
 
 const mapStateToProps = state => {
@@ -288,7 +294,8 @@ const mapDispatchToProps = {
   getBookmarkedArticles,
   bookmarkArticle,
   unFollowUser,
-  followUser
+  followUser,
+  createStats
 };
 
 export default connect(
