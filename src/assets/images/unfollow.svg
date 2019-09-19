@@ -1,8 +1,12 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="95.972" height="36.881" viewBox="0 0 95.972 36.881">
+<!-- <svg xmlns="http://www.w3.org/2000/svg" width="95.972" height="45.881" viewBox="0 0 95.972 36.881">
   <g id="Group_29" data-name="Group 29" transform="translate(2 0)">
     <path id="ic_add_circle_24px" d="M14.653.044C7.208.616.664,6.68.047,13.58s4.924,12.036,12.37,11.464,13.989-6.636,14.606-13.536S22.1-.529,14.653.044Zm5.514,13.232-5.4.415-.447,5-2.7.207.447-5-5.4.415.224-2.5,5.4-.415.447-5,2.7-.207-.447,5,5.4-.415Z" transform="translate(74.831 0) rotate(45)" fill="#ff0825"/>
     <text id="Unfollow" transform="translate(27 22.001)" fill="#ff0825" font-size="15" font-family="Helvetica"><tspan x="-28.762" y="0">Unfollow</tspan></text>
   </g>
+</svg> -->
+<svg xmlns="http://www.w3.org/2000/svg" width="107.68" height="38.287" viewBox="0 0 107.68 38.287">
+ <g id="Group_204" data-name="Group 204" transform="translate(-545 -477.393)">
+   <path id="ic_add_circle_24px" d="M15.536,2A13.536,13.536,0,1,0,29.073,15.536,13.541,13.541,0,0,0,15.536,2ZM22.3,16.89H16.89V22.3H14.183V16.89H8.768V14.183h5.415V8.768H16.89v5.415H22.3Z" transform="translate(633.536 474.564) rotate(45)" fill="#ff0825"/>
+   <text id="Unfollow" transform="translate(580 503)" fill="#ff0825" font-size="18" font-family="Helvetica"><tspan x="-34.515" y="0">Unfollow</tspan></text>
+ </g>
 </svg>
-
-

@@ -11,13 +11,6 @@ import followUser from "../followAuser";
 import { initialState } from "../initialState";
 
 describe("follow user", () => {
-  it("should follow a user", () => {
-    const state = unfollowUser(initialState, {
-      type: UN_FOLLOW_A_USER,
-      unfollow: {}
-    });
-    expect(state).toHaveProperty("unfollow");
-  });
   it("should get all follows", () => {
     const getFollowersState = getfollowUser(initialState, {
       type: GET_FOLLOWERS,

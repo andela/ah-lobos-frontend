@@ -14,22 +14,22 @@ export class ShareArticle extends Component {
     this.state = {};
   }
 
-  async onClick(slug) {
+  onClick(slug) {
     const url = `https://ah-lobos-frontend.herokuapp.com/articles/${slug}`;
     window.open(`https://twitter.com/intent/tweet?text=${url}`);
   }
 
-  async whatsuponClick(slug) {
+  whatsuponClick(slug) {
     const url = `https://ah-lobos-frontend.herokuapp.com/articles/${slug}`;
     window.open(`https://wa.me/?text=${url}`);
   }
 
-  async emailonClick(slug) {
+  emailonClick(slug) {
     const url = `https://ah-lobos-frontend.herokuapp.com/articles/${slug}`;
     window.open(`mailto:?subject=${this.props.slug}&body=${url}`);
   }
 
-  async facebookonClick(slug) {
+  facebookonClick(slug) {
     const url = `https://ah-lobos-frontend.herokuapp.com/articles/${slug}`;
     window.open(`https:www.facebook.com/sharer/sharer.php?u=${url}`);
   }

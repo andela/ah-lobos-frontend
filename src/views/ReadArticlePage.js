@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-expressions */
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import PropTypes from "prop-types";
@@ -14,7 +15,12 @@ import CommentArticle from "./comment";
 import { getUserProfile } from "../redux/actions/userActions";
 import { getArticle } from "../redux/actions/articleActions";
 import StarRate from "../components/articles/StarRating";
-import { followUser, unFollowUser } from "../redux/actions/followAction";
+import {
+  getFollowers,
+  getFollowee,
+  followUser,
+  unFollowUser
+} from "../redux/actions/followAction";
 import {
   rateArticle,
   getArticleRating
@@ -29,6 +35,7 @@ import {
   getBookmarkedArticles
 } from "../redux/actions/articleBookmark";
 import { createStats } from "../redux/actions/readingStatsAction";
+import { searchMethod } from "../redux/actions/searchAction";
 
 class ReadArticlePage extends Component {
   constructor(props) {
@@ -57,6 +64,8 @@ class ReadArticlePage extends Component {
     const username = sessionStorage.getItem("username") || "";
     await this.props.getUserProfile(username);
     const token = sessionStorage.getItem("token");
+    await this.props.getFollowers(token);
+    await this.props.getFollowee(token);
     this.setState({ token });
     if (
       this.props.readArticleReducer.hasdisliked ||
@@ -100,8 +109,15 @@ class ReadArticlePage extends Component {
   };
 
   showMenu = () => {
-    // e.preventDefault();
     this.setState({ showReport: true });
+  };
+
+  followNewUser = username => {
+    this.props.followUser(username);
+  };
+
+  unfollowNewUser = username => {
+    this.props.unFollowUser(username);
   };
 
   async handleRating(rating) {
@@ -137,7 +153,12 @@ class ReadArticlePage extends Component {
       const contentSide = blocks.splice(1, blocks.length);
       return (
         <>
-          <Navbar profile={this.props.profile} token={this.state.token} />
+          <Navbar
+            profile={this.props.profile}
+            token={this.state.token}
+            search={this.props}
+            searchData={this.props.searchData}
+          />
           <div className="article-wrapper">
             <div className="side">Side</div>
             <div className="article-content">
@@ -267,7 +288,12 @@ ReadArticlePage.propTypes = {
   bookmarkArticle: PropTypes.object,
   getBookmarkedArticles: PropTypes.func,
   bookmarks: PropTypes.object,
-  createStats: PropTypes.func
+  createStats: PropTypes.func,
+  searchData: PropTypes.array,
+  getFollowee: PropTypes.func,
+  getFollowers: PropTypes.func,
+  followUser: PropTypes.func,
+  unFollowUser: PropTypes.func
 };
 
 const mapStateToProps = state => {
@@ -277,9 +303,9 @@ const mapStateToProps = state => {
     readArticleReducer: state.readArticleReducer,
     rating: state.rating.rating,
     bookmarks: state.bookmarks.bookmarks,
-    follow: state.followAuser,
-    unfollow: state.unfollowAuser,
-    followees: state.getFollowee.followees
+    followees: state.getFollowee.followees,
+    follower: state.follower.followers,
+    searchData: state.searchData
   };
 };
 
@@ -295,7 +321,10 @@ const mapDispatchToProps = {
   bookmarkArticle,
   unFollowUser,
   followUser,
-  createStats
+  createStats,
+  getFollowers,
+  getFollowee,
+  searchMethod
 };
 
 export default connect(
