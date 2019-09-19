@@ -1,5 +1,5 @@
-import * as readArticleActions from "./readArticleActions";
-import * as types from "./actionTypes";
+import * as readArticleActions from "../../actions/readArticleActions";
+import * as types from "../../actions/actionTypes";
 
 describe("readArticleActions", () => {
   it("should create a LIKE_ARTICLE action", () => {
@@ -48,5 +48,34 @@ describe("readArticleActions", () => {
     const action = readArticleActions.fetchReactionSuccess(reactions);
 
     expect(action).toEqual(expectedAction);
+  });
+
+  it("should create test fetchReaction action", () => {
+    const slug = "slug-slow";
+
+    const dispatch = jest.fn(action => action);
+
+    const expectedAction = readArticleActions.fetchReaction(slug)(dispatch);
+
+    expect(expectedAction).toBeTruthy();
+  });
+
+  it("should create test likeAction action", () => {
+    const slug = "slug-slow";
+
+    const dispatch = jest.fn(action => action);
+
+    const expectedAction = readArticleActions.likeAction(slug)(dispatch);
+
+    expect(expectedAction).toBeTruthy();
+  });
+
+  it("should create test dislikeAction action", () => {
+    const slug = "slug-slow";
+
+    const dispatch = jest.fn(action => action);
+
+    const expectedAction = readArticleActions.dislikeAction(slug)(dispatch);
+    expect(expectedAction).toBeTruthy();
   });
 });

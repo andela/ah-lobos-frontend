@@ -6,12 +6,6 @@ import propTypes from "prop-types";
 import jwt from "jsonwebtoken";
 import Navbar from "../components/common/Navbar";
 import Categories from "../components/common/Categories/Categories";
-import {
-  getUserProfile,
-  editUserProfile,
-  editUserProfilePicture,
-  logOutUser
-} from "../redux/actions/userActions";
 import { getArticles } from "../redux/actions/articlesAction";
 import { getItemDataFromDatabase } from "../helpers/ItemFromEditor/getItemFromEditor";
 import Articles from "../components/articles/Articles";
@@ -22,7 +16,6 @@ const token = sessionStorage.getItem("token") || null;
 const userPayload = jwt.decode(token) || "";
 sessionStorage.setItem("username", userPayload.username);
 sessionStorage.setItem("role", userPayload.role);
-const username = sessionStorage.getItem("username") || "";
 const isAdmin = sessionStorage.getItem("role");
 console.log(isAdmin);
 export class HomePage extends Component {
@@ -32,27 +25,18 @@ export class HomePage extends Component {
       allArticles: [],
       currentPage: 1,
       articlePerPage: 8
-      // redirect: false
     };
   }
 
   async componentDidMount() {
-    await this.props.getUserProfile(username);
     await this.props.getArticles();
-    if (isAdmin === "admin") {
-      // this.setState({ redirect: true });
-    }
   }
 
   componentWillReceiveProps(newProps) {
-    if (newProps.articles.articles) {
+    if (newProps.articles.articles.length > 0) {
       this.setState({ allArticles: newProps.articles.articles });
     }
   }
-
-  signOut = async () => {
-    await this.props.logOutUser(token);
-  };
 
   next = () => {
     this.setState({ currentPage: this.state.currentPage + 1 });
@@ -77,14 +61,10 @@ export class HomePage extends Component {
     if (currentArticles) {
       return (
         <>
-          <Navbar
-            profile={this.props.profile}
-            token={token}
-            signOut={this.signOut}
-          />
+          <Navbar />
           <Categories />
           <div className="short-summary">
-            <p>
+            <p id="cta">
               Join a community of like minded authors to foster inspiration and
               innovation by leveraging the modern web.
             </p>
@@ -111,7 +91,7 @@ export class HomePage extends Component {
             previous={this.previous}
             currentPage={this.state.currentPage}
           />
-          <Footer admin={isAdmin} />
+          <Footer admin={isAdmin} articlesLen={this.state.allArticles.length} />
         </>
       );
     }
@@ -119,22 +99,14 @@ export class HomePage extends Component {
   }
 }
 HomePage.propTypes = {
-  getUserProfile: propTypes.func.isRequired,
-  profile: propTypes.object.isRequired,
-  logOutUser: propTypes.func,
   getArticles: propTypes.func.isRequired
 };
 const mapStateToProps = state => ({
-  profile: state.profile,
   articles: state.articles
 });
 export default connect(
   mapStateToProps,
   {
-    getUserProfile,
-    editUserProfile,
-    editUserProfilePicture,
-    getArticles,
-    logOutUser
+    getArticles
   }
 )(HomePage);

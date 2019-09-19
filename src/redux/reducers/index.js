@@ -16,6 +16,7 @@ import articleBookmarks from "./articleBookmark";
 import report from "./reportReducer";
 import adminReducer from "./adminReducer";
 import userStats from "./readingStatsReducer";
+import notifConfig from "./notificationConfigReducer";
 
 const rootReducer = combineReducers({
   auth: authReducer,
@@ -34,6 +35,7 @@ const rootReducer = combineReducers({
   unFollowAuser,
   report,
   admin: adminReducer,
-  userStats
+  userStats,
+  notifConfig
 });
 export default rootReducer;

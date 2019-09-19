@@ -1,7 +1,15 @@
 import fetchMock from "fetch-mock";
-import { loginUser, signOutUser } from "./userApi";
+import {
+  loginUser,
+  signOutUser,
+  updateNotifConfig,
+  getNotifConfig
+} from "./userApi";
 
 describe("Testing user api fetch methods", () => {
+  const token =
+    "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6NSwid…A1MX0." +
+    "xIOwsL5w9vuxPR93ZmGvfC54eLfin1se7GAkzJUmnhk";
   afterEach(() => {
     fetchMock.restore();
   });
@@ -29,5 +37,24 @@ describe("Testing user api fetch methods", () => {
       user: { token: "" }
     });
     await signOutUser(user);
+  });
+
+  it("should get a user's notification preference", async () => {
+    fetchMock.mock("*", {
+      config: { token: "" }
+    });
+    await getNotifConfig(token);
+  });
+
+  it("should update a users notification preference", async () => {
+    const notifConfig = {
+      inApp: true,
+      email: true
+    };
+
+    fetchMock.mock("*", {
+      config: { token: "" }
+    });
+    await updateNotifConfig(token, notifConfig);
   });
 });

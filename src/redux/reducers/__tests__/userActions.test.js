@@ -1,8 +1,8 @@
 import thunk from "redux-thunk";
 import fetchMock from "fetch-mock";
 import configureMockStore from "redux-mock-store";
-import * as userActions from "./userActions";
-import * as types from "./actionTypes";
+import * as userActions from "../../actions/userActions";
+import * as types from "../../actions/actionTypes";
 import "regenerator-runtime/runtime";
 
 const middleware = [thunk];

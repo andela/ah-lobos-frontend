@@ -29,5 +29,9 @@ export const initialState = {
   allUsers: {},
   allReport: [],
   userDeleted: "",
-  userStats: []
+  userStats: [],
+  notifConfig: {
+    inApp: false,
+    email: false
+  }
 };

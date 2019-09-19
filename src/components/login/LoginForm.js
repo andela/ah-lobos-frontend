@@ -39,7 +39,7 @@ const LoginForm = ({
             hidden={hidden}
             toggleShow={toggleShow}
           />
-          <a href="#/" className="show-toggle" onClick={toggleShow}>
+          <a href="#/" className="show-toggle-login" onClick={toggleShow}>
             {hidden ? (
               <img src={show} alt="show" className="eye-toggle-login" />
             ) : (

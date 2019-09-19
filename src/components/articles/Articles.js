@@ -36,8 +36,10 @@ const Articles = ({ article, data }) => {
         </div>
         <div className="article-rates">
           <div>
-            <span>{moment(article.createdAt).format("MM-DD")} . </span>
-            <span>{data.readtime}</span>
+            <span className="small-things">
+              {moment(article.createdAt).format("MM-DD")} .{" "}
+            </span>
+            <span className="small-things">{data.readtime}</span>
           </div>
         </div>
         <button
