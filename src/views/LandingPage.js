@@ -89,7 +89,12 @@ export class HomePage extends Component {
             previous={this.previous}
             currentPage={this.state.currentPage}
           />
-          <Footer admin={isAdmin} articlesLen={this.state.allArticles.length} />
+          {currentArticles.length !== 0 ? (
+            <Footer
+              admin={isAdmin}
+              articlesLen={this.state.allArticles.length}
+            />
+          ) : null}
         </>
       );
     }

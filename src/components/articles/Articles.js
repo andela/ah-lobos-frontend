@@ -20,7 +20,7 @@ const Articles = ({ article, data }) => {
         <div className="article-image">
           <img
             src={
-              imageCheck.includes("jpg") && article.image !== null
+              imageCheck.includes("cloudinary") && article.image !== null
                 ? article.image
                 : ArticlePlaceHolder
             }

@@ -1642,12 +1642,25 @@ input:checked[type='checkbox']::before {
   box-shadow: 2px 2px 6px 1px #bdb2b2;
 }
 
+.commentHistory {
+  display: grid;
+  grid-template-columns: 15% 85%;
+  background-color: white;
+  width: 60%;
+  padding: 20px;
+  height: auto;
+  border-radius: 15px;
+  margin-top: 20px;
+  box-shadow: 2px 2px 6px 1px #bdb2b2;
+}
+
 .commentLeft {
   grid-row: 1 / -1;
 }
 
 .comment-user-image {
   width: 80%;
+  border-radius: 50px;
 }
 
 .comment-third-side {
@@ -1770,6 +1783,10 @@ input:checked[type='checkbox']::before {
   font-size: 20px;
 }
 
+//start of article by tag
+.all-tags {
+  text-align: center;
+}
 .tag-list {
   background-color: #dfe4e6;
   padding-top: 10px;
@@ -2333,6 +2350,10 @@ tbody > tr {
     display: none;
   }
 
+  #search {
+    display: none;
+  }
+
   .left {
     grid-gap: 8px;
   }
@@ -2414,4 +2435,9 @@ tbody > tr {
   .drop-down {
   margin-left: 35vw;
 }
+}
+
+.history-comment {
+  background-color: white;
+  color: grey;
 }

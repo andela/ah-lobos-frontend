@@ -28,7 +28,11 @@ export class SearchItems extends Component {
   render() {
     return (
       <>
-        <Form onSubmit={this.onSubmit} className="searchFunctionality">
+        <Form
+          id="search"
+          onSubmit={this.onSubmit}
+          className="searchFunctionality"
+        >
           <div className="searchDiv-container">
             <div className="searchDiv-input">
               <input

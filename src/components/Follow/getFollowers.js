@@ -106,7 +106,8 @@ getFollower.propTypes = {
   followUser: propTypes.func.isRequired,
   unFollowUser: propTypes.func.isRequired,
   profile: propTypes.object.isRequired,
-  follower: propTypes.array
+  follower: propTypes.array,
+  followees: propTypes.array
 };
 
 export default connect(

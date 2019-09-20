@@ -9,7 +9,10 @@ import {
   LIKE_MESSAGE_REQUEST,
   LIKE_MESSAGE_FAILURE,
   DISLIKE_MESSAGE_REQUEST,
-  DISLIKE_MESSAGE_FAILURE
+  DISLIKE_MESSAGE_FAILURE,
+  FETCH_EDIT_COMMENT_REQUEST,
+  FETCH_EDIT_COMMENT_SUCCESS,
+  FETCH_EDIT_COMMENT_FAILURE
 } from "./actionTypes";
 import * as API from "../../api/commentApi";
 
@@ -27,6 +30,18 @@ export const dislikeRequest = message => {
 
 export const dislikeFailure = () => {
   return { type: DISLIKE_MESSAGE_FAILURE };
+};
+
+export const getEditRequest = () => {
+  return { type: FETCH_EDIT_COMMENT_REQUEST };
+};
+
+export const getEditSuccess = commentEdits => {
+  return { type: FETCH_EDIT_COMMENT_SUCCESS, commentEdits };
+};
+
+export const getEditFailure = () => {
+  return { type: FETCH_EDIT_COMMENT_FAILURE };
 };
 
 export const commentArticle = data => async dispatch => {
@@ -120,4 +135,16 @@ export const dislikeComment = id => async dispatch => {
       dispatch(dislikeRequest(response.message));
     })
     .catch(dispatch(dislikeFailure()));
+};
+
+export const getEditComments = id => async dispatch => {
+  dispatch(getEditRequest());
+  await API.getEditComments(id)
+    .then(response => {
+      if (response.error) {
+        dispatch(getEditFailure());
+      }
+      dispatch(getEditSuccess(response));
+    })
+    .catch(dispatch(getEditFailure()));
 };

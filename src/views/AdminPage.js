@@ -12,15 +12,32 @@ import notifications from "../assets/images/notifications.svg";
 import users from "../assets/images/users.svg";
 import reported from "../assets/images/reported.svg";
 import articleIcon from "../assets/images/articlesIcon.svg";
+import styles from "../styles/table.css";
+import Pagination from "../components/Pagination/Pagination";
 
 const token = sessionStorage.getItem("token") || null;
 const userPayload = jwt.decode(token) || "";
 sessionStorage.setItem("username", userPayload.username);
 const username = sessionStorage.getItem("username") || "";
 class AdminPage extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      allUsers: [],
+      currentPage: 1,
+      usersPerTable: 5
+    };
+  }
+
   async componentDidMount() {
     await this.props.getUserProfile(username);
     await this.props.getAllUsers();
+  }
+
+  componentWillReceiveProps(newProps) {
+    if (newProps.admin.allUsers.users) {
+      this.setState({ allUsers: newProps.admin.allUsers.users });
+    }
   }
 
   onDelete(id) {
@@ -28,8 +45,24 @@ class AdminPage extends Component {
     setTimeout(() => this.props.getAllUsers(), 500);
   }
 
+  next = () => {
+    this.setState({ currentPage: this.state.currentPage + 1 });
+  };
+
+  previous = () => {
+    this.setState({ currentPage: this.state.currentPage - 1 });
+  };
+
+  paginate = tableNumber => {
+    this.setState({ currentPage: tableNumber });
+  };
+
   render() {
-    let i = 0;
+    const { allUsers, currentPage, usersPerTable } = this.state;
+    const indexOfLastUser = currentPage * usersPerTable;
+    const indexOfFistUser = indexOfLastUser - usersPerTable;
+    const currentUsers = allUsers.slice(indexOfFistUser, indexOfLastUser);
+    let i = indexOfFistUser;
     return (
       <>
         <Navbar
@@ -68,8 +101,8 @@ class AdminPage extends Component {
                 />
               </>
             ) : null}
-            <div className="admin-table">
-              <table className="table">
+            <div className="app">
+              <table className={styles.table}>
                 <thead>
                   <tr>
                     <th>No</th>
@@ -82,8 +115,8 @@ class AdminPage extends Component {
                   </tr>
                 </thead>
                 <tbody>
-                  {this.props.admin.allUsers.users
-                    ? this.props.admin.allUsers.users.map(user => (
+                  {currentUsers.length !== 0
+                    ? currentUsers.map(user => (
                         <tr key={user.id}>
                           <td>{(i += 1)}</td>
                           <td>
@@ -111,6 +144,14 @@ class AdminPage extends Component {
                     : null}
                 </tbody>
               </table>
+              <Pagination
+                articlesPerPage={this.state.usersPerTable}
+                totalArticles={this.state.allUsers.length}
+                paginate={this.paginate}
+                next={this.next}
+                previous={this.previous}
+                currentPage={this.state.currentPage}
+              />
             </div>
           </div>
         </div>
