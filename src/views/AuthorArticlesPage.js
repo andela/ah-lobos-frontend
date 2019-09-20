@@ -127,7 +127,7 @@ class AuthorArticlesPage extends Component {
 
 AuthorArticlesPage.propTypes = {
   profile: PropTypes.object.isRequired,
-  myArticles: PropTypes.object.isRequired,
+  myArticles: PropTypes.any,
   getAuthorArticles: PropTypes.func.isRequired,
   getUserProfile: PropTypes.func.isRequired,
   deleteArticle: PropTypes.func.isRequired

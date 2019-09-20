@@ -32,7 +32,7 @@ function render(args) {
 it("Count number of Div's in the navbar", () => {
   const wrapper = render();
   const numDiv = wrapper.find("div").length;
-  expect(numDiv).toEqual(6);
+  expect(numDiv).toEqual(10);
 });
 
 it("Should navigate to the login page when the button is clicked", () => {
@@ -52,7 +52,7 @@ it("Should navigate to the sign-up page when the button is clicked", () => {
     .first()
     .simulate("click");
   const signUpPage = wrapper.find("div").length;
-  expect(signUpPage).toEqual(6);
+  expect(signUpPage).toEqual(10);
 });
 
 it("Should navigate to the sign-up page when the button is clicked", () => {
@@ -62,7 +62,7 @@ it("Should navigate to the sign-up page when the button is clicked", () => {
     .first()
     .simulate("change");
   const signUpPage = wrapper.find("div").length;
-  expect(signUpPage).toEqual(6);
+  expect(signUpPage).toEqual(10);
   wrapper.unmount();
 });
 

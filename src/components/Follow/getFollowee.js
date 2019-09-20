@@ -1,6 +1,3 @@
-/* eslint-disable react/no-unused-state */
-/* eslint-disable jsx-a11y/no-noninteractive-element-interactions */
-/* eslint-disable jsx-a11y/click-events-have-key-events */
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import propTypes from "prop-types";
@@ -56,7 +53,12 @@ export class getFollower extends Component {
                       </p>
                     </div>
                   );
-                })}
+                })}{" "}
+              {typeof this.props.followees === "string" ? (
+                <div className="zero-Followers">
+                  You do not follow anyone yet.
+                </div>
+              ) : null}
             </div>
             <div className="ProfileDiv">
               <UserProfile profile={this.props.profile} />
@@ -73,9 +75,9 @@ export const mapStateToProps = state => ({
   profile: state.profile
 });
 getFollower.propTypes = {
-  getFollowee: propTypes.func.isRequired,
+  getFollowee: propTypes.func,
   followees: propTypes.array,
-  profile: propTypes.object.isRequired
+  profile: propTypes.object
 };
 
 export default connect(

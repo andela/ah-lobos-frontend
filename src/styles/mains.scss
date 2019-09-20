@@ -342,6 +342,7 @@ a.show-toggle-sign-up {
 #btn-notification {
   align-self: center;
   height: 10px;
+  margin-right: -10px;
 }
 
 #top-menu-avatar {
@@ -437,7 +438,6 @@ a.show-toggle-sign-up {
   border: 0.1 solid;
   position: relative;
   margin: 10px auto;
-  // z-index: -2;
 }
 
 .profile-details {
@@ -584,7 +584,6 @@ a.show-toggle-sign-up {
   width: 10%;
   margin-left: 10%;
   display: inline-block;
-  // font-weight: 500;
   font-family: Helvetica;
   font-size: 12pt;
   color: #0d9bc6;
@@ -919,11 +918,6 @@ a.show-toggle {
   margin-top: 3px;
 }
 
-#btn-notification {
-  cursor: pointer;
-  position: relative;
-  padding: 10px;
-}
 .user-name {
   text-transform: capitalize;
   display: inline-block;

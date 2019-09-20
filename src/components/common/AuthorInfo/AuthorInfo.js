@@ -25,10 +25,10 @@ const AuthorInfo = ({ image, readtime, name, created }) => {
 };
 
 AuthorInfo.propTypes = {
-  image: PropTypes.string.isRequired,
-  name: PropTypes.string.isRequired,
-  readtime: PropTypes.string.isRequired,
-  created: PropTypes.string.isRequired
+  image: PropTypes.string,
+  name: PropTypes.string,
+  readtime: PropTypes.string,
+  created: PropTypes.string
 };
 
 export default AuthorInfo;

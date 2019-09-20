@@ -29,9 +29,27 @@ describe("get followees component", () => {
   it("renders without errors", () => {
     expect(newcomponent).toMatchSnapshot();
   });
-  it("should call share on twitter is clicked", () => {
+  it("should call share on gmail is clicked", () => {
     const Event = { preventDefault: () => {} };
     const form = newcomponent.find("#gmail");
+    form.simulate("click", Event);
+    expect(form.length).toBe(1);
+  });
+  it("should call share on twitter is clicked", () => {
+    const Event = { preventDefault: () => {} };
+    const form = newcomponent.find("#twitter");
+    form.simulate("click", Event);
+    expect(form.length).toBe(1);
+  });
+  it("should call share on whatsup is clicked", () => {
+    const Event = { preventDefault: () => {} };
+    const form = newcomponent.find("#whatsup");
+    form.simulate("click", Event);
+    expect(form.length).toBe(1);
+  });
+  it("should call share on facebook is clicked", () => {
+    const Event = { preventDefault: () => {} };
+    const form = newcomponent.find("#facebook");
     form.simulate("click", Event);
     expect(form.length).toBe(1);
   });

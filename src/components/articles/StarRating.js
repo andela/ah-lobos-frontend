@@ -23,7 +23,7 @@ const Star = ({ editing, value, onClick }) => {
 };
 
 Star.propTypes = {
-  editing: propTypes.bool,
+  editing: propTypes.string,
   value: propTypes.number,
   onClick: propTypes.func
 };

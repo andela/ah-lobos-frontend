@@ -27,11 +27,9 @@ const Pagination = ({
               &laquo;
             </a>
             {pageNums.map(num => (
-              <>
-                <a onClick={() => paginate(num)} key={num} href="#!">
-                  {num}
-                </a>
-              </>
+              <a onClick={() => paginate(num)} key={num} href="#!">
+                {num}
+              </a>
             ))}
             <a
               onClick={

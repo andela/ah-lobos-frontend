@@ -18,6 +18,73 @@ Array [
         </b>
       </a>
     </div>
+    <form
+      className="ui form searchFunctionality"
+      onSubmit={[Function]}
+    >
+      <div
+        className="searchDiv-container"
+      >
+        <div
+          className="searchDiv-input"
+        >
+          <input
+            className="searchIn"
+            name="data"
+            onChange={[Function]}
+            placeholder="Search..."
+            type="text"
+            value=""
+          />
+        </div>
+        <div
+          className="custom-select"
+        >
+          <select
+            name="searchOption"
+            onChange={[Function]}
+          >
+            <option
+              value="all"
+            >
+              all
+            </option>
+            <option
+              value="title"
+            >
+              title
+            </option>
+            <option
+              value="author"
+            >
+              author
+            </option>
+            <option
+              value="description"
+            >
+              description
+            </option>
+            <option
+              value="tag"
+            >
+              tag
+            </option>
+          </select>
+        </div>
+        <div
+          className="searchDiv-button"
+        >
+          <button
+            className="button-search"
+          >
+            <img
+              alt=""
+              src="test-file-stub"
+            />
+          </button>
+        </div>
+      </div>
+    </form>
     <div
       className="links"
     >

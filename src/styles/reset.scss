@@ -226,3 +226,78 @@ img.FollowerImage{
 .show-it{
   display: block;
 }
+// search 
+.zero-Followers{
+  margin-top: 20px;
+  font-size: 20px;
+  font-family: helvetica;
+  color: #707070;
+  margin-left: 260px;
+ }
+ .searchNotFound{
+   margin-top: 20px;
+   font-size: 20px;
+   font-family: helvetica;
+   color: #707070;
+   margin-right: 20px;
+ }
+ .searchDiv-container{
+  display: grid;
+  grid-template-columns: 230px 50px 25px;
+  margin-top: 7%;
+}
+
+.searchDiv-input{
+ margin-left: 98px;
+}
+.searchIn{
+  border: none;
+  background: rgba(177, 174, 174, 0.1);
+  border-radius: 3px 0 0 3px;
+  box-sizing: content-box;
+  inset: initial;
+  font: 14px helvetica;
+  height: 27px;
+  padding: 5px 8px;
+  width: 300px;
+  margin-left: 0px;
+}
+.custom-select select{
+  outline: none;
+  border-radius: 3px 0 0 3px;
+  border: none;
+  box-sizing: content-box;
+  border-color: transparent;
+  inset: initial;
+  font: 14px helvetica;
+  height: 37px;
+  margin-top: 0px;
+  padding: 3px 0 0 6px;
+  vertical-align: middle;
+  width: 93px;
+  margin-left: 190px;
+}
+.search-result {
+  height: 20%;
+  margin-bottom: 3%;
+}
+.search-result p{
+  color: #707070;
+  margin-top: 3%;
+  margin-left: 5%;
+  font-size: 25px;
+  font-weight: 100;
+}
+.button-search{
+  height: 35px;
+  background: #0d9bc6;
+  color: #ffffff;
+  border: none;
+  border-radius: 5px;
+  margin-left: 240px;
+  padding: 7px;
+}
+.button-search:hover{
+  background: rgba(102, 211, 226, 0.918);
+  cursor: pointer;
+}

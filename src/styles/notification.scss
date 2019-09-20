@@ -1,0 +1,74 @@
+.btn-notification{
+  background: transparent;
+  color: #0d9bc6;
+
+  .unread-notification{
+    color: white;
+    font-weight: 500;
+    font-size: 8pt;
+    font-family: Helvetica;
+    background: red;
+    border-radius: 50%;
+    padding: 5px;
+  }
+}
+
+.notification-details{
+  display: grid;
+  grid-auto-flow: column;
+}
+
+.notification-wrapper{
+  background: rgb(255, 255, 255);
+  margin-top: 30px;
+  width: 30%;
+  z-index: 200;
+  display: grid;
+  justify-items: center;
+  grid-gap: 7px;
+  font-family: Helvetica;
+
+  .notification{
+    display: grid;
+    grid-auto-flow: column;
+    background: white;
+    width: 95%;
+    height: 85px;
+    box-shadow: 0 5px 15px rgba(0,0,0,.1), 0 15px 15px rgba(0,0,0,.2);
+    text-decoration: none;
+
+    .notification-info{
+      margin-left: -12px;
+    }
+
+    .notification-img{
+      width: 70px;
+      margin: auto;
+      padding-left: 15px;
+    }
+
+    .notification-img > img {
+      width: 50px;
+      height: 50px;
+    }
+
+    .notification-time{
+      font-size: 10pt;
+      width: 70%;
+      height: 20px;
+      margin-left: 20px;
+      color: #0d9bc6;
+    }
+
+    .notification-msg{
+      font-size: 11pt;
+      width: 90%;
+      height: 20px;
+      margin-left: 10px;
+      color: #707070;
+      text-decoration: none;
+      margin: 10px;
+      padding: 10px
+    }
+  }
+}
